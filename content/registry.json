@@ -1,0 +1,65 @@
+{
+  "client": "Innovive",
+  "website": "innovive.com",
+  "blogs": [
+    {
+      "title": "Compassion Fatigue in the Vivarium",
+      "keyword": "compassion fatigue vivarium",
+      "pillar": "Vivarium Operations",
+      "date": "2026-01",
+      "angle": "Addressing burnout and emotional toll on animal care staff",
+      "url": null,
+      "gdoc": null,
+      "notes": "Existing post — published by Innovive before content pipeline. Do not duplicate topic or angle."
+    },
+    {
+      "title": "Cage Wash-Free Vivarium Planning Checklist",
+      "keyword": "cage wash free vivarium",
+      "pillar": "IVC / Cage Systems",
+      "date": "2026-01",
+      "angle": "Practical planning guide for transitioning to disposable caging",
+      "url": null,
+      "gdoc": null,
+      "notes": "Existing post — do not duplicate."
+    },
+    {
+      "title": "Vivarium Sustainability and Biosecurity",
+      "keyword": "vivarium sustainability biosecurity",
+      "pillar": "Compliance & Standards",
+      "date": "2025-12",
+      "angle": "How disposable caging improves both sustainability metrics and contamination control",
+      "url": null,
+      "gdoc": null,
+      "notes": "Existing post — do not duplicate."
+    },
+    {
+      "title": "Vivarium HVAC and Energy Management",
+      "keyword": "vivarium hvac energy",
+      "pillar": "Vivarium Operations",
+      "date": "2025-10",
+      "angle": "Energy cost reduction through smarter HVAC design in animal facilities",
+      "url": null,
+      "gdoc": null,
+      "notes": "Existing post — do not duplicate."
+    },
+    {
+      "title": "Recyclable Disposable IVC Systems",
+      "keyword": "disposable ivc caging",
+      "pillar": "IVC / Cage Systems",
+      "date": "2025-11",
+      "angle": "How recyclable IVC systems reduce operational overhead",
+      "url": null,
+      "gdoc": null,
+      "notes": "Existing post — do not duplicate."
+    },
+    {
+      "title": "What Research Ready Means for Your Science and People",
+      "keyword": "research ready vivarium caging",
+      "pillar": "IVC / Cage Systems",
+      "date": "2026-03-20",
+      "angle": "Dual benefit of research ready: science side (sterile, pre-bedded, irradiated caging) and people side (ergonomic, cage-wash-free operations)",
+      "url": null,
+      "gdoc": "https://docs.google.com/document/d/1lLFgDop6arJiOKUKyaUiUmiaTC9Pj6Fs5m8JwnqxVXs/edit"
+    }
+  ]
+}
