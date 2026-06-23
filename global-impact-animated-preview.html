@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Global Impact — animated preview</title>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1b216b; --blue:#3765f8; --light:#a8ceff; --ink:#242d28; --muted:#5d665f;
+  }
+  *{box-sizing:border-box} body{margin:0;font-family:'Inter',sans-serif;background:#fff;color:var(--ink)}
+  .preview-note{background:#fff7ed;border-bottom:1px solid #fed7aa;color:#9a3412;font-size:13px;padding:8px 16px;text-align:center}
+  .filler{height:18vh;display:grid;place-items:center;color:#c9d2d8;font-size:13px;letter-spacing:.1em;text-transform:uppercase}
+
+  .gi-section{position:relative;overflow:hidden;background:#fff;min-height:520px;padding:72px 0 96px}
+  .gi-bg,.gi-canvas{position:absolute;inset:0;width:100%;height:100%}
+  .gi-bg{background:url('nanobanana-output/editchange_only_this_remove_all_.png') bottom center/cover no-repeat}
+  .gi-canvas{pointer-events:none}
+  .gi-inner{position:relative;z-index:2;max-width:1240px;margin:0 auto;padding:0 48px}
+  .gi-inner h2{color:var(--navy);font-size:clamp(1.75rem,1.2rem+1.8vw,2.5rem);font-weight:700;margin:0 0 12px}
+  .gi-inner .lede{color:var(--muted);max-width:52ch;line-height:1.6;margin:0 0 40px}
+  .tiles{display:grid;grid-template-columns:repeat(2,minmax(180px,260px));gap:16px}
+  .tile{background:#fff;border:1px solid #e3e7ea;border-radius:12px;box-shadow:0 2px 8px rgba(27,33,107,.07);padding:18px 20px}
+  .tile b{display:block;color:var(--blue);font-size:1.4rem;font-weight:800}
+  .tile span{color:var(--muted);font-size:.875rem}
+  /* reduced motion: hide canvas, show the static approved image (arcs baked in) */
+  @media (prefers-reduced-motion: reduce){
+    .gi-canvas{display:none}
+    .gi-bg{background-image:url('globe-horizon-bg-v2.png')}
+  }
+</style>
+</head>
+<body>
+<div class="preview-note">PREVIEW — Global Impact section with live-animated network arcs (static fallback for reduced-motion users). Resize the window to test responsiveness.</div>
+<div class="filler">page content above</div>
+
+<section class="gi-section" id="gi">
+  <div class="gi-bg"></div>
+  <canvas class="gi-canvas" id="arcs"></canvas>
+  <div class="gi-inner">
+    <h2>Global Impact</h2>
+    <p class="lede">Our commitment to excellence in research expands globally. Our commitment to excellence in research expands globally.</p>
+    <div class="tiles">
+      <div class="tile"><b>43</b><span>Countries Served</span></div>
+      <div class="tile"><b>20+</b><span>Years of Innovation</span></div>
+      <div class="tile"><b>500+</b><span>Customers Globally</span></div>
+      <div class="tile"><b>03</b><span>Business Lines</span></div>
+    </div>
+  </div>
+</section>
+
+<div class="filler">page content below</div>
+
+<script>
+(() => {
+  const canvas = document.getElementById('arcs');
+  const section = document.getElementById('gi');
+  const ctx = canvas.getContext('2d');
+  const DPR = Math.min(window.devicePixelRatio || 1, 2);
+
+  // node positions in IMAGE space (plate is 1376x768, rendered cover/bottom-center)
+  const IMG_W = 1376, IMG_H = 768;
+  const NODES = [
+    {x: 175, y: 690}, {x: 300, y: 610}, {x: 430, y: 565},
+    {x: 560, y: 545}, {x: 700, y: 538}, {x: 845, y: 552},
+    {x: 990, y: 588}, {x: 1135, y: 645}, {x: 1270, y: 706}
+  ];
+  // routes: pairs of node indices (long spans read as international)
+  const ROUTES = [[0,4],[1,6],[2,8],[3,7],[5,0],[4,8],[6,2],[7,1]];
+
+  let W, H, scale, offX, offY;
+  function layout(){
+    W = section.clientWidth; H = section.clientHeight;
+    canvas.width = W * DPR; canvas.height = H * DPR;
+    canvas.style.width = W + 'px'; canvas.style.height = H + 'px';
+    ctx.setTransform(DPR, 0, 0, DPR, 0, 0);
+    // replicate CSS background-size:cover, position:bottom center
+    scale = Math.max(W / IMG_W, H / IMG_H);
+    offX = (W - IMG_W * scale) / 2;
+    offY = H - IMG_H * scale;
+  }
+  const map = n => ({ x: offX + n.x * scale, y: offY + n.y * scale });
+
+  // arc lifecycle: draw on (0..0.35), hold+shimmer (0.35..0.8), fade (0.8..1)
+  const CYCLE = 14000;            // full loop ms
+  const ARC_DUR = 6000;           // each arc's life ms
+  const STAGGER = CYCLE / ROUTES.length;
+
+  function bez(p0, p1, t){
+    // control point: lifted midpoint for an orbital arc
+    const mx = (p0.x + p1.x) / 2;
+    const lift = Math.min(Math.abs(p1.x - p0.x) * 0.45, H * 0.55);
+    const my = Math.min(p0.y, p1.y) - lift;
+    const a = 1 - t;
+    return {
+      x: a*a*p0.x + 2*a*t*mx + t*t*p1.x,
+      y: a*a*p0.y + 2*a*t*my + t*t*p1.y
+    };
+  }
+
+  function drawArcPath(p0, p1, t0, t1, strokeStyle, width){
+    ctx.beginPath();
+    const steps = 60;
+    for (let i = 0; i <= steps; i++){
+      const t = t0 + (t1 - t0) * (i / steps);
+      const p = bez(p0, p1, t);
+      i === 0 ? ctx.moveTo(p.x, p.y) : ctx.lineTo(p.x, p.y);
+    }
+    ctx.strokeStyle = strokeStyle; ctx.lineWidth = width; ctx.stroke();
+  }
+
+  function node(p, r, alpha){
+    ctx.beginPath();
+    const g = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3.2);
+    g.addColorStop(0, `rgba(55,101,248,${alpha})`);
+    g.addColorStop(0.45, `rgba(168,206,255,${alpha * 0.5})`);
+    g.addColorStop(1, 'rgba(168,206,255,0)');
+    ctx.fillStyle = g;
+    ctx.arc(p.x, p.y, r * 3.2, 0, Math.PI * 2); ctx.fill();
+    ctx.beginPath();
+    ctx.fillStyle = `rgba(27,33,107,${alpha})`;
+    ctx.arc(p.x, p.y, r, 0, Math.PI * 2); ctx.fill();
+  }
+
+  let visible = true;
+  new IntersectionObserver(e => { visible = e[0].isIntersecting; }, {threshold: 0.05}).observe(section);
+
+  function frame(now){
+    requestAnimationFrame(frame);
+    if (!visible) return;
+    ctx.clearRect(0, 0, W, H);
+    ROUTES.forEach((r, i) => {
+      const local = ((now - i * STAGGER) % CYCLE + CYCLE) % CYCLE;
+      if (local > ARC_DUR) return;
+      const t = local / ARC_DUR;
+      const p0 = map(NODES[r[0]]), p1 = map(NODES[r[1]]);
+      let drawTo, alpha;
+      if (t < 0.35){ drawTo = (t / 0.35); alpha = 0.55; }
+      else if (t < 0.8){ drawTo = 1; alpha = 0.55 - 0.1 * Math.sin((t - 0.35) * 9); }
+      else { drawTo = 1; alpha = 0.55 * (1 - (t - 0.8) / 0.2); }
+      const ease = x => 1 - Math.pow(1 - x, 3);
+      drawArcPath(p0, p1, 0, ease(drawTo), `rgba(27,33,107,${alpha * 0.75})`, 1.1);
+      // travelling spark at the draw head
+      if (t < 0.35){
+        const head = bez(p0, p1, ease(drawTo));
+        node(head, 1.6, 0.9);
+      }
+      // endpoint nodes
+      node(p0, 2.4, Math.min(1, alpha + 0.25));
+      if (drawTo === 1) node(p1, 2.4, Math.min(1, alpha + 0.25));
+    });
+    // idle nodes faintly visible
+    NODES.forEach(n0 => node(map(n0), 1.6, 0.18));
+  }
+
+  if (!matchMedia('(prefers-reduced-motion: reduce)').matches){
+    layout();
+    addEventListener('resize', layout);
+    requestAnimationFrame(frame);
+  }
+})();
+</script>
+</body>
+</html>

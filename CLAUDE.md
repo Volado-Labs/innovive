@@ -53,11 +53,36 @@ curl -s -H "Authorization: Basic dm9sYWRvYWRtaW46dkpScGx0M29XelNaaGtYN0VoYTI1QnE
 
 ## Brand
 - Colors: Navy #1b216b, Blue #3765f8, Light Blue #a8ceff, Orange #f47b2e, Text #242d28
-- Font: Manrope
+- Font: Inter — the ONLY approved font, sitewide (client-approved 6/10; NOT Manrope, NOT Plus Jakarta Sans). All Elementor font_family settings swept to Inter on 6/11; audit via _elementor_data, not generated CSS files.
 - Page builder: Elementor Pro
 - Host: SiteGround
 
 ## Outstanding Feedback — Must Fix Before Launch
+
+### ✅ PROGRESS LOG — 2026-06-02 (Collin/Claude session)
+Shipped & verified live (REST edits, cache-flushed, backups in content/backups/):
+- SITEWIDE #1 logo ✅ — Innovive wordmark (media id 1716) swapped into global header template 88
+- SITEWIDE #3 line-height ✅ — kit #9 custom CSS raises text-editor body copy to 1.6 (verified 14px→22.4px)
+- SITEWIDE #4 stretched images ✅ (partial) — object-fit:cover on the distorting fixed-height widgets (tall-rat 29f8d13/3c0db31/a2bbe54/d217dfd, rat-feeders 058b293/1c1cf6b/60d85d6/f9d3fda). "Broken images" were NOT reproduced — all return 200; blank boxes were the stretched containers.
+- TALL RAT ✅ partial — removed MOUSE ENRICHMENT badge (7a87fcd), large bottom image (col d07b33a), stray "Features:" (icon-list 629473e), fixed "mouse cage"→"rat cage" (f1bead9). STILL TODO (needs assets): hero rack image + H1, rack spec table (Victoria's doc), cage-component icon links.
+- RAT FEEDERS ✅ — removed MOUSE ENRICHMENT badge (b1ac918), removed duplicate R-WIRE-HB card (c61d0c2). Broken images not reproduced.
+- MOUSE ENRICHMENT ✅ — badges 4→1 (removed e969163/d183456/c1a0e91), removed dup "Talk to an Expert" CTA (fafd967), fixed "Innovice"→"Innocage" typo (04dd9f7).
+- BLOG & NEWS ✅ partial — image-first card order (8 cards), gap 272px→132px (f583c69 pad-bottom 100→20, 8f313d6 pad-top 100→40). STILL TODO: 2-3 reworded titles need authoritative copy; page is HARDCODED static widgets not real posts (dead Read More links, wrong dates, Figma blob in b092473) — real fix is migrating to WP posts.
+
+Decisions made: ignore old empty stubs (about/41, contact/52, team/47, services/45, resources/49) — designer is building replacements under NEW slugs (about-us/1444, contact-us/1671, team-2/1405). Those are HERS, do not edit.
+Flag to designer: /team-2/ (1405) renders only 1 of 3 published team members — loop-grid query is capped.
+/products/ (43) fatal diagnosed: 3 loop-grid widgets set to "current_query" on a static page (Elementor Pro fatal). Not yet fixed; page is being rebuilt per migration plan anyway.
+
+Round-2 audit (Home, Research Ready, Gnotobiotics, Inno+, About-us, Mouse-lid) + typo fixes shipped:
+- Typos fixed ✅: Home "programh"→"program" (dcd4d3b); Research-Ready "ReadyTEAM"→"Ready TEAM" (496019b/2fb7f47) + stripped zero-width spaces (8470001/8390732); Gnotobiotics "Oregon Universit"→"University" (9cb4dd4 — VERIFY real institution name); Mouse-lid "Remay®"→"Reemay®" (8ddc829 ×5) + "lit"→"lid" (f8ea1ae).
+- NOT fixed, needs owner/designer/content (round-2 findings):
+  - Home (mine): empty heading 9a86385; line-height:1px bug on news-row date/button widgets (de4ca65/436c1d3/cd9f2a6/a2a7ccb/61ef991/1c2b88d); "InnoCycle" vs "closed-loop recycling program" naming (Victoria); Home testimonial 1c2b88d "PfizerTop US Biotech Company" run-together (confirm).
+  - Research-Ready (mine): hero bg identical to homepage (b07590e = 7a2ec820…webp); 2 stretched images (c451f71 870x340, 7eb4104 340px); run-on H1 6faab6a; THIN page (~141 words) — Robin questioned if it should be standalone.
+  - Gnotobiotics (mine): UNFINISHED video section — video widget 3a43f40 still on DEFAULT Elementor demo URLs + stale "Coming May 2026" copy (7d8036d1/25847bab) + placeholder "video" badge a7b789f; empty heading 2196cbb.
+  - Inno+ (designer): empty heading bf26c35 (testimonial author); placeholder stat label "Washing or Setup Global Client" (c0095df, the 500+ stat); line-height:1px on c31915b; 20px line-heights on body widgets.
+  - About-us (designer): DUPLICATE belief-card copy cards 3&4 (a732512==8fa2407); card copy doesn't match headings; two CTAs both "our mission and vision".
+  - Mouse-lid (designer): placeholder heading "you need this to complete the system" (0eb54f6); MVX5 & MVX12 share same image.
+- Line-height global fix caveat: kit #9 CSS covers text-editor BODY copy only; headings/buttons with hard-coded tight/1px line-heights are NOT covered (Home news row, Inno+).
 
 ### SITEWIDE (all pages)
 1. Wrong logo in global header — Inno+ logo ("inno+") is showing on every page. Must be replaced with the Innovive wordmark. Inno+ should only appear on Inno+ service pages.

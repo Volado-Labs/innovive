@@ -1,0 +1,23 @@
+
+# --- Volado standard excludes ---
+.DS_Store
+.claude/
+.playwright-mcp/
+.env
+.env.*
+node_modules/
+**/node_modules/
+.venv/
+**/__pycache__/
+*.pyc
+**/credentials/
+*.credentials.*
+*.pem
+*.key
+
+# Large media -> shared Google Drive, not git (see LARGE-ASSETS.md)
+*.mp4
+*.mov
+*.m4v
+*.avi
+*.mkv
