@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Innovive Timeline — Icon + Depth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1b216b; --navy-deep:#11163f; --blue:#3765f8; --light-blue:#a8ceff;
+    --orange:#f47b2e; --ink:#242d28; --paper:#eef2fb;
+    --card:rgba(255,255,255,0.045); --card-bd:rgba(168,206,255,0.16);
+    --space:clamp(48px,6vw,88px);
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Inter',sans-serif;background:#0c1030;-webkit-font-smoothing:antialiased;}
+
+  .band{
+    position:relative; overflow:hidden;
+    padding:var(--space) clamp(28px,5vw,72px) calc(var(--space) + 8px);
+    background:
+      radial-gradient(120% 90% at 82% 8%, rgba(55,101,248,0.28) 0%, rgba(55,101,248,0) 55%),
+      radial-gradient(100% 80% at 12% 95%, rgba(244,123,46,0.12) 0%, rgba(244,123,46,0) 55%),
+      linear-gradient(160deg,#1b216b 0%,#161c54 48%,#0e1340 100%);
+    color:#fff;
+  }
+  /* faint engineering grid for atmosphere/depth */
+  .band::before{
+    content:""; position:absolute; inset:0; pointer-events:none; opacity:.5;
+    background-image:
+      linear-gradient(rgba(168,206,255,0.05) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(168,206,255,0.05) 1px, transparent 1px);
+    background-size:46px 46px;
+    -webkit-mask-image:radial-gradient(120% 80% at 50% 35%, #000 35%, transparent 80%);
+            mask-image:radial-gradient(120% 80% at 50% 35%, #000 35%, transparent 80%);
+  }
+  .inner{position:relative; max-width:1180px; margin:0 auto;}
+
+  /* ---- header ---- */
+  .head{display:flex; justify-content:space-between; align-items:flex-end; gap:40px; flex-wrap:wrap; margin-bottom:clamp(56px,7vw,84px);}
+  .eyebrow{font-size:12px; font-weight:600; letter-spacing:.22em; text-transform:uppercase; color:var(--light-blue); display:flex; align-items:center; gap:10px;}
+  .eyebrow::before{content:""; width:26px; height:1px; background:var(--light-blue); opacity:.7;}
+  h1{font-size:clamp(30px,3.6vw,46px); font-weight:600; line-height:1.08; letter-spacing:-.02em; margin-top:18px; max-width:14ch;}
+  h1 b{font-weight:700; color:var(--light-blue);}
+  .lede{margin-top:18px; max-width:46ch; color:#c3cdef; font-weight:300; font-size:16px; line-height:1.6;}
+  .stats{display:flex; gap:14px;}
+  .stat{padding:16px 22px; border-radius:16px; background:var(--card); border:1px solid var(--card-bd); text-align:center; min-width:104px; backdrop-filter:blur(2px);}
+  .stat.accent{background:linear-gradient(180deg,rgba(244,123,46,.16),rgba(244,123,46,.06)); border-color:rgba(244,123,46,.42);}
+  .stat .n{font-size:30px; font-weight:700; letter-spacing:-.02em; line-height:1;}
+  .stat.accent .n{color:#ffb482;}
+  .stat .l{margin-top:7px; font-size:11px; font-weight:500; letter-spacing:.14em; text-transform:uppercase; color:var(--light-blue);}
+  .stat.accent .l{color:#ffc7a0;}
+
+  /* ---- timeline grid ---- */
+  .rail{position:relative; display:grid; grid-template-columns:repeat(5,1fr); grid-template-rows:auto 96px auto; column-gap:20px; align-items:center;}
+  /* the spine */
+  .spine{grid-column:1 / -1; grid-row:2; position:relative; height:3px; border-radius:3px;
+    background:linear-gradient(90deg,#3765f8 0%,#5d86ff 52%,#a8ceff 76%,#f47b2e 100%);
+    box-shadow:0 0 18px rgba(93,134,255,.55);}
+  .spine::after{content:""; position:absolute; right:-2px; top:50%; width:13px; height:13px; transform:translateY(-50%) rotate(45deg);
+    border-top:2px solid var(--orange); border-right:2px solid var(--orange); border-radius:2px;}
+
+  /* node = medallion + connector, lives in middle row */
+  .node{grid-row:2; align-self:center; justify-self:center; position:relative; width:100%; display:flex; justify-content:center;}
+  .med{position:relative; width:74px; height:74px; border-radius:50%; display:grid; place-items:center; z-index:2;
+    background:radial-gradient(120% 120% at 30% 25%, #2c389a 0%, #1b216b 70%);
+    border:1px solid rgba(168,206,255,.45);
+    box-shadow:0 14px 30px rgba(0,0,0,.45), inset 0 1px 1px rgba(255,255,255,.18);}
+  .med svg{width:32px; height:32px; stroke:var(--light-blue); fill:none; stroke-width:1.7; stroke-linecap:round; stroke-linejoin:round;}
+  .med.now{width:84px; height:84px; background:radial-gradient(120% 120% at 30% 25%, #ff9a52 0%, #f47b2e 68%); border-color:#ffc09a;
+    box-shadow:0 0 0 8px rgba(244,123,46,.16), 0 18px 38px rgba(244,123,46,.4), inset 0 1px 2px rgba(255,255,255,.4);}
+  .med.now svg{stroke:#fff; width:36px; height:36px; stroke-width:1.9;}
+
+  /* connector stub from medallion to card */
+  .stub{position:absolute; left:50%; transform:translateX(-50%); width:2px; background:linear-gradient(var(--light-blue),rgba(168,206,255,0)); z-index:1;}
+  .node.up .stub{bottom:50%; height:54px; background:linear-gradient(rgba(168,206,255,0),var(--light-blue));}
+  .node.down .stub{top:50%; height:54px;}
+  .stub::after{content:""; position:absolute; left:50%; transform:translateX(-50%); width:7px; height:7px; border-radius:50%; background:var(--light-blue); box-shadow:0 0 8px rgba(168,206,255,.8);}
+  .node.up .stub::after{top:-3px;}
+  .node.down .stub::after{bottom:-3px;}
+
+  /* cards */
+  .card{position:relative; padding:22px 22px 20px; border-radius:16px; background:var(--card); border:1px solid var(--card-bd);
+    box-shadow:0 24px 40px -24px rgba(0,0,0,.7); overflow:hidden; backdrop-filter:blur(3px);}
+  .card .num{position:absolute; top:-14px; right:6px; font-size:64px; font-weight:700; color:rgba(168,206,255,.09); letter-spacing:-.04em;}
+  .card .yr{font-size:12px; font-weight:600; letter-spacing:.12em; color:var(--light-blue); position:relative;}
+  .card h3{font-size:18px; font-weight:600; margin-top:7px; letter-spacing:-.01em; position:relative;}
+  .card p{font-size:13.5px; line-height:1.55; color:#c3cdef; font-weight:300; margin-top:8px; position:relative;}
+  .card.up{grid-row:1; margin-bottom:18px; align-self:end;}
+  .card.down{grid-row:3; margin-top:18px; align-self:start;}
+  .card.now{background:linear-gradient(180deg,rgba(244,123,46,.14),rgba(244,123,46,.04)); border-color:rgba(244,123,46,.4);}
+  .card.now .yr{color:#ffc7a0;}
+  .card.now h3{color:#fff;}
+  .card.now .num{color:rgba(244,123,46,.14);}
+  .col{display:contents;}
+</style>
+</head>
+<body>
+<section class="band">
+  <div class="inner">
+    <div class="head">
+      <div>
+        <div class="eyebrow">Our story</div>
+        <h1>Two decades of <b>vivarium innovation</b></h1>
+        <p class="lede">From a single product breakthrough to a global recycling, irradiation, and services ecosystem serving the research community across 43+ countries.</p>
+      </div>
+      <div class="stats">
+        <div class="stat"><div class="n">20+</div><div class="l">Years</div></div>
+        <div class="stat"><div class="n">43+</div><div class="l">Countries</div></div>
+        <div class="stat accent"><div class="n">5</div><div class="l">Eras</div></div>
+      </div>
+    </div>
+
+    <div class="rail">
+      <div class="spine"></div>
+
+      <!-- 01 -->
+      <article class="card up">
+        <span class="num">01</span>
+        <div class="yr">2005 — 2009</div>
+        <h3>Founded</h3>
+        <p>Early product innovation establishes the disposable caging breakthrough.</p>
+      </article>
+      <div class="node up" style="grid-column:1;">
+        <span class="stub"></span>
+        <div class="med"><svg viewBox="0 0 24 24"><path d="M9 18h6M10 21h4M12 3a6 6 0 0 1 4 10.5c-.7.7-1 1.4-1 2.5H9c0-1.1-.3-1.8-1-2.5A6 6 0 0 1 12 3Z"/></svg></div>
+      </div>
+
+      <!-- 02 -->
+      <div class="node down" style="grid-column:2;">
+        <span class="stub"></span>
+        <div class="med"><svg viewBox="0 0 24 24"><path d="M3 17l5-5 3 3 7-7M15 4h5v5"/></svg></div>
+      </div>
+      <article class="card down" style="grid-column:2;">
+        <span class="num">02</span>
+        <div class="yr">2009 — 2015</div>
+        <h3>Market validation</h3>
+        <p>US launch and rapid expansion prove the model at scale.</p>
+      </article>
+
+      <!-- 03 -->
+      <article class="card up" style="grid-column:3;">
+        <span class="num">03</span>
+        <div class="yr">2015 — 2019</div>
+        <h3>Scale</h3>
+        <p>Manufacturing capacity and built-in redundancy secure supply.</p>
+      </article>
+      <div class="node up" style="grid-column:3;">
+        <span class="stub"></span>
+        <div class="med"><svg viewBox="0 0 24 24"><path d="M3 21V9l6 4V9l6 4V5l6 4v12H3ZM7 17h0M12 17h0M17 17h0"/></svg></div>
+      </div>
+
+      <!-- 04 -->
+      <div class="node down" style="grid-column:4;">
+        <span class="stub"></span>
+        <div class="med"><svg viewBox="0 0 24 24"><path d="M12 8V5m0 0a2 2 0 1 0 0-2 2 2 0 0 0 0 2ZM6 8h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-8a2 2 0 0 1 2-2ZM9 13h0M15 13h0M9 17h6"/></svg></div>
+      </div>
+      <article class="card down" style="grid-column:4;">
+        <span class="num">04</span>
+        <div class="yr">2019 — 2022</div>
+        <h3>Resilience</h3>
+        <p>Automation and supply continuity harden every operation.</p>
+      </article>
+
+      <!-- 05 -->
+      <article class="card up now" style="grid-column:5;">
+        <span class="num">05</span>
+        <div class="yr">2022 — TODAY</div>
+        <h3>Global ecosystem</h3>
+        <p>Recycling, irradiation, and a full services ecosystem, worldwide.</p>
+      </article>
+      <div class="node up" style="grid-column:5;">
+        <span class="stub"></span>
+        <div class="med now"><svg viewBox="0 0 24 24"><path d="M7 19a8 8 0 1 1 10 0M12 7v5l3 2M3 13l2-2 2 2M17 11l2 2 2-2"/></svg></div>
+      </div>
+    </div>
+  </div>
+</section>
+</body>
+</html>
