@@ -21,3 +21,6 @@ node_modules/
 *.m4v
 *.avi
 *.mkv
+
+# Client CRM extract with PII, never commit
+innovive-contact-classification-*.csv

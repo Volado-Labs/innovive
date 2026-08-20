@@ -276,7 +276,7 @@ A monthly reconciliation. Marketing exports the month's qualified leads from Hub
 
 **The version that needs NetSuite:**
 
-A one-way, read-only NetSuite to HubSpot connection that writes closed-won status back onto the contact. Better, automatic, and entirely dependent on Rahsaan's team agreeing that it will not disturb the automations they are already building.
+A one-way, read-only NetSuite to HubSpot connection that writes closed-won status back onto the contact. Better, automatic, and entirely dependent on Rasan's team agreeing that it will not disturb the automations they are already building.
 
 **Plan for the first, treat the second as upside.** Do not build an October board commitment on top of a dependency owned by another department.
 
@@ -302,7 +302,7 @@ Everything below is on the critical path. Nothing in Phase 1 to 4 can complete w
 
 | # | Need | From | Blocks |
 |---|---|---|---|
-| 3 | **NetSuite customer export** (CSV: name, email, company, account ID), or better, the read-only connection | Rahsaan / Victoria | Phase 2, and the whole ROI answer |
+| 3 | **NetSuite customer export** (CSV: name, email, company, account ID), or better, the read-only connection | Rasan / Victoria | Phase 2, and the whole ROI answer |
 | 4 | Approve the lifecycle stages in Section 4.2 | Robin | Phase 3 |
 | 5b | Agree the UTM taxonomy in 4.10 and confirm who owns link generation | Robin / Victoria | Phase 4, and all September ad spend |
 | 6 | Seat allocation. Maddison's seat can be freed. | Robin | Phase 3 |
@@ -320,7 +320,7 @@ Everything below is on the critical path. Nothing in Phase 1 to 4 can complete w
 | 7 | Résumé field: upload or paste | **Upload stays.** Virus concern closed on the call, HubSpot scans uploads. Verified working by a real applicant on 2026-08-06. |
 | 9 | Will Sarah accept lead assignment in HubSpot | Moot for now. She continues to receive and route by email; nothing changes for her. |
 
-**Rahsaan meeting:** Robin meets him 2026-08-07 08:30. A written summary of the read-only NetSuite ask was sent ahead of it so he can assess without Volado in the room. Collin offered to join; Robin may schedule separately.
+**Rasan meeting:** Robin meets him 2026-08-07 08:30. A written summary of the read-only NetSuite ask was sent ahead of it so he can assess without Volado in the room. Collin offered to join; Robin may schedule separately.
 
 ---
 
@@ -395,5 +395,5 @@ Revisit only if the marketing contact allowance becomes genuinely expensive, or 
 | Victoria Zimmerman | Senior Marketing Manager | HubSpot admin, day-to-day |
 | Sarah Anderson | VP of Sales | Receives sales inquiries |
 | Lisa | Head of Customer Service | Should receive service requests |
-| Rahsaan | IT | Owns NetSuite |
+| Rasan Aycox | Digital Transformation Manager (IT / business systems) | Owns NetSuite. `raycox@innovive.com`, direct 858-309-6629. Also badged NextBeam. Transcripts misspell him as "Rahsaan"/"Rahaan". |
 | Skyler | Marketing intern | New as of 2026-08-04 |
