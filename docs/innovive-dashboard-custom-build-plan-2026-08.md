@@ -1,9 +1,67 @@
 # Innovive Marketing Dashboard: Custom Build Plan
 
-Date: 2026-08-13
+Date: 2026-08-13 · Built 2026-08-19
 Owner: Collin Wood
-Status: Draft for review, not yet started
+Status: **BUILT AND LIVE.** See Section 0 for as-built detail and what remains blocked.
 Supersedes: `innovive-dashboard-rebuild-plan-2026-08.md` (Looker Studio rebuild option, decided against)
+
+---
+
+## 0. As-built (2026-08-19)
+
+Live at **https://innovive-dashboard.pages.dev**, behind Cloudflare Access.
+Code: `~/Projects/innovive-dashboard` (its own repo).
+
+| Piece | As built |
+|---|---|
+| Hosting | Cloudflare Pages project `innovive-dashboard` |
+| Data access | Cloudflare Pages Functions only. No provider credential reaches the browser, and the Functions themselves hold none — they only read the store. |
+| Database | Supabase project `innovive-dashboard` / `gdszfjekgolpaoquwndh`, dedicated, **$10/month** |
+| Auth | Cloudflare Access, one-time PIN, allowlist: Collin, Robin, Victoria. Verified server-side on every API call, plus a second env-var allowlist that fails closed. |
+| Refresh | Supabase Edge Function `nightly-sync` on pg_cron, 02:00 Pacific, sharing one code path with the CLI sync |
+| Tests | 50, covering period maths, missing-vs-zero, Access verification (forged/expired/wrong-audience/non-allowlisted), HubSpot lead refusal, CSV import |
+
+### Source status as built
+
+| Source | State | What it needs |
+|---|---|---|
+| GA4 website performance | **Live** | — |
+| Search Console | Blocked | Grant the sync service account access (one click, see below) |
+| HubSpot leads | Blocked | A token for portal 246069906 **and** the lead-vs-service classification |
+| Klaviyo email | Blocked | A fresh private API key |
+| Bitly trade media | Blocked | A token, plus the click-vs-session diagnosis |
+| Conferences | **Live** | Entered in the dashboard; the Google Sheet is retired |
+| LinkedIn / X | Manual by design | Decide the owner and cadence for the monthly CSV |
+| Instagram | Planned | Confirm it is a Business/Creator account |
+| SurveyMonkey | Dropped | — |
+
+Full detail, and exactly what unblocks each one, is in
+`~/Projects/innovive-dashboard/docs/unblocking.md`.
+
+### Three findings from building it
+
+1. **There is no GA4 history before 2026-07-08.** The old client-owned property
+   is not reachable by any Volado credential — it does not appear in the account
+   at all. So the property question in Section 1 is settled by access, not by
+   preference. The earliest *complete* GA4 month is **August 2026**; July covers
+   24 of 31 days and is labelled partial everywhere it appears. Year-over-year
+   website comparison is not possible this year. Search Console, once unblocked,
+   is the only source that can carry a long trend.
+
+2. **No meaningful conversion is configured in GA4.** The property's only key
+   event is the auto-created `purchase`, which cannot fire on a site that sells
+   capital equipment through sales conversations. Only four events exist at all.
+   The dashboard reports key events as "Not measured" rather than zero, because
+   "zero conversions" and "no conversion is defined" are different statements and
+   only the second is true. Until a real key event exists, GA4 cannot answer
+   "which channel produced leads" — only HubSpot can.
+
+3. **The HubSpot lead count is deliberately withheld.** One Contact-Us form
+   handles sales inquiries, service requests, job applications and general
+   questions, all recorded at lifecycle stage `Lead`. The connector reports
+   submissions honestly and refuses to call them leads until the classification
+   property exists. This is the single most likely way the dashboard could have
+   embarrassed someone in a board meeting.
 
 ## 1. Decision
 
@@ -26,10 +84,12 @@ what data this needs to cover and what state each source is actually in. Summary
 | Form submissions / leads | Manual Google Sheet, a pre-migration Wix export | Dead, HubSpot data never reached it |
 | SurveyMonkey | Old survey export | Explicitly unused, drop |
 
-Also unresolved: the old report's GA4 numbers likely come from Innovive's original
-client-owned GA4 property, not the new Volado-owned `innovive.com` property (544618753)
-created 2026-07-08 after a broken-tag incident. This decision has to be made before the
-GA4 integration is built, since it determines whether trend history exists at all.
+~~Also unresolved: the GA4 property question.~~ **Resolved 2026-08-19 by access.**
+The old client-owned property is not present in any Volado-accessible GA4 account, so
+there was never a choice to make: property **544618753** is the only source of truth
+available, and it begins on 2026-07-08. There is no earlier history to inherit. This is
+recorded in the dashboard itself rather than glossed over — every period before
+2026-07-08 reads "Not measured", and July 2026 is labelled partial.
 
 ## 2. Why custom, and why not copy either existing precedent wholesale
 
@@ -109,27 +169,51 @@ leads by source, top and bottom performing channels, trend versus prior period. 
 the reason a normalized Supabase layer is needed at all rather than a thin API
 passthrough — it's the one view that has to blend every source cleanly.
 
-## 6. Open decisions before build starts
+## 6. Open decisions
 
-- GA4 property: old client-owned vs. new Volado-owned (Section 1).
+Resolved during the build:
+
+- ~~GA4 property~~ — settled by access (Section 0/1). Only 544618753 exists for us.
+- ~~Auth model~~ — Cloudflare Access with one-time PIN, no passwords, no signup flow.
+- ~~LinkedIn / X automation~~ — manual CSV confirmed as the durable path; importer,
+  templates and validation are built.
+
+Still open, and all of them are decisions rather than work:
+- **Whether to define a real GA4 key event** (a form-submission conversion). Without
+  one, channels can be ranked by sessions but not by outcome. This is the highest-value
+  fix on the list and takes minutes.
 - Confirm Innovive's Instagram account is a Business/Creator account tied to a Facebook
   Page (required for the Graph API path); if not, that's a one-time setup step.
-- LinkedIn and X: confirm manual-export cadence and who owns doing it (likely Victoria,
-  matching her existing Conference-sheet role) versus paying to automate either.
-- Confirm the board meeting date (Robin said October, flagged it might be November) to
-  set the real deadline for the executive summary view.
-- Who gets Cloudflare Access (Robin, Victoria, confirm whether Jamie/CEO wants direct
-  access or just the board-deck export).
+- LinkedIn and X: who owns the monthly export (likely Victoria, matching her existing
+  conference-sheet role) and on what cadence.
+- Confirm the board meeting date (Robin said October, flagged it might be November).
+- Whether Jamie (CEO) wants direct access or just the board-deck export. Adding someone
+  is deliberately two changes: the Access policy **and** `DASHBOARD_ALLOWED_EMAILS`.
+- When to cancel Supermetrics. It now covers nothing this dashboard needs, but confirm
+  Innovive is not using it elsewhere first.
 
 ## 7. Sequencing
 
-1. Resolve the GA4 property decision and the Instagram Business-account check.
-2. Stand up the new repo, Cloudflare Pages project, and dedicated Supabase project.
-3. Build the data model (metrics table with source/date/value/quality_state, plus the
-   events table for Conference data).
-4. Wire GA4, GSC, and Klaviyo first (native/clean APIs, no external blockers).
-5. Wire HubSpot leads, gated on the lead-vs-service classification work landing.
-6. Wire Instagram via Graph API; set up LinkedIn/X manual-import intake.
-7. Build the executive summary view.
-8. Set up Cloudflare Access with the confirmed email list.
-9. Cancel Supermetrics once LinkedIn/Instagram/X are resolved one way or another.
+Done 2026-08-19:
+
+1. ~~Resolve the GA4 property decision~~ — settled by access.
+2. ~~Stand up the repo, Cloudflare Pages project, and dedicated Supabase project.~~
+3. ~~Build the data model~~ — metric store with quality_state, partial-period flags,
+   per-row provenance, plus the events table.
+4. ~~Wire GA4~~ (live) ~~, GSC and Klaviyo~~ — both written and deployed; they report
+   their blocked state with the reason until credentials exist.
+5. ~~Wire HubSpot~~ — written, including the deliberate lead-count refusal.
+6. ~~LinkedIn/X manual-import intake~~ — importer, templates and validation built.
+7. ~~Build the executive summary view.~~
+8. ~~Set up Cloudflare Access.~~
+
+Remaining, in the order that adds the most before October:
+
+9. Grant the service account Search Console access (one click) — unlocks the only
+   real long-term trend the board can be shown.
+10. Define a real GA4 key event so channel performance can be measured by outcome.
+11. Provision the HubSpot token, then land the lead-vs-service classification. Only
+    then does "leads by source" become a number instead of an explanation.
+12. Reconnect Klaviyo; provision Bitly and diagnose the click-vs-session gap.
+13. Confirm the Instagram account type; set the LinkedIn/X export owner and cadence.
+14. Cancel Supermetrics.
