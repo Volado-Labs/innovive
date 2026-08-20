@@ -2,7 +2,7 @@
 
 Date: 2026-08-13
 Owner: Collin Wood
-Status: Draft for review, not yet started
+Status: SUPERSEDED 2026-08-13 — Collin decided against a Looker Studio rebuild in favor of a custom-built dashboard. The audit in Section 2 below is still accurate and load-bearing. See `innovive-dashboard-custom-build-plan-2026-08.md` for the current plan.
 
 ## 1. Why this exists
 
