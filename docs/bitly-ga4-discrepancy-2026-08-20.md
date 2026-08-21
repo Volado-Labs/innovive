@@ -25,31 +25,58 @@ correctly, as `big4bio_sandiego` and `big4bio_sfbay`, medium `email`, campaign
 
 Whatever else is true, Google Analytics is not failing to track these.
 
-## Four pieces of evidence that the extra hits are machines
+## What the clicks actually are
 
-**1. There is no send-day spike.** A newsletter produces a hard spike on the day
-it goes out, then decays. These do not. Clicks arrive at a steady 50 to 70 a day
-across 84 to 88 separate days, and the two biggest days together account for only
-5 to 6 percent of the total. That is not how people read email.
+They are **email security scanners**, firing on Big4Bio's weekday newsletter
+send. The hourly data makes this exact rather than a guess.
 
-**2. It is still happening now.** The SF Bay link took 111 hits in the last 24
-hours, months after the newsletter went out. Nobody is clicking a June banner ad
-today.
+Every burst of 50 or more clicks in a single hour, 22 of them across the window,
+landed at **exactly 15:00 UTC**. That is 8am Pacific, 11am Eastern. There is not
+one exception.
 
-**3. The geography does not match the audience.** These are newsletters for San
-Diego and the San Francisco Bay Area. Germany accounts for 18 to 20 percent of
-hits and Singapore a further 6 percent, with the Netherlands behind them. Those
-are the major cloud datacenter regions, not the readership of a Californian life
-sciences newsletter.
+```
+2026-08-03  Mon   15:00 UTC    77        2026-08-13  Thu   15:00 UTC   104
+2026-08-04  Tue   15:00 UTC    67        2026-08-14  Fri   15:00 UTC    73
+2026-08-05  Wed   15:00 UTC    62        2026-08-15  Sat        none
+2026-08-06  Thu   15:00 UTC   110        2026-08-16  Sun        none
+2026-08-07  Fri   15:00 UTC   146        2026-08-17  Mon   15:00 UTC   160
+2026-08-08  Sat        none              2026-08-18  Tue   15:00 UTC   125
+2026-08-09  Sun        none              2026-08-19  Wed   15:00 UTC   107
+2026-08-10  Mon   15:00 UTC    66        2026-08-20  Thu   15:00 UTC    96
+```
 
-**4. Almost none of it carries a referrer.** Between 86 and 95 percent of hits
-arrive with no referring page at all. The identifiable referrers that do appear
-are Big4Bio's Campaign Monitor sending domains (`createsend1`, `cmail19`,
-`cmail20`), which account for only 4 to 14 percent, plus a visible tail of email
-security scanners: EdgePilot, URLsand and Proofpoint's `emailprotection.link`.
+**Weekdays only. Zero weekend spikes.** These bursts account for **81% of all
+clicks**.
 
-Those named scanners are simply the ones that identify themselves. The unlabeled
-majority behaves identically.
+So the mechanism is:
+
+1. Big4Bio sends its newsletter every weekday at 8am Pacific.
+2. The Inno Plus banner is in every issue, so the same Bitly link goes out again.
+3. Within the hour, sixty to a hundred and sixty corporate email security systems
+   fetch that link to sandbox it before letting the message reach an inbox.
+4. Bitly counts every one of those fetches as a click.
+
+Everything else follows from that. The geography is datacenters because scanners
+run in AWS and Azure regions in Frankfurt, Singapore and the Netherlands. The
+missing referrer is because a scanner fetches the URL directly rather than
+following it from a rendered page. The named referrers that do appear, EdgePilot,
+URLsand and Proofpoint's `emailprotection.link`, are simply the scanners polite
+enough to identify themselves.
+
+### Correcting an earlier reading
+
+At daily resolution this looked like steady background traffic with *no* send-day
+spike, which pointed away from email scanning. That was an artifact of the
+granularity: because the newsletter goes out every weekday, a daily total hides
+the burst inside it. The hourly view shows the opposite, and it is decisive. The
+conclusion that the traffic is automated was right; the reason was not.
+
+### The remaining 19%
+
+The clicks outside those spikes run at one to ten an hour, spread across the day
+and night. That is a mixture of real readers and scanner stragglers. It is the
+right order of magnitude to match GA4's 24 sessions once the cookie banner is
+accounted for.
 
 ## What this means in practice
 
