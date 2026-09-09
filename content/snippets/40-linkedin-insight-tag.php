@@ -8,7 +8,7 @@
  * the Insight Tag sets advertising cookies (li_fat_id, lms_ads,
  * UserMatchHistory, AnalyticsSyncHistory, li_sugr, bcookie).
  *
- * BEFORE ACTIVATING: replace PARTNER_ID_HERE with the numeric partner ID from
+ * BEFORE ACTIVATING: replace 9263068 with the numeric partner ID from
  * LinkedIn Campaign Manager > Analyze > Insight Tag (or Account Assets >
  * Insight Tag). Account 514047946. It is 6 to 8 digits, no quotes needed
  * around the number in LinkedIn's own snippet but we keep it a string here so
@@ -30,9 +30,10 @@ add_action('wp_head', function () {
   function a(c){try{var m=document.cookie.match(/cookieyes-consent=([^;]+)/);if(!m)return false;return new RegExp('(^|,)'+c+':yes(,|$)').test(decodeURIComponent(m[1]));}catch(e){return false;}}
   var done=false;
   function g(){if(done||!a('advertisement'))return;done=true;
-    window._linkedin_partner_id='PARTNER_ID_HERE';
+    window._linkedin_partner_id='9263068';
     window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];
     window._linkedin_data_partner_ids.push(window._linkedin_partner_id);
+    if(!window.lintrk){window.lintrk=function(a,b){window.lintrk.q.push([a,b]);};window.lintrk.q=[];}
     var s=document.createElement('script');s.async=true;s.type='text/javascript';
     s.src='https://snap.licdn.com/li.lms-analytics/insight.min.js';
     document.head.appendChild(s);}
