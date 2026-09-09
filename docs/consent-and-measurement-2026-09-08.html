@@ -1,0 +1,183 @@
+<title>What Our Cookie Banner Costs</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Serif:ital,wght@0,400;0,500;1,400&display=swap">
+<style>
+:root{
+  --ground:#f5f7fb; --surface:#ffffff; --surface-2:#eef1f8;
+  --ink:#161b2e; --ink-soft:#48506a; --ink-faint:#767e97;
+  --rule:#dde2ef; --rule-strong:#c3cbde;
+  --navy:#1b216b; --blue:#3765f8; --amber:#9a6206; --amber-bg:#fdf4e3;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --ground:#0d1020; --surface:#151a2c; --surface-2:#1c2238;
+  --ink:#e9ebf5; --ink-soft:#a8afc6; --ink-faint:#7a8199;
+  --rule:#282f47; --rule-strong:#3a4260;
+  --navy:#a8ceff; --blue:#83a2ff; --amber:#e8a53c; --amber-bg:#2a2010;
+}}
+:root[data-theme="dark"]{
+  --ground:#0d1020; --surface:#151a2c; --surface-2:#1c2238;
+  --ink:#e9ebf5; --ink-soft:#a8afc6; --ink-faint:#7a8199;
+  --rule:#282f47; --rule-strong:#3a4260;
+  --navy:#a8ceff; --blue:#83a2ff; --amber:#e8a53c; --amber-bg:#2a2010;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--ground);color:var(--ink);
+  font-family:"IBM Plex Serif",Georgia,serif;font-size:16px;line-height:1.62;
+  -webkit-font-smoothing:antialiased}
+.wrap{max-width:760px;margin:0 auto;padding:0 28px 80px}
+header{border-bottom:2px solid var(--ink);padding:42px 0 18px;margin-bottom:30px}
+.kicker{font-family:"IBM Plex Mono",monospace;font-size:10.5px;letter-spacing:.15em;
+  text-transform:uppercase;color:var(--blue);font-weight:500;margin:0 0 12px}
+h1{font-family:"IBM Plex Sans",system-ui,sans-serif;font-weight:700;
+  font-size:clamp(27px,4vw,38px);line-height:1.12;letter-spacing:-.022em;
+  margin:0 0 14px;text-wrap:balance}
+.standfirst{font-size:17px;color:var(--ink-soft);font-style:italic;margin:0 0 22px;max-width:56ch}
+.meta{display:flex;flex-wrap:wrap;gap:0 26px;font-family:"IBM Plex Mono",monospace;
+  font-size:11px;color:var(--ink-faint);border-top:1px solid var(--rule);padding-top:13px}
+.meta b{color:var(--ink-soft);font-weight:500}
+h2{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:19px;
+  letter-spacing:-.012em;margin:34px 0 10px;text-wrap:balance}
+p{margin:0 0 14px}
+strong{font-weight:600;color:var(--ink)}
+em{font-style:italic}
+.mono{font-family:"IBM Plex Mono",monospace;font-size:.9em}
+
+/* measured-vs-actual comparison */
+.compare{background:var(--surface);border:1px solid var(--rule);border-radius:3px;
+  padding:20px 22px;margin:20px 0}
+.crow{display:grid;grid-template-columns:110px 1fr 74px;align-items:center;gap:14px;margin-bottom:11px}
+.clab{font-family:"IBM Plex Sans",sans-serif;font-size:12.5px;color:var(--ink-soft)}
+.cbar{height:22px;border-radius:2px;background:var(--blue)}
+.cbar.faint{background:var(--rule-strong)}
+.cnum{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:16px;
+  font-variant-numeric:tabular-nums;text-align:right}
+.cnote{font-family:"IBM Plex Sans",sans-serif;font-size:12px;color:var(--ink-faint);
+  margin:12px 0 0;padding-top:12px;border-top:1px solid var(--rule);line-height:1.5}
+
+/* geography */
+.geo{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:1px;
+  background:var(--rule);border:1px solid var(--rule);border-radius:3px;margin:20px 0}
+.gcell{background:var(--surface);padding:15px 17px}
+.gnum{font-family:"IBM Plex Sans",sans-serif;font-size:25px;font-weight:600;
+  line-height:1;margin:0 0 5px;font-variant-numeric:tabular-nums}
+.gname{font-family:"IBM Plex Sans",sans-serif;font-size:13px;font-weight:500;margin:0 0 3px}
+.gnote{font-family:"IBM Plex Sans",sans-serif;font-size:11.5px;color:var(--ink-faint);
+  margin:0;line-height:1.45}
+
+/* options */
+.opt{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--rule-strong);
+  border-radius:3px;padding:17px 19px;margin:0 0 12px}
+.opt.now{border-left-color:var(--blue)}
+.opthead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:7px}
+.tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;
+  text-transform:uppercase;padding:3px 7px;border-radius:2px;
+  background:var(--surface-2);color:var(--ink-faint);font-weight:500}
+.tag.now{background:var(--surface-2);color:var(--blue)}
+.optname{font-family:"IBM Plex Sans",sans-serif;font-weight:600;font-size:15.5px}
+.opt p{font-size:14.5px;margin:0 0 8px}
+.opt p:last-child{margin:0}
+
+.callout{background:var(--amber-bg);border-radius:3px;padding:17px 19px;margin:22px 0;
+  font-size:14.5px;color:var(--ink-soft)}
+.callout strong{color:var(--ink)}
+footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);
+  font-family:"IBM Plex Mono",monospace;font-size:10.5px;color:var(--ink-faint);line-height:1.7}
+@media (max-width:600px){
+  .wrap{padding:0 18px 60px}
+  .crow{grid-template-columns:92px 1fr 62px;gap:9px}
+}
+</style>
+
+<div class="wrap">
+
+<header>
+  <p class="kicker">Prepared by Volado Labs for Innovive</p>
+  <h1>What our cookie banner costs</h1>
+  <p class="standfirst">We are applying Europe's consent standard to every visitor, including the 81 percent who are in the United States. Here is what that is worth in measurement, and what the alternatives are.</p>
+  <div class="meta">
+    <span><b>For</b> Jamie, Robin, and outside counsel</span>
+    <span><b>Date</b> 8 September 2026</span>
+    <span><b>Decision needed</b> Yes, from counsel</span>
+  </div>
+</header>
+
+<h2>What is in place today</h2>
+<p>Innovive's website uses CookieYes to ask every visitor for permission before any tracking runs. Until a visitor clicks accept, Google Analytics does not load, HubSpot's visitor tracking does not load, and no non-essential cookie is set. We verified that behavior directly and reported it to counsel earlier this year.</p>
+<p>This is the strictest setting available, and it was the right place to start. It guarantees compliance everywhere without needing to know which rules apply where. Nothing below suggests it was a mistake.</p>
+
+<h2>What it costs</h2>
+<p>Because analytics only runs after someone accepts, visitors who decline or ignore the banner are invisible to us. We can measure the size of that gap, because Google Search Console counts clicks on Google's own servers before a visitor ever reaches our site, and consent has no effect on it.</p>
+
+<div class="compare">
+  <div class="crow">
+    <span class="clab">Google clicks</span>
+    <span class="cbar" style="width:100%"></span>
+    <span class="cnum">1,217</span>
+  </div>
+  <div class="crow">
+    <span class="clab">Visits we saw</span>
+    <span class="cbar faint" style="width:72.2%"></span>
+    <span class="cnum">879</span>
+  </div>
+  <p class="cnote">August 2026, organic search only. Search Console counted 1,217 clicks from Google. Google Analytics recorded 879 sessions. The two are not identical measures, so some difference is normal, but most of the gap is people who never consented.</p>
+</div>
+
+<p>Roughly <strong>three in ten visits do not appear in any report we produce</strong>. That applies to the whole dashboard, not just search: the monthly totals, the channel mix, and the source of every lead that arrives through a form.</p>
+<p>The practical effect is that when a lead comes in from someone who declined the banner, we cannot say where they came from. The lead is real and sales still receives it. We simply cannot tell you whether it was worth the spend that produced it.</p>
+
+<h2>Where the visitors actually are</h2>
+
+<div class="geo">
+  <div class="gcell">
+    <p class="gnum">81<span style="font-size:15px">%</span></p>
+    <p class="gname">United States</p>
+    <p class="gnote">1,122 of 1,386 sessions in August</p>
+  </div>
+  <div class="gcell">
+    <p class="gnum">6<span style="font-size:15px">%</span></p>
+    <p class="gname">Europe and the UK</p>
+    <p class="gnote">France, UK, Germany, Ireland, Netherlands</p>
+  </div>
+  <div class="gcell">
+    <p class="gnum">13<span style="font-size:15px">%</span></p>
+    <p class="gname">Everywhere else</p>
+    <p class="gnote">Canada, Asia, and a long tail</p>
+  </div>
+</div>
+
+<p>This is the part worth a decision. The opt-in requirement we are applying to everyone comes from European law, and Europe is currently about six percent of our traffic. The other ninety four percent are being held to a standard their own laws do not impose.</p>
+
+<div class="callout">
+  <strong>The distinction, as we understand it.</strong> European rules (GDPR) genuinely require asking permission before analytics runs. California's rules (CCPA and CPRA) work differently: they require clear notice and an easy way to opt out, along with honoring browser privacy signals, but they do not require asking permission first for analytics. <strong>We are not lawyers and this needs counsel's confirmation.</strong> We are flagging it because it is the difference between the current setting and the alternatives below.
+</div>
+
+<h2>The three options</h2>
+
+<div class="opt now">
+  <div class="opthead"><span class="tag now">In place today</span><span class="optname">Ask everyone, everywhere</span></div>
+  <p>Maximum caution, and defensible in any jurisdiction. Costs us visibility on roughly three in ten visits, and will cost the same on LinkedIn advertising once that tracking is installed.</p>
+</div>
+
+<div class="opt">
+  <div class="opthead"><span class="tag">Option</span><span class="optname">Ask by region</span></div>
+  <p>European and UK visitors keep the current opt-in banner. US visitors get clear notice and a working opt-out instead, which is what California law asks for. CookieYes already supports this; it is a configuration change, not a new tool or a new vendor.</p>
+  <p>This would recover most of the missing measurement, because the missing visits are overwhelmingly American.</p>
+</div>
+
+<div class="opt">
+  <div class="opthead"><span class="tag">Option</span><span class="optname">Leave it and report the gap</span></div>
+  <p>Keep the current setting and state the limitation openly in every report, so nobody reads a number as complete when it is not. This is what we are doing now, and it remains a perfectly reasonable answer if counsel prefers the conservative position.</p>
+</div>
+
+<h2>What we are asking for</h2>
+<p>Only a decision on whether option two is acceptable, and that decision belongs to counsel rather than to marketing. If the answer is no, we will keep the current configuration and continue to label the gap in reporting. Either answer is workable. What does not work is not knowing which one we are operating under.</p>
+<p>Two things are worth deciding alongside it: the California "Do Not Sell or Share" control that counsel raised earlier, and the privacy policy update that is still pending, since the banner links to it.</p>
+
+<footer>
+  Volado Labs &middot; Prepared for Innovive &middot; 8 September 2026<br>
+  Figures from Google Search Console and Google Analytics property 544618753, August 2026.<br>
+  Legal characterizations are our plain-language understanding and require confirmation by Innovive's counsel.
+</footer>
+
+</div>
