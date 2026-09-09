@@ -68,7 +68,9 @@ em{font-style:italic}
 /* options */
 .opt{background:var(--surface);border:1px solid var(--rule);border-left:4px solid var(--rule-strong);
   border-radius:3px;padding:17px 19px;margin:0 0 12px}
-.opt.now{border-left-color:var(--blue)}
+.opt.now{border-left-color:var(--rule-strong)}
+.opt.rec{border-left-color:var(--blue);border-left-width:5px;background:linear-gradient(90deg,rgba(55,101,248,.05),transparent 55%)}
+.tag.rec{background:var(--blue);color:#fff;font-weight:600}
 .opthead{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap;margin-bottom:7px}
 .tag{font-family:"IBM Plex Mono",monospace;font-size:9.5px;letter-spacing:.1em;
   text-transform:uppercase;padding:3px 7px;border-radius:2px;
@@ -159,19 +161,19 @@ footer{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);
   <p>Maximum caution, and defensible in any jurisdiction. Costs us visibility on a large share of visits. LinkedIn conversion tracking went live on 8 September under the same rule, so LinkedIn will only ever credit campaigns for visitors who accept advertising cookies, and its reported conversion numbers will read low against reality for the same reason.</p>
 </div>
 
-<div class="opt">
-  <div class="opthead"><span class="tag">Option</span><span class="optname">Ask by region</span></div>
+<div class="opt rec">
+  <div class="opthead"><span class="tag rec">Our recommendation</span><span class="optname">Ask by region</span></div>
   <p>European and UK visitors keep the current opt-in banner. US visitors get clear notice and a working opt-out instead, which is what California law asks for. CookieYes already supports this; it is a configuration change, not a new tool or a new vendor.</p>
   <p>This would recover most of the missing measurement, because the missing visits are overwhelmingly American.</p>
 </div>
 
 <div class="opt">
-  <div class="opthead"><span class="tag">Option</span><span class="optname">Leave it and report the gap</span></div>
+  <div class="opthead"><span class="tag">Alternative</span><span class="optname">Leave it and report the gap</span></div>
   <p>Keep the current setting and state the limitation openly in every report, so nobody reads a number as complete when it is not. This is what we are doing now, and it remains a perfectly reasonable answer if counsel prefers the conservative position.</p>
 </div>
 
 <h2>What we are asking for</h2>
-<p>Only a decision on whether option two is acceptable, and that decision belongs to counsel rather than to marketing. If the answer is no, we will keep the current configuration and continue to label the gap in reporting. Either answer is workable. What does not work is not knowing which one we are operating under.</p>
+<p>Only a decision on whether the recommendation above is acceptable, and that decision belongs to counsel rather than to marketing. If the answer is no, we will keep the current configuration and continue to label the gap in reporting. Either answer is workable. What does not work is not knowing which one we are operating under.</p>
 <p>Two things are worth deciding alongside it: the California "Do Not Sell or Share" control that counsel raised earlier, and the privacy policy update that is still pending, since the banner links to it.</p>
 
 <footer>
