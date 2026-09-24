@@ -39,9 +39,15 @@ Preheader: *Get dedicated capacity and vivarium expertise, without adding FTEs.*
 ## Open items
 
 - **Hero image, GCC.** Robin's copy calls for a hero of the Innorack IVC caging
-  system. Not chosen yet, so the partnership badge stands in for now, at 240px.
+  system. A visible placeholder block sits where it goes, with the instructions to
+  swap it in directly above it in the source. The partnership badge now sits below
+  the hero rather than standing in for it.
 - **Photos, Inno+.** Robin asked for photos of Innovive ACTs advising researchers.
-  There is a marked placeholder in the HTML where the chosen image drops in.
+  Same treatment: a visible placeholder block, not a comment, so neither template
+  can be sent while an image is still missing.
+- **No coloured rules.** Per Collin, 2026-09-24: no accent bars along the top or
+  side of a block. Blocks are distinguished by background fill alone. The only
+  remaining hairlines are the neutral dividers between the five GCC benefit items.
 - **Not yet in Klaviyo.** The API key in Bitwarden (`innovive-klavio-key`) is
   read-only: `POST /api/templates` returns 403 `permission_denied`. Loading these
   needs either a private key with template write scope, created from the Admin
