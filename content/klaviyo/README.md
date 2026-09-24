@@ -38,10 +38,9 @@ Preheader: *Get dedicated capacity and vivarium expertise, without adding FTEs.*
 
 ## Open items
 
-- **Hero image, GCC.** Robin's copy calls for a hero of the Innorack IVC caging
-  system. A visible placeholder block sits where it goes, with the instructions to
-  swap it in directly above it in the source. The partnership badge now sits below
-  the hero rather than standing in for it.
+- **No hero image in the GCC email.** Robin's copy marks a hero of the Innorack IVC
+  caging system, but Collin ruled it out on 2026-09-24, so that email carries no
+  image block at all. The partnership badge is the only graphic.
 - **Photos, Inno+.** Robin asked for photos of Innovive ACTs advising researchers.
   Same treatment: a visible placeholder block, not a comment, so neither template
   can be sent while an image is still missing.
