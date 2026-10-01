@@ -13,7 +13,7 @@
     .wrap { width:100% !important; }
     .px { padding-left:22px !important; padding-right:22px !important; }
     .h1 { font-size:26px !important; line-height:33px !important; }
-    .col { display:block !important; width:100% !important; padding:0 0 12px 0 !important; }
+    .col { display:block !important; width:100% !important; padding:0 0 10px 0 !important; }
     .btn a { display:block !important; }
   }
 </style>
@@ -41,32 +41,21 @@
 
   <!-- Dark header, following the Inno+ ad Robin supplied as the reference -->
   <tr>
-    <td class="px" style="padding:28px 32px 26px 32px; background-color:#081831;">
+    <td class="px" style="padding:28px 32px 4px 32px; background-color:#081831;">
       <p style="margin:0 0 6px 0; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:13px; line-height:18px; letter-spacing:1.4px; text-transform:uppercase; color:#46d6cd; font-weight:700;">Inno+ Managed Services</p>
       <h1 class="h1" style="margin:0 0 10px 0; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:29px; line-height:37px; color:#ffffff; font-weight:700;">Your research has grown. Your vivarium space should, too.</h1>
       <p style="margin:0; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:24px; color:#c9d6e6;">Your vivarium. Our care experts.</p>
     </td>
   </tr>
 
-  <!-- MAIN IMAGE, PENDING.
-       Robin asked for photos of Innovive ACTs advising researchers. Replace this
-       whole <tr> with:
-         <tr><td><img src="HOSTED_URL" width="600" alt="Innovive animal care
-         technicians advising researchers in a client vivarium"
-         style="display:block; width:100%; max-width:600px; height:auto; border:0;"></td></tr>
-       The block is deliberately visible, not a comment, so this cannot be sent
-       by accident while the photo is still missing. -->
+  <!-- Hero photo. The navy-to-photo and photo-to-white fades are baked into the
+       JPEG (build_assets.py), because mail clients cannot be trusted with CSS
+       gradients or masks over an image. The top edge matches #081831 exactly.
+       Interim crop from Robin's social post; rebuild from the original photo
+       once she sends it. -->
   <tr>
-    <td style="padding:0; background-color:#ffffff;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eaf6f5;">
-        <tr>
-          <td align="center" height="220" style="padding:44px 24px; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif;">
-            <p style="margin:0 0 6px 0; font-size:12px; line-height:16px; letter-spacing:1.4px; text-transform:uppercase; color:#0f7d78; font-weight:700;">Image to come</p>
-            <p style="margin:0 0 4px 0; font-size:17px; line-height:25px; color:#081831; font-weight:700;">Innovive ACTs advising researchers</p>
-            <p style="margin:0; font-size:14px; line-height:21px; color:#4a5a6a;">Full width, 600 &times; 340 or larger. Awaiting photo selection from Innovive.</p>
-          </td>
-        </tr>
-      </table>
+    <td style="padding:0; background-color:#081831; line-height:0; font-size:0;">
+      <a href="https://innovive.com/inno-plus/?utm_source=klaviyo&amp;utm_medium=email&amp;utm_campaign=innoplus-drip-1&amp;utm_content=hero-image" style="text-decoration:none;"><img src="img/innoplus-hero.jpg" width="600" alt="Two Innovive vivarium technicians checking a cage together on an Innorack" style="display:block; width:100%; max-width:600px; height:auto; border:0;"></a>
     </td>
   </tr>
 
@@ -77,34 +66,61 @@
     </td>
   </tr>
 
-  <!-- Three-up, echoing the ad's capability tiles -->
   <tr>
-    <td class="px" style="padding:0 32px 6px 32px; background-color:#ffffff;">
-      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
-        <tr>
-          <td class="col" width="33%" valign="top" style="padding:0 6px 0 0;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eaf6f5; border-radius:6px;">
-              <tr><td style="padding:16px 14px; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:22px; color:#1b216b; font-weight:700;">Dedicated capacity</td></tr>
-            </table>
-          </td>
-          <td class="col" width="34%" valign="top" style="padding:0 3px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eaf6f5; border-radius:6px;">
-              <tr><td style="padding:16px 14px; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:22px; color:#1b216b; font-weight:700;">No added FTEs</td></tr>
-            </table>
-          </td>
-          <td class="col" width="33%" valign="top" style="padding:0 0 0 6px;">
-            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#eaf6f5; border-radius:6px;">
-              <tr><td style="padding:16px 14px; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:22px; color:#1b216b; font-weight:700;">Expert operations</td></tr>
-            </table>
-          </td>
-        </tr>
-      </table>
+    <td class="px" style="padding:0 32px 4px 32px; background-color:#ffffff;">
+      <p style="margin:0; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:17px; line-height:26px; color:#081831; font-weight:700;">Dedicated capacity. <span style="color:#0f7d78;">No added FTEs.</span> Expert operations.</p>
     </td>
   </tr>
 
   <tr>
     <td class="px" style="padding:22px 32px 0 32px; background-color:#ffffff;">
       <p style="margin:0 0 22px 0; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:16px; line-height:26px; color:#242d28;">Our vivarium professionals work directly in your facility to manage daily operations, care, compliance, and oversight&mdash;so your scientists can stay focused on discovery.</p>
+    </td>
+  </tr>
+
+  <!-- Icon callouts, from the four service tiles in Robin's Inno+ ad. The ad's
+       "Expert Vivarium Management" figure is replaced with a shield, at Robin's
+       request (2026-09-24). Icons are Lucide (ISC licence), built in build_assets.py. -->
+  <tr>
+    <td class="px" style="padding:0 32px 22px 32px; background-color:#ffffff;">
+      <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
+        <tr>
+          <td class="col" width="50%" valign="top" style="padding:0 5px 10px 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#081831; border-radius:6px;">
+              <tr>
+                <td width="64" valign="middle" style="padding:14px 0 14px 16px;"><img src="img/icon-husbandry.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;"></td>
+                <td valign="middle" style="padding:14px 16px 14px 12px; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:20px; color:#ffffff; font-weight:700;">Daily Husbandry &amp; Animal Care</td>
+              </tr>
+            </table>
+          </td>
+          <td class="col" width="50%" valign="top" style="padding:0 0 10px 5px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#081831; border-radius:6px;">
+              <tr>
+                <td width="64" valign="middle" style="padding:14px 0 14px 16px;"><img src="img/icon-health.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;"></td>
+                <td valign="middle" style="padding:14px 16px 14px 12px; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:20px; color:#ffffff; font-weight:700;">Health Monitoring &amp; Reporting</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+        <tr>
+          <td class="col" width="50%" valign="top" style="padding:0 5px 0 0;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#081831; border-radius:6px;">
+              <tr>
+                <td width="64" valign="middle" style="padding:14px 0 14px 16px;"><img src="img/icon-management.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;"></td>
+                <td valign="middle" style="padding:14px 16px 14px 12px; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:20px; color:#ffffff; font-weight:700;">Expert Vivarium Management</td>
+              </tr>
+            </table>
+          </td>
+          <td class="col" width="50%" valign="top" style="padding:0 0 0 5px;">
+            <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="background-color:#081831; border-radius:6px;">
+              <tr>
+                <td width="64" valign="middle" style="padding:14px 0 14px 16px;"><img src="img/icon-research.png" width="44" height="44" alt="" style="display:block; width:44px; height:44px; border:0;"></td>
+                <td valign="middle" style="padding:14px 16px 14px 12px; font-family:Inter,'Helvetica Neue',Helvetica,Arial,sans-serif; font-size:15px; line-height:20px; color:#ffffff; font-weight:700;">Research Technical Services</td>
+              </tr>
+            </table>
+          </td>
+        </tr>
+      </table>
     </td>
   </tr>
 
