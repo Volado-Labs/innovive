@@ -126,3 +126,43 @@ output in `hybrid/`. Each band of copy sits in a `data-klaviyo-region` cell as a
 Sender: Innovive <marketing@innovive.com>. GCC subject is Robin's option 1; the other two
 options are listed above. The Inno+ prospect lists date from Feb 2023, so expect bounces,
 and check them for people who have since become Inno+ clients.
+
+## Revision 2026-10-01, from Robin on the weekly call
+
+- **Inno+ hero:** the top fade was a heavy band over the two heads ("crushing our
+  heads"). `build_assets.py` now crops higher, adds 30px of navy headroom and blends
+  with a smoothstep over the top 150px only. New image `d3d5c05d-...jpeg` (Klaviyo
+  image 378252063) is in `RCk3xz` and in the Inno+ campaign, whose template copy is
+  now `RKMgF5` (it replaces `VJw6FZ`, which Robin had not edited).
+- **Sender, checked:** both campaigns send from `Innovive <marketing@innovive.com>`
+  with no reply-to set, so replies go to marketing@. The account defaults match, and
+  the footer address is 10019 Waples Ct, San Diego, CA 92121.
+
+**Two API traps found doing this:**
+- `PATCH /api/templates/{id}` with the HTML that `GET` returns **wipes the text** of a
+  hybrid template (1,167 visible characters dropped to 143). Always PATCH with the
+  `build_hybrid.py` output. `RCk3xz` was restored that way and verified identical.
+- A campaign's own template copy returns 404 on PATCH. To change it, reattach the
+  saved template with `POST /api/campaign-message-assign-template`, which makes a new
+  clone. **That discards any edits Robin made in the campaign**, so first check that
+  the copy still matches the build.
+
+## Revision 2026-10-05, after Robin's Friday edits
+
+- **Hero, more headroom before the gradient** (Collin): the navy gradient now
+  finishes *above* the heads instead of fading over them, and the image is taller
+  (1200x584). The flattened social post only has about 30px of rack above the heads,
+  so the extra height is that rack band mirrored upward and blurred, visible only
+  through the gradient. Replace with a straight crop when the original photo arrives.
+  Klaviyo image 379539599 (`bc32d7a9-...jpeg`).
+- **Robin's two copy edits carried into the source:** eyebrow "Inno+ Services",
+  button "Discover Inno+".
+- **Button is now fixed layout.** Editing its label in the visual editor on 10/2 turned
+  it into highlighted text with "Discover" outside the link. It sits outside any
+  editable region now; ask us to change the label or link.
+- Campaign template copy is now `RYjVrA` (replaced `RKMgF5`). Its text was verified
+  identical to Robin's version before and after the swap; subject, sender and the
+  three audiences unchanged. Robin's version is backed up at
+  `content/backups/klaviyo-template-RKMgF5-2026-10-05-robin-edits.html`.
+- **Still open:** Robin wants the Inno+ Vivarium Solutions logo at the top, which
+  removes the "Inno+ Services" eyebrow. Logo file requested 10/5.

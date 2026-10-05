@@ -13,7 +13,7 @@ comes from her flattened social post, which is why it starts below the text.
 import subprocess
 from pathlib import Path
 
-from PIL import Image
+from PIL import Image, ImageFilter
 
 HERE = Path(__file__).parent
 SRC = HERE / "source"
@@ -24,7 +24,17 @@ WHITE = (255, 255, 255)
 MAGENTA = "#d12e86"              # sampled from the icons in Robin's ad
 
 INNOPLUS_PHOTO = SRC / "innoplus-social-post-2026-09-22.png"
-INNOPLUS_CROP = (0, 378, 1254, 816)   # photo only: below the ad copy, above its tiles
+INNOPLUS_TOP = 352        # first photo row below the ad copy
+INNOPLUS_BOTTOM = 816     # last row above the ad's tiles
+INNOPLUS_FADE_END = 383   # source row just above the heads: the navy gradient is clear by here
+# Revision 2026-10-05 (Robin): more headroom above the subjects BEFORE the gradient
+# starts. The flattened post has only ~30px of rack above the heads (the ad's ghosted
+# text sits above that), so the extra height is the rack band just above the heads,
+# mirrored upward and heavily blurred. It only ever shows through the navy gradient,
+# which now finishes before the heads instead of over them. Replace with a straight
+# crop when Robin sends the original photo.
+INNOPLUS_EXTENSION = 120  # px of blurred rack added above the photo, at 1200px wide
+INNOPLUS_HEADROOM = 20    # px of solid navy above that
 
 ICONS = {
     # file stem in img/   : Lucide icon in source/
@@ -35,27 +45,48 @@ ICONS = {
 }
 
 
-def fade(im, color, top_frac, bottom_frac, bottom_color):
-    """Blend the top band into `color` and the bottom band into `bottom_color`."""
-    w, h = im.size
-    top = Image.new("RGB", (w, h), color)
-    bottom = Image.new("RGB", (w, h), bottom_color)
-    mask_top = Image.new("L", (1, h))
-    mask_bottom = Image.new("L", (1, h))
-    t, b = int(h * top_frac), int(h * bottom_frac)
-    for y in range(h):
-        # ease-out so the photo emerges gently rather than along a visible line
-        mask_top.putpixel((0, y), int(255 * (1 - min(y / t, 1)) ** 1.4) if t else 0)
-        d = y - (h - b)
-        mask_bottom.putpixel((0, y), int(255 * (max(d, 0) / b) ** 2) if b else 0)
-    im = Image.composite(top, im, mask_top.resize((w, h)))
-    return Image.composite(bottom, im, mask_bottom.resize((w, h)))
+def smoothstep(t):
+    t = min(max(t, 0), 1)
+    return t * t * (3 - 2 * t)
 
 
 def innoplus_hero():
-    im = Image.open(INNOPLUS_PHOTO).convert("RGB").crop(INNOPLUS_CROP)
-    im = im.resize((1200, round(1200 * im.height / im.width)), Image.LANCZOS)
-    im = fade(im, NAVY_INNOPLUS, 0.5, 0.22, WHITE)
+    src = Image.open(INNOPLUS_PHOTO).convert("RGB")
+    sc = 1200 / src.width
+    photo = src.crop((0, INNOPLUS_TOP, src.width, INNOPLUS_BOTTOM))
+    photo = photo.resize((1200, round(photo.height * sc)), Image.LANCZOS)
+
+    band = src.crop((0, INNOPLUS_TOP, src.width, INNOPLUS_TOP + 40))
+    band = band.resize((1200, round(40 * sc)), Image.LANCZOS)
+    ext, pad = INNOPLUS_EXTENSION, INNOPLUS_HEADROOM
+    e = Image.new("RGB", (1200, ext))
+    y, flip = ext, True
+    while y > 0:
+        y -= band.height
+        e.paste(band.transpose(Image.FLIP_TOP_BOTTOM) if flip else band, (0, y))
+        flip = not flip
+    e = e.filter(ImageFilter.GaussianBlur(14))
+
+    H = pad + ext + photo.height
+    im = Image.new("RGB", (1200, H), NAVY_INNOPLUS)
+    im.paste(e, (0, pad))
+    im.paste(photo, (0, pad + ext))
+
+    def mask(fn):
+        m = Image.new("L", (1, H))
+        for yy in range(H):
+            m.putpixel((0, yy), int(255 * fn(yy)))
+        return m.resize((1200, H))
+
+    join, seam = pad + ext, 28   # ease the blurred extension into the sharp photo
+    im = Image.composite(im.filter(ImageFilter.GaussianBlur(10)), im,
+                         mask(lambda yy: 1 - smoothstep((yy - (join - seam // 2)) / seam)))
+    fade_end = join + round((INNOPLUS_FADE_END - INNOPLUS_TOP) * sc)
+    im = Image.composite(Image.new("RGB", (1200, H), NAVY_INNOPLUS), im,
+                         mask(lambda yy: 1 - smoothstep((yy - pad) / (fade_end - pad))))
+    b = int(H * 0.18)
+    im = Image.composite(Image.new("RGB", (1200, H), WHITE), im,
+                         mask(lambda yy: (max(yy - (H - b), 0) / b) ** 2))
     im.save(OUT / "innoplus-hero.jpg", quality=82, optimize=True, progressive=True)
 
 

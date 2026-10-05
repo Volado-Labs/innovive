@@ -17,7 +17,7 @@ IMG = {
     "logo": CDN + "11e61cfa-8c67-49e3-a321-41e8666821e5.png",
     "partner": CDN + "e8a5b565-96a5-44be-95cd-232f219f554d.png",
     "gcc": CDN + "e0efed5a-0ad6-477f-ba18-a051e6e0422a.jpeg",
-    "hero": CDN + "c253ea55-fa5b-4b0f-9bb0-764d42494b31.jpeg",
+    "hero": CDN + "bc32d7a9-a044-49a6-aee1-d502d2eef66c.jpeg",
     "husbandry": CDN + "265e3a24-e917-49e0-9e66-bb55e22f806d.png",
     "health": CDN + "e459bf12-da3e-4935-b212-56fe1b1c61c8.png",
     "management": CDN + "17662f4f-780b-437e-a694-05cddf9a0e2a.png",
@@ -52,6 +52,16 @@ def button(label, href, bg):
             f'padding:15px 36px; background-color:{bg}; border-radius:4px; font-family:{FONT}; '
             f'font-size:16px; line-height:20px; font-weight:700; color:#ffffff; text-decoration:none;">'
             f'{label}</a></p>')
+
+
+def fixed_button(label, href, bg, pad):
+    """A button row outside any editable region, so the visual editor cannot restyle it."""
+    return f'''
+  <tr>
+    <td class="px" align="center" style="padding:{pad}; background-color:#ffffff;">
+      {button(label, href, bg)}
+    </td>
+  </tr>'''
 
 
 def text_block(html):
@@ -270,7 +280,7 @@ def innoplus():
     rows = [
         logo(140),
         region([text_block(
-            p("Inno+ Managed Services", 13, 18, "#46d6cd", 6, " letter-spacing:1.4px; text-transform:uppercase; font-weight:700;")
+            p("Inno+ Services", 13, 18, "#46d6cd", 6, " letter-spacing:1.4px; text-transform:uppercase; font-weight:700;")
             + h("Your research has grown. Your vivarium space should, too.", "h1", 29, 37, "#ffffff", 10)
             + p("Your vivarium. Our care experts.", 15, 24, "#c9d6e6", 0)
         )], 536, bg=navy, pad="28px 32px 4px 32px"),
@@ -285,10 +295,15 @@ def innoplus():
         boxed([text_block(p("Your space. Our vivarium expertise.<br>More room for science.", 19, 28, navy, 0, " text-align:center; font-weight:700;"))],
               496, "#46d6cd", pad="0 32px 6px 32px", inner_pad="22px 20px", align="center"),
         region([text_block(
-            p("Scale your animal research program while keeping overhead lean and operations consistent.", mb=26)
-            + button("Explore Inno+", utm("https://innovive.com/inno-plus/", c), "#1b216b")
-            + p('or contact <a href="mailto:innoplus@innovive.com" style="color:#3765f8;">innoplus@innovive.com</a>', 15, 24, MUTED, 0, " margin-top:14px; text-align:center;")
-        )], 536, pad="22px 32px 28px 32px"),
+            p("Scale your animal research program while keeping overhead lean and operations consistent.", mb=0)
+        )], 536, pad="22px 32px 0 32px"),
+        # The button sits outside any editable region. Editing its label in Klaviyo's
+        # visual editor (2026-10-02) turned it into highlighted text with half the
+        # label outside the link, so it is fixed layout now. Label per Robin's edit.
+        fixed_button("Discover Inno+", utm("https://innovive.com/inno-plus/", c), "#1b216b", pad="17px 32px 0 32px"),
+        region([text_block(
+            p('or contact <a href="mailto:innoplus@innovive.com" style="color:#3765f8;">innoplus@innovive.com</a>', 15, 24, MUTED, 0, " text-align:center;")
+        )], 536, pad="14px 32px 28px 32px"),
         region([text_block("".join(footer()) + p('{% unsubscribe "Unsubscribe" %}', 12, 19, MUTED, 0))],
                536, bg="#f4f7fc", pad="22px 32px 26px 32px"),
     ]
