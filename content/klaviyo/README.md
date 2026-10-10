@@ -166,3 +166,6 @@ and check them for people who have since become Inno+ clients.
   `content/backups/klaviyo-template-RKMgF5-2026-10-05-robin-edits.html`.
 - **Still open:** Robin wants the Inno+ Vivarium Solutions logo at the top, which
   removes the "Inno+ Services" eyebrow. Logo file requested 10/5.
+  Robin replied 10/6 with Google Drive links (not attachments), which collin@voladolabs.com
+  cannot open and Drive offers no "Request access" for. Asked her 10/9 to attach the PNGs
+  directly; the white version goes in the navy band in place of the eyebrow.
