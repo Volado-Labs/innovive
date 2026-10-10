@@ -164,8 +164,19 @@ and check them for people who have since become Inno+ clients.
   identical to Robin's version before and after the swap; subject, sender and the
   three audiences unchanged. Robin's version is backed up at
   `content/backups/klaviyo-template-RKMgF5-2026-10-05-robin-edits.html`.
-- **Still open:** Robin wants the Inno+ Vivarium Solutions logo at the top, which
-  removes the "Inno+ Services" eyebrow. Logo file requested 10/5.
-  Robin replied 10/6 with Google Drive links (not attachments), which collin@voladolabs.com
-  cannot open and Drive offers no "Request access" for. Asked her 10/9 to attach the PNGs
-  directly; the white version goes in the navy band in place of the eyebrow.
+- ~~**Still open:** Inno+ logo at the top.~~ Done 2026-10-10, see below.
+
+## Revision 2026-10-10, Inno+ logo
+
+- Robin's 10/6 files were Drive links the Volado account could not open; she attached
+  the PNGs on 10/9. Source kept at `img/source-innoplus-logo-white-RGB.png`.
+- The **White** version (white wordmark, teal and purple plus) now sits at the top of
+  the navy band, 180px wide (360px file for retina), in place of the "Inno+ Services"
+  eyebrow. Fixed layout, like the Innovive logo. Klaviyo image 382116502
+  (`277223df-...png`).
+- `RCk3xz` PATCHed from the build. The campaign copy `RYjVrA` was checked first: its
+  text still matched the build exactly, so Robin had made no edits. Backed up at
+  `content/backups/klaviyo-template-RYjVrA-2026-10-10-pre-logo.html`, then the template
+  was reattached. **Campaign template copy is now `W4tgRQ`**; text verified identical to
+  the build, campaign still Draft.
+- Screenshot from Klaviyo's own render: `comps/inno-plus-drip-1-logo-top.png`.

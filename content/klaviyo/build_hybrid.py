@@ -22,6 +22,8 @@ IMG = {
     "health": CDN + "e459bf12-da3e-4935-b212-56fe1b1c61c8.png",
     "management": CDN + "17662f4f-780b-437e-a694-05cddf9a0e2a.png",
     "research": CDN + "527ab145-d1dd-4f22-881d-bd3f4c76fb8f.png",
+    # Robin's final Inno+ Vivarium Solutions logo, white version (10/9), 360px for 2x.
+    "innoplus_logo": CDN + "277223df-cd27-4463-a90a-2af349386531.png",
 }
 
 FONT = "Inter,'Helvetica Neue',Helvetica,Arial,sans-serif"
@@ -279,11 +281,18 @@ def innoplus():
 
     rows = [
         logo(140),
+        # The Inno+ logo replaces the "Inno+ Services" eyebrow (Robin, 10/5). Fixed
+        # layout, like the Innovive logo, so it cannot be dragged out of place.
+        f'''
+  <tr>
+    <td class="px" align="left" style="padding:30px 32px 0 32px; background-color:{navy};">
+      <img src="{IMG["innoplus_logo"]}" width="180" alt="Inno+ Vivarium Solutions" style="display:block; width:180px; max-width:180px; height:auto; border:0;">
+    </td>
+  </tr>''',
         region([text_block(
-            p("Inno+ Services", 13, 18, "#46d6cd", 6, " letter-spacing:1.4px; text-transform:uppercase; font-weight:700;")
-            + h("Your research has grown. Your vivarium space should, too.", "h1", 29, 37, "#ffffff", 10)
+            h("Your research has grown. Your vivarium space should, too.", "h1", 29, 37, "#ffffff", 10)
             + p("Your vivarium. Our care experts.", 15, 24, "#c9d6e6", 0)
-        )], 536, bg=navy, pad="28px 32px 4px 32px"),
+        )], 536, bg=navy, pad="22px 32px 4px 32px"),
         hero,
         region([text_block(
             p("Shared vivarium space can get you started. But as your research grows, limited availability, variable care, and competing priorities can become barriers to scale.")
