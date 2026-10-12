@@ -180,3 +180,18 @@ and check them for people who have since become Inno+ clients.
   was reattached. **Campaign template copy is now `W4tgRQ`**; text verified identical to
   the build, campaign still Draft.
 - Screenshot from Klaviyo's own render: `comps/inno-plus-drip-1-logo-top.png`.
+
+## Revision 2026-10-12, logos per Robin's text
+
+- **Inno+ logo is now the first thing in the email**, flush left with the headline
+  (32px, same edge as the type). The Innovive logo moved to the **bottom**, above the
+  footer, flush left with the body copy and linked to innovive.com.
+- Both are fixed rows (`fixed_logo()`). Tried making them editable image blocks first:
+  **Klaviyo centres every image block it imports** and drops `align`, `text-align` and
+  data-attribute hints (tested three variants on `RCk3xz`), so an editable logo cannot
+  sit flush left from code. Robin can still set a block to left in the visual editor
+  herself if one is ever made editable.
+- Campaign copy `W4tgRQ` checked unedited, backed up to
+  `content/backups/klaviyo-template-W4tgRQ-2026-10-12-pre-logo-move.html`, template
+  reattached. **Campaign template copy is now `RgDZdP`**, text identical to the build,
+  campaign still Draft. Full render: `comps/inno-plus-drip-1-desktop.png`.

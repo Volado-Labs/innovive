@@ -134,6 +134,19 @@ def logo(width):
   </tr>'''
 
 
+def fixed_logo(src, alt, width, bg, pad, href=None):
+    img = (f'<img src="{src}" width="{width}" alt="{alt}" style="display:block; '
+           f'width:{width}px; max-width:{width}px; height:auto; border:0;">')
+    if href:
+        img = f'<a href="{href}">{img}</a>'
+    return f'''
+  <tr>
+    <td class="px" align="left" style="padding:{pad}; background-color:{bg};">
+      {img}
+    </td>
+  </tr>'''
+
+
 def footer(extra_line=""):
     lines = []
     if extra_line:
@@ -280,15 +293,11 @@ def innoplus():
   </tr>'''
 
     rows = [
-        logo(140),
-        # The Inno+ logo replaces the "Inno+ Services" eyebrow (Robin, 10/5). Fixed
-        # layout, like the Innovive logo, so it cannot be dragged out of place.
-        f'''
-  <tr>
-    <td class="px" align="left" style="padding:30px 32px 0 32px; background-color:{navy};">
-      <img src="{IMG["innoplus_logo"]}" width="180" alt="Inno+ Vivarium Solutions" style="display:block; width:180px; max-width:180px; height:auto; border:0;">
-    </td>
-  </tr>''',
+        # Inno+ logo on top, Innovive logo at the bottom (Robin, 10/12). Both are fixed
+        # rows at 32px, the same left edge as the text. Klaviyo centres every image
+        # block it imports and ignores align hints, so an editable logo block would not
+        # sit flush left with the type (tested 10/12).
+        fixed_logo(IMG["innoplus_logo"], "Inno+ Vivarium Solutions", 180, navy, "32px 32px 0 32px"),
         region([text_block(
             h("Your research has grown. Your vivarium space should, too.", "h1", 29, 37, "#ffffff", 10)
             + p("Your vivarium. Our care experts.", 15, 24, "#c9d6e6", 0)
@@ -312,7 +321,9 @@ def innoplus():
         fixed_button("Discover Inno+", utm("https://innovive.com/inno-plus/", c), "#1b216b", pad="17px 32px 0 32px"),
         region([text_block(
             p('or contact <a href="mailto:innoplus@innovive.com" style="color:#3765f8;">innoplus@innovive.com</a>', 15, 24, MUTED, 0, " text-align:center;")
-        )], 536, pad="14px 32px 28px 32px"),
+        )], 536, pad="14px 32px 0 32px"),
+        fixed_logo(IMG["logo"], "Innovive", 120, "#ffffff", "18px 32px 28px 32px",
+                   utm("https://innovive.com/", c, "footer-logo")),
         region([text_block("".join(footer()) + p('{% unsubscribe "Unsubscribe" %}', 12, 19, MUTED, 0))],
                536, bg="#f4f7fc", pad="22px 32px 26px 32px"),
     ]
