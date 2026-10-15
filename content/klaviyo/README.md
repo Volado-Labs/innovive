@@ -195,3 +195,23 @@ and check them for people who have since become Inno+ clients.
   `content/backups/klaviyo-template-W4tgRQ-2026-10-12-pre-logo-move.html`, template
   reattached. **Campaign template copy is now `RgDZdP`**, text identical to the build,
   campaign still Draft. Full render: `comps/inno-plus-drip-1-desktop.png`.
+
+## Revision 2026-10-15, GCC partner logo
+
+- Robin's replacement "Innovive x Attentive Science" badge (sent 10/8, the wider Middle
+  East and North Africa map) replaces the Gulf-only one at the sign-off. Source kept at
+  `img/source-gcc-partner-logo-2026-10-08.png`; 300px file shown at 150px. Klaviyo
+  image 384029353 (`b841c17e-...png`).
+- Campaign copy `RLx46A` checked first: text identical to the build (no client edits).
+  Backed up to `content/backups/klaviyo-template-RLx46A-2026-10-15-pre-partner-logo.html`.
+  `UsVfpD` PATCHed and reattached. **GCC campaign template copy is now `UaiPMb`**, still
+  Draft, audience still MENA (51).
+- Still open on GCC: the map geography for the header creative (waiting on Robin and
+  Victoria), and Robin's copy, subject and audience pass.
+
+## Inno+ Drip 1 was sent 2026-10-13
+
+Robin scheduled it at 13:50 PT and it went out 14:00 PT to her new list "Inno+ email
+campaign" (WF3isT, 776, built 10/8) plus segment "Inno+, Marketing, Sales, CS Teams"
+(RAjQZ4, 7). The sent copy `RgDZdP` has our 10/12 logo layout and her own 10/13 edits
+("Your science.", the AALAS 2026 booth 1746 line).

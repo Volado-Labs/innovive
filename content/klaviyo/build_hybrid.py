@@ -15,7 +15,8 @@ from pathlib import Path
 CDN = "https://cdn.klaviyomail.com/company/RcTRJX/images/"
 IMG = {
     "logo": CDN + "11e61cfa-8c67-49e3-a321-41e8666821e5.png",
-    "partner": CDN + "e8a5b565-96a5-44be-95cd-232f219f554d.png",
+    # Robin's replacement badge (10/8): wider Middle East and North Africa map.
+    "partner": CDN + "b841c17e-e245-4fbe-ab01-c2f64224f384.png",
     "gcc": CDN + "e0efed5a-0ad6-477f-ba18-a051e6e0422a.jpeg",
     "hero": CDN + "bc32d7a9-a044-49a6-aee1-d502d2eef66c.jpeg",
     "husbandry": CDN + "265e3a24-e917-49e0-9e66-bb55e22f806d.png",
