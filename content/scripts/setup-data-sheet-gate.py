@@ -50,7 +50,12 @@ def http(method, url, headers, body=None):
     try:
         with urllib.request.urlopen(req, timeout=120) as r:
             raw = r.read()
-            return r.status, (json.loads(raw) if raw else None)
+            try:
+                return r.status, (json.loads(raw) if raw else None)
+            except ValueError:
+                # WordPress sometimes prefixes or replaces the JSON with stray output
+                # (e.g. a PHP notice); keep the text so the caller can decide.
+                return r.status, raw.decode(errors='replace')[:1500]
     except urllib.error.HTTPError as e:
         return e.code, e.read().decode(errors='replace')[:1500]
 
@@ -107,8 +112,8 @@ if s == 200:
 if form_id:
     step(f'form already exists: {form_id}')
 else:
-    def field(name, label, ftype, required=False, hidden=False):
-        return {'objectTypeId': '0-1', 'name': name, 'label': label, 'required': required, 'hidden': hidden, 'fieldType': ftype}
+    def field(name, label, ftype, required=False, hidden=False, **extra):
+        return {'objectTypeId': '0-1', 'name': name, 'label': label, 'required': required, 'hidden': hidden, 'fieldType': ftype, **extra}
 
     def group(*fields):
         return {'groupType': 'default_group', 'richTextType': 'text', 'fields': list(fields)}
@@ -121,11 +126,17 @@ else:
         'name': FORM_NAME,
         'formType': 'hubspot',
         'archived': False,
+        # The v3 create endpoint requires createdAt even though HubSpot sets it.
+        'createdAt': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%S.000Z'),
         'fieldGroups': [
             group(field('firstname', 'First name', 'single_line_text', required=True),
                   field('lastname', 'Last name', 'single_line_text', required=True)),
-            group(field('email', 'Email', 'email', required=True)),
-            group(field('phone', 'Phone number', 'phone')),
+            # HubSpot rejects email and phone fields without a validation block
+            # ("Some required fields were not set: [validation]"); these match Contact Us.
+            group(field('email', 'Email', 'email', required=True,
+                        validation={'blockedEmailDomains': [], 'useDefaultBlockList': False})),
+            group(field('phone', 'Phone number', 'phone', useCountryCodeSelect=False,
+                        validation={'minAllowedDigits': 7, 'maxAllowedDigits': 20})),
             group(field('company', 'Company or institution', 'single_line_text', required=True)),
             group(field('data_sheet_reason', 'What are you planning? (optional)', 'multi_line_text')),
             group(field('data_sheet_requested', 'Data sheet requested', 'single_line_text', hidden=True)),
@@ -143,8 +154,12 @@ else:
 # Which embed does it need? The legacy endpoint only serves legacy-editor forms.
 embed = 'v2'
 if form_id:
-    s, _ = http('GET', f'https://forms-na2.hsforms.com/embed/v3/form/246069906/{form_id}', {})
-    embed = 'v2' if s == 200 else 'v4'
+    # Ask HubSpot directly: API-created forms come back as embedType V3 (legacy),
+    # which only the v2 embed renders. The v4 embed leaves a legacy form at 0px,
+    # which is what happened on 2026-10-16 when this check probed the legacy
+    # endpoint and misread its reply.
+    _, f = hs('GET', f'marketing/v3/forms/{form_id}')
+    embed = 'v4' if isinstance(f, dict) and f.get('configuration', {}).get('embedType') == 'V4' else 'v2'
     print('       embed type:', embed)
 
 # ---------------------------------------------------------------- 3. buttons
@@ -187,7 +202,12 @@ for pid, container_id in TARGETS.items():
     if APPLY:
         (BACKUPS / f'page-{pid}-{TODAY}-pre-data-sheet-button.json').write_text(json.dumps(page))
         new = json.dumps(data, separators=(',', ':'), ensure_ascii=True)
-        r = must(*wp('POST', f'wp/v2/pages/{pid}?context=edit', {'meta': {'_elementor_data': new}}), f'save page {pid}')
+        must(*wp('POST', f'wp/v2/pages/{pid}?context=edit', {'meta': {'_elementor_data': new}}), f'save page {pid}')
+        # The save reply is not always clean JSON (snippet #22 regenerates the page's
+        # CSS during the request), so confirm by reading the page back.
+        r = must(*wp('GET', f'wp/v2/pages/{pid}?context=edit&_fields=meta'), f're-read page {pid}')
+        if PDF not in r['meta']['_elementor_data']:
+            sys.exit(f'FAILED: page {pid} did not keep the new button')
         if r['meta'].get('_elementor_edit_mode') != 'builder':
             must(*wp('POST', f'wp/v2/pages/{pid}?context=edit', {'meta': {'_elementor_edit_mode': 'builder'}}), f'edit mode {pid}')
 
