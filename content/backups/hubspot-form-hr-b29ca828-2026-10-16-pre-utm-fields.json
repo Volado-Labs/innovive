@@ -1,0 +1,146 @@
+{
+ "id": "b29ca828-5c74-4531-b8fd-b82386d3b162",
+ "name": "Job Application \u2014 hr@innovive.com \u2014 July 2026",
+ "createdAt": "2026-07-16T17:40:23.808Z",
+ "updatedAt": "2026-07-16T17:40:23.808Z",
+ "archived": false,
+ "fieldGroups": [
+  {
+   "groupType": "default_group",
+   "richTextType": "text",
+   "fields": [
+    {
+     "objectTypeId": "0-1",
+     "name": "firstname",
+     "label": "First Name",
+     "required": true,
+     "hidden": false,
+     "fieldType": "single_line_text"
+    },
+    {
+     "objectTypeId": "0-1",
+     "name": "lastname",
+     "label": "Last Name",
+     "required": true,
+     "hidden": false,
+     "fieldType": "single_line_text"
+    }
+   ]
+  },
+  {
+   "groupType": "default_group",
+   "richTextType": "text",
+   "fields": [
+    {
+     "objectTypeId": "0-1",
+     "name": "email",
+     "label": "Email",
+     "required": true,
+     "hidden": false,
+     "validation": {
+      "blockedEmailDomains": [],
+      "useDefaultBlockList": false
+     },
+     "fieldType": "email"
+    }
+   ]
+  },
+  {
+   "groupType": "default_group",
+   "richTextType": "text",
+   "fields": [
+    {
+     "objectTypeId": "0-1",
+     "name": "phone",
+     "label": "Phone Number",
+     "required": false,
+     "hidden": false,
+     "useCountryCodeSelect": false,
+     "validation": {
+      "minAllowedDigits": 7,
+      "maxAllowedDigits": 20
+     },
+     "fieldType": "phone"
+    }
+   ]
+  },
+  {
+   "groupType": "default_group",
+   "richTextType": "text",
+   "fields": [
+    {
+     "objectTypeId": "0-1",
+     "name": "position_applied_for",
+     "label": "Position Applying For",
+     "required": true,
+     "hidden": false,
+     "fieldType": "single_line_text"
+    }
+   ]
+  },
+  {
+   "groupType": "default_group",
+   "richTextType": "text",
+   "fields": [
+    {
+     "objectTypeId": "0-1",
+     "name": "resume",
+     "label": "Resume / CV",
+     "required": true,
+     "hidden": false,
+     "allowMultipleFiles": false,
+     "fieldType": "file"
+    }
+   ]
+  }
+ ],
+ "configuration": {
+  "language": "en",
+  "cloneable": true,
+  "postSubmitAction": {
+   "type": "thank_you",
+   "value": "Thank you for your interest in Innovive. We have received your application and our HR team will be in touch if there is a fit."
+  },
+  "editable": true,
+  "archivable": true,
+  "recaptchaEnabled": true,
+  "notifyContactOwner": false,
+  "notifyRecipients": [
+   "166327465"
+  ],
+  "createNewContactForNewEmail": true,
+  "prePopulateKnownValues": false,
+  "allowLinkToResetKnownValues": false,
+  "embedType": "V3"
+ },
+ "displayOptions": {
+  "renderRawHtml": false,
+  "theme": "default_style",
+  "submitButtonText": "Submit Application",
+  "style": {
+   "fontFamily": "arial, helvetica, sans-serif",
+   "backgroundWidth": "100%",
+   "labelTextColor": "#33475b",
+   "labelTextSize": "11px",
+   "helpTextColor": "#7C98B6",
+   "helpTextSize": "11px",
+   "legalConsentTextColor": "#33475b",
+   "legalConsentTextSize": "14px",
+   "submitColor": "#ff7a59",
+   "submitAlignment": "left",
+   "submitFontColor": "#ffffff",
+   "submitSize": "12px"
+  },
+  "cssClass": null
+ },
+ "legalConsentOptions": {
+  "communicationConsentText": null,
+  "communicationsCheckboxes": [],
+  "consentToProcessText": "To review your application, we need your permission to store and process your personal data. Please check the box below to confirm your consent:",
+  "consentToProcessCheckboxLabel": "I agree to allow Innovive to store and process my personal data for the purpose of considering my application.",
+  "consentToProcessFooterText": null,
+  "privacyText": "We care about your privacy. Learn how we handle your data in our Privacy Policy.",
+  "type": "explicit_consent_to_process"
+ },
+ "formType": "hubspot"
+}

@@ -1,0 +1,39 @@
+{
+ "data": {
+  "type": "tracking-setting",
+  "id": "RcTRJX",
+  "attributes": {
+   "auto_add_parameters": false,
+   "utm_source": {
+    "flow": {
+     "type": "static",
+     "value": "Klaviyo"
+    },
+    "campaign": {
+     "type": "static",
+     "value": "Klaviyo"
+    }
+   },
+   "utm_medium": {
+    "flow": {
+     "type": "dynamic",
+     "value": "message_type"
+    },
+    "campaign": {
+     "type": "dynamic",
+     "value": "message_type"
+    }
+   },
+   "utm_campaign": null,
+   "utm_id": null,
+   "utm_term": null,
+   "custom_parameters": []
+  },
+  "links": {
+   "self": "https://a.klaviyo.com/api/tracking-settings/RcTRJX/"
+  }
+ },
+ "links": {
+  "self": "https://a.klaviyo.com/api/tracking-settings/RcTRJX"
+ }
+}
