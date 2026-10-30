@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Metabolic Cage Page (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#00223d; --blue:#005287; --light:#daebf8; --accent:#75c6c1; --text:#00223d;
+  --muted:#666666; --line:#daebf8; --tint:#f6f9ff; --white:#fff; --note:#fff4d6; --note-text:#6b4b00;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.6;font-size:16px}
+img{max-width:100%;display:block}
+a{color:var(--blue);text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{color:var(--navy);line-height:1.2;margin:0 0 12px}
+h1{font-size:clamp(32px,4.4vw,50px);font-weight:800;letter-spacing:-.02em;color:var(--blue)}
+h2{font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:-.01em}
+h3{font-size:19px;font-weight:700}
+p{margin:0 0 16px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.lead{font-size:18px;color:var(--muted);max-width:720px}
+.btn{display:inline-block;padding:13px 22px;border-radius:8px;font-weight:600;font-size:15px}
+.btn-primary{background:var(--blue);color:#fff;border:1.5px solid var(--blue)}
+.btn-outline{border:1.5px solid var(--blue);color:var(--blue)}
+section{padding:72px 0}
+.tint{background:var(--tint)}
+
+.review{background:var(--note);color:var(--note-text);font-size:14px;padding:14px 0;border-bottom:1px solid #f0dca0}
+.review .wrap{display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline}
+.review b{color:#4a3300}
+.review code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:4px;font-size:13px}
+.confirm{display:inline-block;background:var(--note);color:var(--note-text);font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+body.clean .review,body.clean .confirm{display:none}
+.toggle{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:10px 16px;font:600 13px Inter,sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+
+header.site{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+header.site img{height:34px;width:auto}
+nav.main{display:flex;gap:26px;font-size:15px;font-weight:500}
+nav.main a{color:var(--text)}
+nav.main a.on{color:var(--blue)}
+@media(max-width:860px){nav.main{display:none}}
+
+.hero{background:var(--tint);padding:0}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-top:56px;padding-bottom:56px}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:16px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}
+.badges span{background:#fff;border:1px solid var(--line);color:var(--navy);font-weight:600;font-size:13px;padding:6px 12px;border-radius:999px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-img{background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:32px;aspect-ratio:1/1}
+.hero-img img{max-height:100%;width:auto;object-fit:contain}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:40px;padding-bottom:40px}.hero-img{aspect-ratio:4/3}}
+
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+@media(max-width:1020px){.flow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.flow{grid-template-columns:1fr}}
+.flow .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+.flow .n{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.flow p{font-size:15px;color:var(--muted);margin:0}
+
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--navy);color:#fff;font-weight:600}
+tbody th{font-weight:600;color:var(--muted);width:42%;background:#fafbfe}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+.side{background:var(--navy);color:#dfe4fb;border-radius:16px;padding:28px}
+.side h3{color:#fff}
+.side ul{padding-left:20px;margin:0 0 18px}
+.side li{margin-bottom:8px}
+.side a.btn{background:#fff;color:var(--blue)}
+
+.kits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+@media(max-width:900px){.kits{grid-template-columns:1fr}}
+.kit{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.kit header{padding:18px 20px;background:var(--tint)}
+.kit header b{display:block;color:var(--navy);font-size:17px}
+.kit header span{font-size:13.5px;color:var(--muted)}
+.kit table{font-size:14px}
+.kit td:last-child,.kit th:last-child{text-align:right;white-space:nowrap}
+.kit thead th{background:#fff;color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--navy)}
+
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+@media(max-width:900px){.why{grid-template-columns:1fr}}
+.why div{background:#fff;border-radius:14px;padding:24px}
+.why p{color:var(--muted);font-size:15px;margin:0}
+
+.pubs{margin-top:28px;display:grid;gap:12px}
+.pub{background:#fff;border:1px dashed #d8c48a;border-radius:12px;padding:18px 20px;color:var(--muted);font-size:15px}
+.pub b{color:var(--navy)}
+body.clean .pubs-wrap{display:none}
+
+.video{margin-top:28px;aspect-ratio:16/9;max-width:860px;background:var(--navy);border-radius:16px;display:flex;align-items:center;justify-content:center;color:#cdd5f7;font-weight:600}
+.video span{display:flex;align-items:center;gap:12px}
+.video i{width:56px;height:56px;border-radius:50%;background:var(--blue);display:inline-flex;align-items:center;justify-content:center;font-style:normal;color:#fff;font-size:20px;border:2px solid #fff}
+
+.faq{max-width:860px;margin-top:28px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600;color:var(--navy);padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;line-height:1;color:var(--blue)}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--muted);font-size:15.5px}
+
+.cta{background:var(--navy);color:#fff;text-align:center}
+.cta .btn-primary{border-color:#fff}
+.cta h2{color:#fff}
+.cta p{color:#daebf8;max-width:620px;margin:0 auto 24px}
+footer{background:var(--navy);color:#c8cff0;font-size:14px;padding:36px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+
+<div class="review"><div class="wrap">
+  <span><b>MOCKUP for review.</b> Revised version of the live <code>/metabolic-cage-kit/</code> page.</span>
+  <span><b>Title tag:</b> Disposable Metabolic Cage for Mice | Innovive</span>
+  <span><b>Meta description:</b> Single-mouse disposable metabolic cage that separates urine and feces into 15 ml tubes and measures food and water intake. Irradiated, BPA-free, docks in the Innorack.</span>
+  <span><b>New on this page:</b> how it works, full spec table, kit contents with part numbers, FAQ, published research.</span>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <img src="https://innovive.com/wp-content/uploads/2026/05/Innovive-Color-Logo-Dark-1.png" alt="Innovive">
+  <nav class="main">
+    <a href="#">Company</a><a href="#">The Innovive System</a><a class="on" href="#">Products</a><a href="#">Vivarium Solutions</a><a href="#">Resources</a><a href="#">Contact</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="crumbs">Home / Products / <a href="ivc-caging-hub.html">IVC Caging</a> / Metabolic Cage</div>
+    <h1>Disposable Metabolic Cage for Mice</h1>
+    <p class="lead">The industry's first disposable metabolic cage. A single-mouse cage that separates urine and feces into collection tubes and measures food and water intake, then is recycled instead of washed.</p>
+    <div class="badges"><span>100% PET plastic</span><span>BPA-free</span><span>Delivered irradiated</span><span>Docks in the Innorack</span></div>
+    <div class="ctas">
+      <a class="btn btn-primary" href="#">Request a quote</a>
+      <a class="btn btn-outline" href="#">Download data sheet</a>
+    </div>
+  </div>
+  <div class="hero-img"><img src="https://innovive.com/wp-content/uploads/2026/06/Metabolic-Cage.png" alt="Innovive disposable metabolic cage for mice on its stand"></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">How it works</div>
+  <h2>Clean separation of urine and feces</h2>
+  <p class="lead">A funnel design sends urine and feces into separate collection tubes, and disposable receptacles catch food crumbs and water drips so intake can be measured accurately.</p>
+  <div class="flow">
+    <div class="item"><div class="n">1</div><h3>Mouse on a wire-bar platform</h3><p>The animal is housed singly on a wire-bar platform, with food and water in a wire-bar hopper.</p></div>
+    <div class="item"><div class="n">2</div><h3>Funnel and separator</h3><p>A support cone with a single-use hydrophobic liner funnels output to a collection separator.</p></div>
+    <div class="item"><div class="n">3</div><h3>Two collection tubes</h3><p>Urine and feces are collected in standard 15 ml conical tubes, removed without disturbing the animal.</p></div>
+    <div class="item"><div class="n">4</div><h3>Intake receptacles</h3><p>Disposable crumb and drip receptacles collect spilled food and water for a more accurate intake measurement.</p></div>
+  </div>
+</div></section>
+
+<section class="tint"><div class="wrap">
+  <div class="two">
+    <div>
+      <div class="eyebrow">Specifications</div>
+      <h2>Metabolic cage specifications</h2>
+      <div class="table-wrap" style="margin-top:24px"><table><tbody>
+        <tr><th>Species and configuration</th><td>Mouse, single housing</td></tr>
+        <tr><th>Material</th><td>100% PET plastic, BPA-free</td></tr>
+        <tr><th>Delivered</th><td>Irradiated, ready to use</td></tr>
+        <tr><th>Sample collection</th><td>Urine and feces into standard 15 ml conical tubes (sold separately)</td></tr>
+        <tr><th>Collection surface</th><td>Single-use hydrophobic liner on the support cone</td></tr>
+        <tr><th>Intake measurement</th><td>Food and water, with crumb and drip receptacles</td></tr>
+        <tr><th>Water</th><td>300 ml Aquavive® bottle with sipper tube and bottle seal</td></tr>
+        <tr><th>Lid</th><td>Large Manniweb® filter media with metal grate</td></tr>
+        <tr><th>Mounting</th><td>Stand alone on the M-MET-STAND, or dock in the Innorack IVC Mouse</td></tr>
+        <tr><th>Outside dimensions</th><td>&nbsp;<span class="confirm">Innovive to supply</span></td></tr>
+        <tr><th>Recycling</th><td>Single-use components recyclable</td></tr>
+      </tbody></table></div>
+    </div>
+    <aside class="side">
+      <h3>Why single-use matters for metabolic studies</h3>
+      <ul>
+        <li>No variability from collection surfaces that degrade with repeated washing</li>
+        <li>The hydrophobic liner helps ensure complete sample collection</li>
+        <li>Fewer pieces to clean and less storage space than washable metabolic cages</li>
+        <li>Recyclable components reduce contamination risk</li>
+      </ul>
+      <a class="btn" href="#">Talk to an expert</a>
+    </aside>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Ordering</div>
+  <h2>What you order</h2>
+  <p class="lead">A complete metabolic cage is three items, sold separately: the consumables kit (M-MET-5), the reusable kit (M-MET-KIT) and the stand (M-MET-STAND). Extra cage liners are available as an add-on.</p>
+  <div class="kits">
+    <div class="kit">
+      <header><b>M-MET-5 Consumables kit</b><span>Single-use parts for 5 cages</span></header>
+      <table><thead><tr><th>Part</th><th>Code</th><th>Qty</th></tr></thead><tbody>
+        <tr><td>Mouse metabolic cage bottom</td><td class="code">MMETBP</td><td>5</td></tr>
+        <tr><td>Mouse metabolic lid</td><td class="code">MMET</td><td>5</td></tr>
+        <tr><td>Cage support cone</td><td class="code">M-MET-SC</td><td>5</td></tr>
+        <tr><td>Cage separator</td><td class="code">M-MET-SEP</td><td>5</td></tr>
+        <tr><td>Cage liner</td><td class="code">M-MET-CL</td><td>8</td></tr>
+        <tr><td>Crumb catch</td><td class="code">M-MET-CC</td><td>10</td></tr>
+        <tr><td>Empty mouse water bottle</td><td class="code">M300BO-OLD</td><td>5</td></tr>
+      </tbody></table>
+    </div>
+    <div class="kit">
+      <header><b>M-MET-KIT Reusable kit</b><span>Parts kept between studies</span></header>
+      <table><thead><tr><th>Part</th><th>Code</th><th>Qty</th></tr></thead><tbody>
+        <tr><td>Main wire bar</td><td class="code">M-WIRE-M1</td><td>1</td></tr>
+        <tr><td>Feed and water bottle holder</td><td class="code">M-WIRE-M2</td><td>1</td></tr>
+        <tr><td>Sipper tube</td><td class="code">M-MET-ST</td><td>1</td></tr>
+        <tr><td>Bottle gasket</td><td class="code">M-MET-BG</td><td>1</td></tr>
+      </tbody></table>
+    </div>
+    <div class="kit">
+      <header><b>Sold separately</b><span>Stand and add-ons</span></header>
+      <table><thead><tr><th>Part</th><th>Code</th><th>Qty</th></tr></thead><tbody>
+        <tr><td>Stand</td><td class="code">M-MET-STAND</td><td>1</td></tr>
+        <tr><td>Cage liner pack</td><td class="code">M-MET-CL</td><td>20</td></tr>
+        <tr><td>15 ml conical tubes</td><td>Standard</td><td>&nbsp;</td></tr>
+      </tbody></table>
+    </div>
+  </div>
+  <p style="margin-top:16px;font-size:14px;color:var(--muted)">Part list from the M-MET-5 sheet, version V04/23. <span class="confirm">Confirm current, incl. M300BO-OLD code</span></p>
+</div></section>
+
+<section class="tint"><div class="wrap">
+  <div class="eyebrow">Assembly</div>
+  <h2>Metabolic cage assembly video</h2>
+  <a class="video" href="https://www.youtube.com/watch?v=r86y9r-Gksw" target="_blank" rel="noopener" style="position:relative;overflow:hidden;padding:0"><img src="https://innovive.com/wp-content/uploads/2026/10/metabolic-cage-assembly-video.jpg" alt="Innocage Mouse Metabolic Cage assembly video" style="width:100%;height:100%;object-fit:cover"><span style="position:absolute;inset:0;justify-content:center"><i>&#9654;</i></span></a>
+  <p style="margin-top:12px;font-size:14px;color:var(--muted)">Thumbnail links to the video on YouTube, so it shows for every visitor regardless of cookie choice.</p>
+</div></section>
+
+<section class="pubs-wrap"><div class="wrap">
+  <div class="eyebrow">In published research</div>
+  <h2>Studies using the Innovive metabolic cage</h2>
+  <p class="lead">A short list of papers that used the cage, with journal and year. Researchers comparing metabolic cages look for this.</p>
+  <div class="pubs">
+    <div class="pub"><b>Placeholder.</b> Innovive to supply citations: author, title, journal, year and a link. Three to six is enough.</div>
+    <div class="pub"><b>Placeholder.</b> If none are public yet, this section is left out at launch.</div>
+  </div>
+</div></section>
+
+<section class="tint"><div class="wrap">
+  <div class="eyebrow">FAQ</div>
+  <h2>Metabolic cage questions</h2>
+  <div class="faq">
+    <details open><summary>What does a metabolic cage measure?</summary><p>It collects a single mouse's urine and feces separately and lets you measure food and water intake. In the Innovive cage, a funnel sends urine and feces to separate 15 ml conical tubes, and crumb and drip receptacles catch spilled food and water.</p></details>
+    <details><summary>Is the Innovive metabolic cage disposable?</summary><p>The cage bottom, lid, support cone, liner, separator, crumb catch and bottle are single-use and arrive irradiated in the M-MET-5 consumables kit. The wire bar, bottle holder, sipper tube and gasket are reusable (M-MET-KIT).</p></details>
+    <details><summary>Can it go in an IVC rack?</summary><p>Yes. The cage can stand alone on the M-MET-STAND or dock in the Innorack IVC Mouse.</p></details>
+    <details><summary>What collection tubes does it use?</summary><p>Standard 15 ml conical tubes, sold separately. They can be removed without disturbing the animal.</p></details>
+    <details><summary>Is it for rats?</summary><p>No. The cage is designed for a single mouse. <span class="confirm">Confirm no rat version</span></p></details>
+  </div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>Planning a metabolic study?</h2>
+  <p>We can help you size cages, kits and stands for your study and fit them into your Innorack.</p>
+  <a class="btn btn-primary" href="#">Contact sales</a>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Consumable, recyclable vivarium solutions for preclinical research. Designed in California, trusted in 43 countries.</span>
+  <span>&copy; Innovive</span>
+</div></footer>
+
+<button class="toggle" onclick="document.body.classList.toggle('clean');this.textContent=document.body.classList.contains('clean')?'Show review notes':'Hide review notes'">Hide review notes</button>
+</body>
+</html>

@@ -1,0 +1,337 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>IVC Caging Hub (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#00223d; --blue:#005287; --light:#daebf8; --accent:#75c6c1; --text:#00223d;
+  --muted:#666666; --line:#daebf8; --tint:#f6f9ff; --white:#fff; --note:#fff4d6; --note-text:#6b4b00;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.6;font-size:16px}
+img{max-width:100%;display:block}
+a{color:var(--blue);text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{color:var(--navy);line-height:1.2;margin:0 0 12px}
+h1{font-size:clamp(32px,4.6vw,52px);font-weight:800;letter-spacing:-.02em}
+h2{font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:-.01em}
+h3{font-size:19px;font-weight:700}
+p{margin:0 0 16px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.lead{font-size:18px;color:var(--muted);max-width:720px}
+.btn{display:inline-block;padding:13px 22px;border-radius:8px;font-weight:600;font-size:15px}
+.btn-primary{background:var(--blue);color:#fff;border:1.5px solid var(--blue)}
+.btn-ghost{background:transparent;color:#fff;border:1.5px solid rgba(255,255,255,.6)}
+.btn-outline{border:1.5px solid var(--blue);color:var(--blue)}
+section{padding:72px 0}
+.tint{background:var(--tint)}
+
+/* review layer */
+.review{background:var(--note);color:var(--note-text);font-size:14px;padding:14px 0;border-bottom:1px solid #f0dca0}
+.review .wrap{display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline}
+.review b{color:#4a3300}
+.review code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:4px;font-size:13px}
+.confirm{display:inline-block;background:var(--note);color:var(--note-text);font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+body.clean .review,body.clean .confirm{display:none}
+@media(max-width:600px){.confirm{white-space:normal;margin:8px 0 0}}
+.toggle{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:10px 16px;font:600 13px Inter,sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+
+/* header */
+header.site{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+header.site img{height:34px;width:auto}
+nav.main{display:flex;gap:26px;font-size:15px;font-weight:500}
+nav.main a{color:var(--text)}
+nav.main a.on{color:var(--blue)}
+@media(max-width:860px){nav.main{display:none}}
+
+/* hero */
+.hero{background:var(--navy);color:#fff;padding:0;overflow:hidden}
+.hero .wrap{display:grid;grid-template-columns:1.05fr .95fr;gap:48px;align-items:center;padding-top:64px;padding-bottom:64px}
+.hero h1{color:#fff}
+.hero .lead{color:#daebf8}
+.hero .crumbs{font-size:13px;color:var(--light);margin-bottom:18px}
+.hero .ctas{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.hero-img{border-radius:14px;overflow:hidden;aspect-ratio:4/3;background:#00335c}
+.hero .btn-primary,.cta .btn-primary{border-color:#fff}
+.hero-img img{width:100%;height:100%;object-fit:cover}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:32px;padding-top:44px;padding-bottom:44px}}
+
+/* stat strip */
+.stats{background:#fff;border-bottom:1px solid var(--line);padding:0}
+.stats .wrap{display:grid;grid-template-columns:repeat(5,1fr);gap:0}
+.stat{padding:26px 18px;text-align:center}
+.stat + .stat{border-left:1px solid var(--line)}
+.stat b{display:block;font-size:24px;color:var(--navy);font-weight:800;letter-spacing:-.01em}
+.stat span{font-size:13.5px;color:var(--muted)}
+@media(max-width:860px){.stats .wrap{grid-template-columns:repeat(2,1fr)}.stat + .stat{border-left:0}.stat{border-bottom:1px solid var(--line)}}
+
+/* jump links */
+.jump{display:flex;gap:10px;flex-wrap:wrap;margin-top:22px}
+.jump a{background:var(--tint);color:var(--navy);font-weight:600;font-size:14px;padding:8px 14px;border-radius:999px}
+
+/* cards */
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.grid2{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;margin-top:32px}
+@media(max-width:1020px){.grid4{grid-template-columns:repeat(2,1fr)}.grid3{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.grid4,.grid3,.grid2{grid-template-columns:1fr}}
+.card{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.card .img{position:relative;background:var(--tint);height:230px;display:flex;align-items:center;justify-content:center;padding:18px}
+.card .img img{max-height:100%;max-width:100%;width:auto;height:auto;object-fit:contain}
+.card .img .confirm{position:absolute;top:12px;right:12px;margin:0}
+.card .body{padding:20px;display:flex;flex-direction:column;flex:1}
+.card .tag{font-size:12px;font-weight:700;color:var(--blue);text-transform:uppercase;letter-spacing:.06em;margin-bottom:6px}
+.card dl{margin:4px 0 16px;font-size:14px;display:grid;grid-template-columns:auto 1fr;gap:6px 12px}
+.card dt{color:var(--muted)}
+.card dd{margin:0;font-weight:600;color:var(--text)}
+.card .more{margin-top:auto;font-weight:600;font-size:15px}
+
+/* table */
+.table-wrap{overflow-x:auto;margin-top:28px;border:1px solid var(--line);border-radius:12px;background:#fff}
+table{border-collapse:collapse;width:100%;min-width:720px;font-size:14.5px}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--navy);color:#fff;font-weight:600}
+tbody th{font-weight:600;color:var(--muted);width:200px;background:#fafbfe}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+
+/* steps */
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+@media(max-width:1020px){.steps{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.steps{grid-template-columns:1fr}}
+.step{background:#fff;border-radius:14px;padding:24px}
+.step .n{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.step p{font-size:15px;color:var(--muted);margin:0}
+
+/* components */
+.comp{background:#fff;border:1px solid var(--line);border-radius:14px;padding:22px}
+.comp p{font-size:15px;color:var(--muted)}
+
+/* feature */
+.feature{display:grid;grid-template-columns:1fr 1fr;gap:0;border-radius:16px;overflow:hidden;background:#fff;border:1px solid var(--line)}
+.feature .img{background:var(--tint);display:flex;align-items:center;justify-content:center;padding:28px;min-height:280px}
+.feature .img img{max-height:280px;width:auto}
+.feature .body{padding:32px}
+.feature ul{padding-left:20px;margin:0 0 20px;color:var(--muted);font-size:15px}
+@media(max-width:860px){.feature{grid-template-columns:1fr}}
+
+/* faq */
+.faq{max-width:860px;margin-top:28px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600;color:var(--navy);padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;line-height:1;color:var(--blue)}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--muted);font-size:15.5px}
+
+/* cta */
+.cta{background:var(--navy);color:#fff;text-align:center}
+.cta h2{color:#fff}
+.cta p{color:#daebf8;max-width:620px;margin:0 auto 24px}
+footer{background:var(--navy);color:#c8cff0;font-size:14px;padding:36px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+</style>
+</head>
+<body>
+
+<div class="review"><div class="wrap">
+  <span><b>MOCKUP for review.</b> New page, not live.</span>
+  <span><b>URL:</b> <code>innovive.com/ivc-caging/</code></span>
+  <span><b>Title tag:</b> IVC Caging &amp; Racks for Mice and Rats | Innovive</span>
+  <span><b>Meta description:</b> Disposable IVC cages and Innorack IVC racks for mice and rats. Dual HEPA airflow, cages delivered irradiated and ready to use. Up to 192 cages per rack.</span>
+  <span><b>Yellow tags</b> mark items Innovive needs to confirm.</span>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <img src="https://innovive.com/wp-content/uploads/2026/05/Innovive-Color-Logo-Dark-1.png" alt="Innovive">
+  <nav class="main">
+    <a href="#">Company</a><a href="#">The Innovive System</a><a class="on" href="#">Products</a><a href="#">Vivarium Solutions</a><a href="#">Resources</a><a href="#">Contact</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="crumbs">Home / Products / IVC Caging</div>
+    <h1>IVC Caging and Racks for Mice and Rats</h1>
+    <p class="lead">Innovive's individually ventilated caging (IVC) system pairs Innorack IVC racks with disposable Innocage® cages. Every cage gets dual HEPA-filtered air, arrives irradiated and ready to use, and leaves through closed-loop recycling instead of the cage wash.</p>
+    <div class="ctas">
+      <a class="btn btn-primary" href="#">Size your IVC system</a>
+      <a class="btn btn-ghost" href="#compare">Compare IVC racks</a>
+    </div>
+  </div>
+  <div class="hero-img"><img src="https://innovive.com/wp-content/uploads/2026/05/Scientist-inspecting-Innovive-ventilated-cage-racks-in-a-modern-vivarium-facility.webp" alt="Scientist inspecting Innovive IVC racks in a vivarium"></div>
+</div></section>
+
+<section class="stats"><div class="wrap">
+  <div class="stat"><b>Up to 192</b><span>mouse cages per Innorack</span></div>
+  <div class="stat"><b>Dual HEPA</b><span>supply and exhaust filtration</span></div>
+  <div class="stat"><b>Irradiated</b><span>cages delivered double-bagged</span></div>
+  <div class="stat"><b>100% PET</b><span>BPA-free, recyclable cages</span></div>
+  <div class="stat"><b>43 countries</b><span>where the system is in use</span></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Overview</div>
+  <h2>A complete IVC system, without the cage wash</h2>
+  <p class="lead">Choose the rack for your species and study, then the disposable cage that fits it. Lids, feeders and pre-filled water bottles complete each cage.</p>
+  <div class="jump">
+    <a href="#racks">IVC racks</a><a href="#cages">Disposable IVC cages</a><a href="#compare">Rack comparison</a><a href="#specialty">Metabolic and gnotobiotic</a><a href="#how">How it works</a><a href="#faq">FAQ</a>
+  </div>
+</div></section>
+
+<section id="racks" class="tint"><div class="wrap">
+  <div class="eyebrow">IVC racks</div>
+  <h2>Innorack IVC racks</h2>
+  <p class="lead">Patented transversal airflow, positive or negative pressure, and a dynamic digital controller that holds supply and exhaust settings. Single- and double-sided configurations on lockable casters.</p>
+  <div class="grid4">
+    <div class="card">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/Mouse-Rack.png" alt="Innorack IVC Mouse rack"></div>
+      <div class="body"><div class="tag">Mouse</div><h3>Innorack IVC Mouse 3.5</h3>
+        <dl><dt>Max cages</dt><dd>Up to 192</dd><dt>Rows x columns</dt><dd>9 to 12 x 6 to 8</dd><dt>Fits</dt><dd>Innocage® mouse</dd></dl>
+        <a class="more" href="#">View IVC mouse rack &rarr;</a></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/Innorack-IVC-Rat-2.png" alt="Innorack IVC Rat rack"></div>
+      <div class="body"><div class="tag">Rat</div><h3>Innorack IVC Rat 3.5</h3>
+        <dl><dt>Max cages</dt><dd>Up to 80</dd><dt>Rows x columns</dt><dd>6 to 8 x 3 to 5</dd><dt>Fits</dt><dd>R-BTM-H, M-BTM-XL</dd></dl>
+        <a class="more" href="#">View IVC rat rack &rarr;</a></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/Innorack-IVC-Rat-2.png" alt="Innorack Tall IVC Rat rack"><span class="confirm">Need tall rack photo</span></div>
+      <div class="body"><div class="tag">Rat, tall</div><h3>Innorack Tall IVC Rat</h3>
+        <dl><dt>Max cages</dt><dd>Up to 60</dd><dt>Rows x columns</dt><dd>5 or 6 x 4 or 5</dd><dt>Headroom</dt><dd>9" (22.9 cm)</dd></dl>
+        <a class="more" href="#">View tall rat rack &rarr;</a></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/Innorack-IVC-Rat-2.png" alt="Innorack Tall IVC Rat XL"><span class="confirm">Need XL rack photo</span></div>
+      <div class="body"><div class="tag">Rat, extra large</div><h3>Innorack Tall IVC Rat XL</h3>
+        <dl><dt>Max cages</dt><dd>Up to 24</dd><dt>Rows x columns</dt><dd>6 x 2</dd><dt>Floor space</dt><dd>325.8 in²</dd></dl>
+        <a class="more" href="#">View tall rat XL rack &rarr;</a></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="compare"><div class="wrap">
+  <div class="eyebrow">Compare</div>
+  <h2>IVC rack comparison</h2>
+  <p class="lead">Every Innorack shares dual HEPA supply and exhaust filtration, patented transversal airflow, positive and negative pressure modes, on-rack blowers and easy-glide lockable casters. Autoclavable racks are available on request.</p>
+  <div class="table-wrap"><table>
+    <thead><tr><th></th><th>Innorack IVC Mouse 3.5</th><th>Innorack IVC Rat 3.5</th><th>Innorack Tall IVC Rat</th><th>Innorack Tall IVC Rat XL</th></tr></thead>
+    <tbody>
+      <tr><th>Max cage positions</th><td>Up to 192</td><td>Up to 80</td><td>Up to 60</td><td>Up to 24</td></tr>
+      <tr><th>Configurations</th><td>Single- and double-sided</td><td>Single- and double-sided</td><td>Single- and double-sided <span class="confirm">Confirm</span></td><td>Single- and double-sided</td></tr>
+      <tr><th>Rows</th><td>9, 10, 11 or 12</td><td>6, 7 or 8</td><td>5 or 6</td><td>6</td></tr>
+      <tr><th>Columns</th><td>6, 7 or 8</td><td>3, 4 or 5</td><td>4 or 5</td><td>2</td></tr>
+      <tr><th>Compatible cage bottoms</th><td>M-BTM</td><td>R-BTM-H, R-BTM-A-H, M-BTM-XL</td><td>R-BTM-H</td><td>R-BTM-XL</td></tr>
+      <tr><th>Cage floor space</th><td>81 in² (522.6 cm²)</td><td>141 in² (909.7 cm²)</td><td>141 in² (909.7 cm²)</td><td>325.8 in² (2101.9 cm²)</td></tr>
+      <tr><th>Cage headroom</th><td>5" (12.7 cm)</td><td>7" (18 cm)</td><td>9" (22.9 cm)</td><td>9" (22.9 cm)</td></tr>
+      <tr><th>Data sheet</th><td><a href="#">Download</a></td><td><a href="#">Download</a></td><td><a href="#">Download</a></td><td><a href="#">Download</a></td></tr>
+    </tbody>
+  </table></div>
+</div></section>
+
+<section id="cages" class="tint"><div class="wrap">
+  <div class="eyebrow">Disposable IVC cages</div>
+  <h2>Innocage® disposable IVC cages</h2>
+  <p class="lead">Made from 100% high-viscosity PET, BPA-free and recyclable. Each cage is delivered irradiated and double-bagged, has never housed another animal, and is available empty or pre-bedded with corn cob, ALPHA-dri or BioFresh.</p>
+  <div class="grid4">
+    <div class="card">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/M-BTM.png" alt="Innocage M-BTM mouse cage bottom"></div>
+      <div class="body"><div class="tag">Mouse</div><h3>M-BTM</h3>
+        <dl><dt>Sized for</dt><dd>5 mice</dd><dt>Floor space</dt><dd>81 in² (522.6 cm²)</dd><dt>Headroom</dt><dd>5" (12.7 cm)</dd><dt>Type</dt><dd>Euro Type II Long</dd><dt>Rack</dt><dd>IVC Mouse 3.5</dd></dl>
+        <a class="more" href="#">View mouse caging &rarr;</a></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/Innocage-IVC-Mouse-XL.png" alt="Innocage M-BTM-XL mouse cage"></div>
+      <div class="body"><div class="tag">Mouse, extra large</div><h3>M-BTM-XL</h3>
+        <dl><dt>Sized for</dt><dd>More than 5 mice</dd><dt>Floor space</dt><dd>146 in² (942 cm²)</dd><dt>Headroom</dt><dd>5.8" (14.8 cm)</dd><dt>Use</dt><dd>Group housing, breeding</dd><dt>Rack</dt><dd>IVC Rat 3.5</dd></dl>
+        <a class="more" href="#">View mouse XL caging &rarr;</a></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/R-BTM-H.png" alt="Innocage R-BTM-H rat cage bottom"></div>
+      <div class="body"><div class="tag">Rat</div><h3>R-BTM-H</h3>
+        <dl><dt>Sized for</dt><dd>2 rats</dd><dt>Floor space</dt><dd>141 in² (909.7 cm²)</dd><dt>Headroom</dt><dd>7" (18 cm)</dd><dt>Type</dt><dd>Euro Type III</dd><dt>Rack</dt><dd>IVC Rat, Tall IVC Rat</dd></dl>
+        <a class="more" href="#">View rat caging &rarr;</a></div>
+    </div>
+    <div class="card">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/R-BTM-XL.png" alt="Innocage R-BTM-XL rat cage bottom"></div>
+      <div class="body"><div class="tag">Rat, extra large</div><h3>R-BTM-XL</h3>
+        <dl><dt>Sized for</dt><dd>Large rats</dd><dt>Floor space</dt><dd>325.8 in² (2101.9 cm²)</dd><dt>Headroom</dt><dd>9" (22.9 cm)</dd><dt>Rack</dt><dd>Tall IVC Rat XL</dd></dl>
+        <a class="more" href="#">View rat XL caging &rarr;</a></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="specialty"><div class="wrap">
+  <div class="eyebrow">Specialized IVC housing</div>
+  <h2>Metabolic and gnotobiotic caging</h2>
+  <div class="grid2">
+    <div class="feature" style="grid-template-columns:1fr">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/06/Metabolic-Cage.png" alt="Innovive disposable metabolic cage"></div>
+      <div class="body"><h3>Disposable metabolic cage</h3>
+        <ul><li>Single-mouse cage that separates urine and feces into standard 15 ml conical tubes</li><li>Measures food and water intake with disposable crumb and drip receptacles</li><li>Stands alone or docks in the Innorack IVC Mouse</li></ul>
+        <a class="btn btn-outline" href="metabolic-cage.html">View metabolic cage</a></div>
+    </div>
+    <div class="feature" style="grid-template-columns:1fr">
+      <div class="img"><img src="https://innovive.com/wp-content/uploads/2026/05/Image-3.webp" alt="Gnotobiotic IVC housing" style="max-height:none;width:100%;height:280px;object-fit:cover"></div>
+      <div class="body"><h3>Gnotobiotic IVC housing</h3>
+        <ul><li>MVX3 lid for gnotobiotic programs</li><li>Irradiated, double-bagged cages that have never housed another animal</li><li>Dual HEPA filtration on supply and exhaust</li></ul>
+        <a class="btn btn-outline" href="#">View gnotobiotics</a> <span class="confirm">Confirm gnotobiotic claims</span></div>
+    </div>
+  </div>
+</div></section>
+
+<section id="how" class="tint"><div class="wrap">
+  <div class="eyebrow">How it works</div>
+  <h2>From delivery to recycling</h2>
+  <div class="steps">
+    <div class="step"><div class="n">1</div><h3>Cages ship ready to use</h3><p>Irradiated, double-bagged, empty or pre-bedded. Use them right away or store them until needed.</p></div>
+    <div class="step"><div class="n">2</div><h3>Racks ventilate each cage</h3><p>Dual HEPA-filtered air reaches every cage, with airflow held by the digital controller.</p></div>
+    <div class="step"><div class="n">3</div><h3>Animals are housed</h3><p>Mice, rats and tall rats through the study cycle, including gnotobiotic programs.</p></div>
+    <div class="step"><div class="n">4</div><h3>Used cages are recycled</h3><p>Cages are re-stacked with bedding intact and collected through closed-loop recycling by InnoCycle.</p></div>
+  </div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Complete the cage</div>
+  <h2>Lids, feeders, water and bedding</h2>
+  <div class="grid4">
+    <div class="comp"><h3>Lids</h3><p>Filter lids for mouse and rat cages, including the MVX3 for gnotobiotic use.</p><a href="#">Mouse lids</a> &middot; <a href="#">Rat lids</a></div>
+    <div class="comp"><h3>Feeders</h3><p>Wire-bar and polycarbonate feeders sized to each cage bottom.</p><a href="#">Mouse feeders</a> &middot; <a href="#">Rat feeders</a></div>
+    <div class="comp"><h3>Aquavive water</h3><p>Pre-filled, pre-tested bottles in acidified, chlorinated or ultra-purified water.</p><a href="#">Mouse water</a> &middot; <a href="#">Rat water</a></div>
+    <div class="comp"><h3>Bedding and enrichment</h3><p>Pre-bedded cages and enrichment such as InnoWheel and InnoTube.</p><a href="#">Bedding</a> &middot; <a href="#">Enrichment</a></div>
+  </div>
+</div></section>
+
+<section id="faq" class="tint"><div class="wrap">
+  <div class="eyebrow">FAQ</div>
+  <h2>IVC caging questions</h2>
+  <div class="faq">
+    <details open><summary>What is an IVC (individually ventilated cage)?</summary><p>An IVC is a sealed cage that receives its own supply of filtered air and has its own exhaust, so each cage keeps a controlled environment. In the Innovive system, the Innorack delivers dual HEPA-filtered air to every cage position.</p></details>
+    <details><summary>How many cages fit on an Innorack IVC rack?</summary><p>Up to 192 on the Innorack IVC Mouse, up to 80 on the Innorack IVC Rat, up to 60 on the Innorack Tall IVC Rat and up to 24 on the Innorack Tall IVC Rat XL, depending on the row and column configuration you choose.</p></details>
+    <details><summary>Are Innovive IVC cages reused?</summary><p>No. Each cage is delivered irradiated and double-bagged and has never housed another animal. After use, cages are re-stacked with bedding intact and recycled through InnoCycle's closed-loop program instead of going to a cage wash.</p></details>
+    <details><summary>Do Innocage® cages fit other manufacturers' racks?</summary><p>The Innorack is designed for Innocage® caging. <span class="confirm">Innovive to confirm wording on retrofit and third-party racks</span></p></details>
+    <details><summary>Can the racks run positive or negative pressure?</summary><p>Yes. Every Innorack supports positive and negative pressure modes, with supply and exhaust blowers held at set points by the digital controller.</p></details>
+    <details><summary>What water and bedding options are available?</summary><p>Aquavive pre-filled bottles come in acidified, chlorinated or ultra-purified water. Cages can be ordered empty or pre-bedded with corn cob, ALPHA-dri or BioFresh.</p></details>
+  </div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>Size your IVC system</h2>
+  <p>Our team can help you choose racks and caging for your facility, species and colony size.</p>
+  <a class="btn btn-primary" href="#">Contact sales</a>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Consumable, recyclable vivarium solutions for preclinical research. Designed in California, trusted in 43 countries.</span>
+  <span>&copy; Innovive</span>
+</div></footer>
+
+<button class="toggle" onclick="document.body.classList.toggle('clean');this.textContent=document.body.classList.contains('clean')?'Show review notes':'Hide review notes'">Hide review notes</button>
+</body>
+</html>
