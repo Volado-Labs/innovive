@@ -1,0 +1,19 @@
+{
+ "id": 28,
+ "name": "Redirect retired recycling URLs -> innocycle.com (301)",
+ "desc": "Path-specific 301 for both English and Spanish retired recycling URLs.",
+ "code": "// 301 redirect the retired /recycling-eu/ page to the InnoCycle site.\nif ( ! empty( $_SERVER['REQUEST_URI'] ) ) {\n\t$p = strtok( $_SERVER['REQUEST_URI'], '?' );\n\tif ( in_array( rtrim( $p, '/' ), array( '/recycling-eu', '/es/recycling-eu' ), true ) ) {\n\t\theader( 'Location: https://www.innocycle.com/', true, 301 );\n\t\texit;\n\t}\n}\n",
+ "tags": [],
+ "scope": "global",
+ "condition_id": 0,
+ "active": true,
+ "trashed": false,
+ "locked": false,
+ "priority": 5,
+ "network": false,
+ "shared_network": false,
+ "modified": "2026-07-31T19:55:16+00:00",
+ "last_active": "0",
+ "code_error": null,
+ "code_error_trace": null
+}
