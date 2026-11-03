@@ -1,0 +1,102 @@
+
+Vivarium Caging FAQ | Innovive
+ no gtag => nothing is sent. -->
+Skip to content
+ FAQ
+ FAQs
+ Frequently Asked Questions
+ Caging 
+ Racks 
+ Water 
+ Recycling 
+ How many mice can be housed in an Innocage® Mouse?
+ The Innocage® Mouse is sized for 5 mice. It provides 5 inches (12.7 cm) of headroom and over 81 in² (530 cm²) of floor space. The amount of floor space in an Innovive cage exceeds what is recommended for 5 mice in the US Guide for the Care and Use of Laboratory Animals. It also complies with the European Type II long caging specification.
+ What is the recommended cage change interval for Innocage® IVC Mouse and Rat cages?
+ For Innocage® IVC Mouse, most users perform cage changes every 14 days. Some have extended beyond 14 days when there are less than 5 mice in the cage.
+For Innocage® IVC Rat, most users perform cage changes every 7-10 days.
+ How much recycled plastic is used in an Innocage® bottom?
+ As part of a continued effort to improve sustainable practices, Innocage® bottoms are made with up to 30% post-consumer recycled plastic. The recycled plastic is melted and thermoformed in high heat, and then the resulting Innocage bottoms are fully irradiated to ensure that it has zero bioload.
+ What is the shelf life for caging supplies?
+ The shelf life for caging supplies is 1 year when kept in original packaging and in good storage conditions (dry environment under 115°F/46°C).
+ Can the cages be autoclaved?
+ Used cages can be autoclaved for decontamination purposes. Please consult with your Innovive representative for the decontamination protocol.
+ What does it mean when caging is Research-Ready?
+ Research-Ready means that all Innovive products arrive securely double-bagged and irradiated, and are ready for research use.
+ What type of filter paper is in your cage?
+ Innovive IVC cages utilize Reemay® filter paper. Innovive static cages utilize Uniblend filter paper.
+ How much bedding is used in each cage?
+ M-BTM-C8/C8E – 450 cm³
+M-BTM-AD – 450 cm³
+R-BTM-C8 – 850 cm³
+R-BTM-AD – 850 cm³
+ What is the weight capacity of the mouse feeder (M-FEED) to the fill line?
+ The M-FEED can hold approximately 360 grams of unautoclaved, standard pelleted rodent diet. The weight of food can vary based on factors such as the type of food pellet, ingredient composition, and environmental factors.
+ How must I process the cages for local recycling?
+ Bottoms: PET1; Must be free of animal bedding. 
+Lids: PET1, Paper; No separation required (grates are PET 1 and paper dissolves)
+Water Bottles: PET1 HDP; Bottles and caps accepted – some require an empty bottle check with recycler. Accepted in all municipal programs.
+All Feeders: PET
+Cage Card Holder: PET
+ How do I prepare the cages for pick up?
+ Users typically pack cage bottoms and lids in the bags they came in. Next place the bags in cardboard gaylords using the packing instructions provided. You can purchase gaylords from www.uline.com or www.cardboardboxes4u.com or many other office/warehouse supply companies.
+ How many rats can be housed in an Innocage® Rat?
+ The Innocage® Rat is sized for 2 rats. It provides 7 inches (17.8 cm) of headroom and over 140 in² (900 cm²) of floor space. The amount of floor space in an Innovive cage complies with what is recommended for 2 rats (each up to 500g in weight) in US Guide for the Care and Use of Laboratory Animals. It also complies with the European Type III caging specification.
+ What is the recommended cage change interval for Innocage® Static Mouse and Rat cages?
+ For Innocage® Static Mouse and Rat cages, most users perform a cage change every 5-7 days. It can also be extended beyond 7 days depending on the size and number of animals in the cages.
+ Why do some Innocage® bottoms have a different color/hue?
+ The mix of recycled plastic can slightly affect the color/hue of the Innocage® bottom, but will not affect the clarity or quality of the Innocage® bottom.
+ What is the proper temperature range for storing cages?
+ The temperature for storing Innovive caging components should not exceed 115°F/46°C.
+ Can you clean or wash the cages bottoms?
+ This is not an intended use for Innovive disposable cages. Reusing cage bottoms introduces the risk of contamination.
+ How can I transport cages from one facility to another?
+ Any standard Innovive cage can be used to transfer animals between facilities. We also offer the Innocage® Mouse Transportation lid that can be used for longer trips that span up to a week in duration.
+ What kind of bedding is used in the pre-bedded cages?
+ We offer corn cob or ALPHA-dri® for bedding in our pre-bedded cages. We also offer corn cob bedding enriched with Innorichment™.
+ What is the volume of the mouse feeder (M-FEED) to the fill line?
+ The exact volume is 34.8in³. Volume of food will vary on packing density and size of the food pellets.
+ How should I clean the rat wire bars?
+ Your wire bars can go through a washer, an autoclave or hand wipe/sanitize as you would clean other lab supplies.
+ When would I use the Innovive Closed-Loop Recycling Service?
+ You would use the Innovive Recycling program: 1. If your municipal program does not accept open neck containers: Many municipal programs do not recycle open neck containers as they do not have a Material Sorting Facility. We see this often on the East Coast. Water bottles are universally accepted in all local area programs. Lids and bottoms can then be recycled through the Innovive program for a fee with the added advantage of not having to dump cages. 2. If you do not want to dump cages: Many of our customers opt for the Innovive recycling program as they prefer not to dump bedding from cage bottoms.
+ How much recycling storage space do I need?
+ Depending on volume and pick-up frequency, most customers dedicate 10’x10′ space to store cages to be picked for recycling.
+ Does the Innorack® have special electrical requirements?
+ No – a standard outlet is sufficient. The Innorack® has a very low power draw, which is similar to a standard light bulb.
+ In the event of power outage, will the rack automatically turn on when power is restored?
+ Yes – the rack will automatically restart with same settings as when the power was cut and return to the settings that had previously been selected.
+ Are the racks compatible with VHP or other decontamination processes?
+ Yes – VHP and similar technologies can be used to decontaminate the Innorack®.
+ Do the rack have to be connected to a room exhaust system?
+ No – Innoracks® do not need to be connected to a room exhaust system. Optionally, you can attach a connector between the Innorack® and the facility’s HVAC systems if you would like to direct odor and humidity out of holding rooms.
+ How long can mice and rats remain in the IVC rack/cages if power is lost?
+ It depends on the total number of animals in the cage, the size of those animals and macro-environmental conditions. For example, 2 mothers in a cage each with weaning age litters will consume more oxygen and produce more CO2 than a cage containing a single animal. For our standard Innocage® IVC Mouse Single Filter lid, we do not recommend having the cages outside the rack for more than 6 hours as the animals could start to see signs of stress (similar to reusable IVC cages). However in the case of a power failure, the animals will survive for longer periods. With that in mind our guideline for power failure planning is as follows:
+MVX1 – 12-24 hours
+MVX2 – 12-24+ hours
+MVX3 – 6 hours
+MVX6 – 48+ hours
+RSX1 – 12 hours 
+RVX6 – 24+ hours 
+RVX7 – 24+ hours
+ What is added to the water when it is acidified? What is the pH level?
+ Innovive pre-filled bottles are acidified with HCL to a pH of between 2.5 and 3.0.
+ What is the shelf life of pre-filled water?
+ We recommend using ultra-pure pre-filled water bottles within 1 year and acidified and chlorinated pre-filled water bottles within 18 months of the fill date. The fill date can be found printed on every bottle.
+ Can the whole cage be recycled?
+ Yes – Our cage bottom, lid, water bottle, and feeders are 100% PET plastic and are free of glue or other contaminants. Innovive disposable cages are accepted where open-neck PET containers are recycled. Innovive also provides a Closed-Loop Recycling Service that makes it easy for you to recycle your used cages.
+ Can Innovive help me set up a local recycling program?
+ Yes – Please provide us with the contact details for your recycling service provider. We will typically communicate with the hauler that services your site, and can send them samples and MSDS certificates when required.
+ What do I have to do to enroll in the service?
+ Email us at info@innovive.com and we will provide you with our standard recycling contract, estimated material volume and a pick-up schedule based on your current census. We can schedule the first pick up once the contract is signed.
+ What local options are available to me to recycle Innovive cages?
+ University and municipal programs are accepting an increasing range of materials. Check to see if your recycling program collects open neck plastic containers.
+ How does Innovive handle cages?
+ Innovive handles standard category waste only.
+– Cages are picked up from customer sites and sent to our recycling facility.
+– The process is simple: cages are put through a separator that removes bedding from the cages. Cages are then flaked and granulated.
+– Bedding is sent to municipal composting facilities when available.
+– Our clean plastic flake is sent to our vendor network for use in other products.
+ Still have questions?
+ Explore the full system or talk to our team about your facility’s needs.
+ Contact sales
+
