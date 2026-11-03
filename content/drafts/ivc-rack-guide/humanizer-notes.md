@@ -92,3 +92,27 @@ Final count: prose about 2,080 words plus about 780 words of tables (2,859 combi
   - the pressure-mode paragraph, folded into one colon sentence, since the table carries "Protects"
 - Rhythm pass: I let short declaratives sit next to longer colon sentences rather than leaving a run of same-length lines, and recast "Daily, read..." as a plain imperative. No words were added back.
 - Count: 1,734 prose + 706 tables = 2,440. deslop --allow-proof: 5/5. I rewrote the cost-section triple ("racks, caging and running costs") to clear it.
+
+## v3 voice rewrite (rewrite-brief-v3.md, voice profile, posts 3991/3981/3986, September stance rules)
+
+- I saved the pre-rewrite version as ivc-rack-configuration-guide-v2.md.
+- **Opening:** rewritten as two paragraphs set in the reader's situation (holding room, expansion or new program; how many racks, and which ones), followed by how we run a sizing call. The aphorism and the IVC definition are gone. The Quick answer is reworded as four plain sentences, 52 words.
+- **Stance:**
+  - The any-vendor hedge is replaced with our own fact: our cage lids create an airtight seal. The sealed CONFIRM is kept.
+  - The "honest trade-off" paragraph and the cage-wash-ownership clause are replaced with full cost per occupied cage-week, and an offer to run those numbers with you.
+  - "Whoever you buy from" is replaced with our technical support address.
+  - "In our view" became "In our experience".
+- **Terminology:**
+  - Body copy now says consumable caging.
+  - The washable workflow is washed and autoclaved; "sterilize" is gone.
+  - The metabolic cage link anchor reads "single-use".
+  - I used "used caging" and "animal-naive".
+- **Power draw:** now stated as our fact from the live FAQ ("similar to a standard light bulb"), and that CONFIRM is dropped.
+- **Tables:** 6 tables, none wider than 4 columns, cells numeric or short, inches in the cells with units in the headers. Metric values appear once, in a note line.
+  - The pressure table, the washable versus consumable table and the three worked-example tables became prose.
+  - Euro equivalents, the Guide ceilings, "runs on" and "best for" moved into prose sentences.
+- **Rhythm pass:**
+  - Removed grammar-breaking compressions left over from the cut round ("run negative for allergen control" as a tail clause; "such as ammonia").
+  - The worked examples now read as two plain sentences each.
+  - Kept short sentence pairs under the limit of two.
+- **Result:** 2,169 prose + 267 table words = 2,436. deslop --allow-proof: 5/5 CLEAN.
