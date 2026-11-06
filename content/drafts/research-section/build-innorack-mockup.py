@@ -102,14 +102,19 @@ table.spec tr:nth-child(even){{background:var(--tint)}}
 .research{{background:#fff}}
 .research .stat{{display:inline-flex;gap:10px;align-items:center;background:var(--tint);border-radius:999px;padding:8px 18px;margin-top:20px;font-size:15px;color:var(--navy)}}
 .research .stat b{{color:var(--blue);font-size:18px}}
-.grid{{display:grid;grid-template-columns:1fr 1fr;gap:24px;margin-top:40px}}
-.study{{border:1px solid var(--line);border-radius:12px;padding:26px 28px;display:flex;flex-direction:column;background:#fff}}
-.study .meta{{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);background:var(--tint);align-self:flex-start;border-radius:999px;padding:4px 12px;margin-bottom:14px}}
-.study h3{{font-size:17px;font-weight:700;margin-bottom:10px}}
-.study p{{font-size:15px;flex:1}}
-.study .more{{font-weight:600;font-size:15px}}
-.disclose{{margin-top:26px;font-size:13px;color:var(--para);text-align:center}}
-@media(max-width:760px){{.grid{{grid-template-columns:1fr}}}}
+.rail-wrap{{position:relative;max-width:980px;margin:32px auto 0}}
+.rail{{display:grid;grid-auto-flow:column;grid-auto-columns:calc((100% - 16px)/2);gap:16px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;scrollbar-width:none;padding:2px}}
+.rail::-webkit-scrollbar{{display:none}}
+.study{{scroll-snap-align:start;border:1px solid var(--line);border-radius:10px;padding:16px 18px;display:flex;flex-direction:column;background:#fff}}
+.study .meta{{font-size:11px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--blue);margin-bottom:6px}}
+.study h3{{font-size:14.5px;font-weight:700;line-height:1.35;margin-bottom:6px}}
+.study p{{font-size:13.5px;line-height:1.5;margin:0 0 8px;flex:1}}
+.study .more{{font-weight:600;font-size:13.5px}}
+.rail-nav{{display:flex;justify-content:center;align-items:center;gap:14px;margin-top:16px;font-size:13px;color:var(--para)}}
+.rail-nav button{{width:34px;height:34px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--blue);font-size:16px;cursor:pointer;line-height:1}}
+.rail-nav button:disabled{{opacity:.35;cursor:default}}
+.disclose{{margin-top:14px;font-size:12px;color:var(--para);text-align:center}}
+@media(max-width:700px){{.rail{{grid-auto-columns:88%}}}}
 
 /* compatible + components */
 .compat{{display:grid;grid-template-columns:1fr 1fr;gap:20px}}
@@ -169,13 +174,16 @@ footer img{{height:30px;width:auto}}
 
 <section class="research" id="published-research"><div class="wrap">
   <div class="center">
-    <span class="tag">New section</span>
+    <span class="tag">New section: two studies show at a time; use the arrows or swipe for more</span>
     <h2>Published Research</h2>
     <p class="sub">Selected peer-reviewed studies on disposable IVC housing with Innorack and Innocage systems.</p>
     <div class="stat"><b>600+</b> published studies name Innovive caging in their methods</div>
   </div>
-  <div class="grid">
+  <div class="rail-wrap">
+    <div class="rail" id="rail">
 {cards}
+    </div>
+    <div class="rail-nav"><button id="prev" aria-label="Previous studies">←</button><span id="count"></span><button id="next" aria-label="More studies">→</button></div>
   </div>
   <p class="disclose">Studies selected by Innovive. Summaries are our own; see each paper for full methods and results.</p>
 </div></section>
@@ -199,6 +207,15 @@ footer img{{height:30px;width:auto}}
 
 <footer><div class="wrap"><img src="{uri('Innovive-Grascale-Logo-Light-1.webp')}" alt="Innovive"><span>Mockup only. Not the live site.</span></div></footer>
 
+<script>
+(function(){{var r=document.getElementById('rail'),p=document.getElementById('prev'),n=document.getElementById('next'),c=document.getElementById('count');
+var cards=r.children,total=cards.length;
+function per(){{return window.innerWidth<=700?1:2}}
+function upd(){{var w=cards[0].getBoundingClientRect().width+16,i=Math.round(r.scrollLeft/w),k=per();
+c.textContent=(i+1)+'–'+Math.min(i+k,total)+' of '+total+' studies';p.disabled=i<=0;n.disabled=i+k>=total;}}
+function go(d){{var w=cards[0].getBoundingClientRect().width+16;r.scrollBy({{left:d*w*per(),behavior:'smooth'}})}}
+p.onclick=function(){{go(-1)}};n.onclick=function(){{go(1)}};r.addEventListener('scroll',function(){{window.requestAnimationFrame(upd)}});window.addEventListener('resize',upd);upd();}})();
+</script>
 <button class="toggle" onclick="document.body.classList.toggle('clean');this.textContent=document.body.classList.contains('clean')?'Show review notes':'Hide review notes'">Hide review notes</button>
 </body>
 </html>
