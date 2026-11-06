@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Can We Tie Marketing to Revenue Yet?</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one narrow reading column; answer, numbers, one proven example, one chart, then the fixes. */
+:root{
+  --ink:#00223D; --body:#4a5763; --accent:#005287; --teal:#2f8f89; --line:#DAEBF8; --fill:#F6F9FF; --bg:#ffffff; --muted:#c9d6e2;
+  --font:"Inter",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--ink:#e8f1f8;--body:#b4c3d0;--accent:#6fb3e6;--teal:#75C6C1;--line:#22384b;--fill:#102434;--bg:#0a1823;--muted:#2c4458;color-scheme:dark;}
+}
+:root[data-theme="dark"]{--ink:#e8f1f8;--body:#b4c3d0;--accent:#6fb3e6;--teal:#75C6C1;--line:#22384b;--fill:#102434;--bg:#0a1823;--muted:#2c4458;color-scheme:dark;}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--body);font:16px/1.6 var(--font)}
+main{max-width:760px;margin:0 auto;padding:40px 20px 56px;display:flex;flex-direction:column;gap:32px}
+h1,h2{color:var(--ink);text-wrap:balance;margin:0;line-height:1.25}
+h1{font-size:30px;font-weight:700}
+h2{font-size:19px;font-weight:600}
+p{margin:0;max-width:65ch}
+.meta{font-size:13px;color:var(--body);margin-top:6px}
+.answer{background:var(--fill);border-radius:10px;padding:20px 22px;display:flex;flex-direction:column;gap:10px}
+.answer p{color:var(--ink)}
+section{display:flex;flex-direction:column;gap:14px}
+.tiles{display:grid;grid-template-columns:repeat(auto-fit,minmax(160px,1fr));gap:12px}
+.tile{border:1px solid var(--line);border-radius:10px;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
+.tile b{font-size:26px;color:var(--ink);font-weight:700;font-variant-numeric:tabular-nums}
+.tile span{font-size:14px;line-height:1.45}
+.chain{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(120px,1fr));gap:8px}
+.chain li{background:var(--fill);border-radius:8px;padding:10px 12px;font-size:14px;line-height:1.4;color:var(--ink)}
+.chain li small{display:block;color:var(--body);font-size:12px;margin-bottom:2px}
+.chain li.win{background:var(--accent);color:#fff}
+.chain li.win small{color:#d6e8f5}
+.note{font-size:14px}
+.bar{display:flex;height:34px;border-radius:6px;overflow:hidden;font-size:13px;font-weight:600;font-variant-numeric:tabular-nums}
+.bar div{display:flex;align-items:center;padding:0 10px;white-space:nowrap}
+.bar .on{background:var(--accent);color:#fff;flex:0 0 9.3%;min-width:44px}
+.bar .off{background:var(--muted);color:var(--ink);flex:1}
+.legend{display:flex;flex-wrap:wrap;gap:6px 18px;font-size:13px}
+.legend i{display:inline-block;width:10px;height:10px;border-radius:2px;margin-right:6px;vertical-align:baseline}
+table{border-collapse:collapse;width:100%;font-size:14px}
+td{border-top:1px solid var(--line);padding:9px 8px 9px 0;vertical-align:top}
+td:first-child{color:var(--ink);font-weight:600;width:34%}
+footer{font-size:12px;border-top:1px solid var(--line);padding-top:14px}
+@media (max-width:420px){h1{font-size:25px}td:first-child{width:40%}}
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <h1>Can we tie marketing to revenue yet?</h1>
+    <p class="meta">Prepared for Robin Gaffney by Volado Labs · Data from HubSpot as of November 6, 2026</p>
+  </header>
+
+  <div class="answer">
+    <p><strong>Partly.</strong> We can now follow a website inquiry to a real NetSuite account, and NetSuite's opportunities now show up in HubSpot. We cannot yet total revenue by marketing channel, because almost none of those opportunities are attached to the company or person they belong to, and the invoice history stops in 2017.</p>
+  </div>
+
+  <section>
+    <h2>What the data shows today</h2>
+    <div class="tiles">
+      <div class="tile"><b>47</b><span>HubSpot contacts matched to a NetSuite account (42 from website forms, 5 from an event list)</span></div>
+      <div class="tile"><b>7</b><span>of those 47 were already customers before they reached out</span></div>
+      <div class="tile"><b>$6.32M</b><span>won across 63 NetSuite opportunities closing in 2026, now visible in HubSpot</span></div>
+      <div class="tile"><b>1</b><span>website lead we can follow all the way to a sale</span></div>
+    </div>
+  </section>
+
+  <section>
+    <h2>The one sale we can trace: CCRM Fertility</h2>
+    <ol class="chain">
+      <li><small>Channel</small>Google search</li>
+      <li><small>First page</small>Mouse caging</li>
+      <li><small>Inquiry</small>Contact form, May 5 (Operations Manager)</li>
+      <li><small>NetSuite</small>Two rack quotes, Jul 27 and Aug 28</li>
+      <li class="win"><small>Outcome</small>Both won Sep 8: $76,644</li>
+    </ol>
+    <p class="note">This is the chain you described with the UT Arlington example, and it works. The catch: HubSpot did not connect these pieces on its own. We found the match by searching opportunity names for "CCRM". Your sales team should confirm the inquiry led to the order.</p>
+  </section>
+
+  <section>
+    <h2>Why it took a manual search</h2>
+    <div class="bar" role="img" aria-label="Of 162 opportunities closing in 2026, 15 are attached to a company in HubSpot and 147 are not">
+      <div class="on">15</div><div class="off">147 not attached to any company</div>
+    </div>
+    <div class="legend"><span><i style="background:var(--accent)"></i>Attached to a company</span><span><i style="background:var(--muted)"></i>Not attached</span></div>
+    <p class="note">Of the 162 opportunities closing in 2026, only 15 are linked to a company in HubSpot, and none of the 41 opened since May is linked to a person. A lead and its order sit side by side with no link between them. The invoices the sync brought over (23,870) are all dated 2012 to early 2017; nothing newer has arrived.</p>
+  </section>
+
+  <section>
+    <h2>What has to change to close the gap</h2>
+    <table>
+      <tr><td>Link opportunities to companies and contacts</td><td>The biggest fix. Rasan and Collin adjust the NetSuite sync so each opportunity carries its customer across. Then every lead-to-order match is automatic.</td></tr>
+      <tr><td>Finish the invoice sync</td><td>Invoices are the agreed revenue measure, and the import stopped at January 2017. Rasan to check why it halted on November 4.</td></tr>
+      <tr><td>Record trade shows on contacts</td><td>Upload the AALAS list with the event name, as planned for November 9. Without it, a booth conversation looks like any other lead.</td></tr>
+      <tr><td>Tag every email, social and LinkedIn link</td><td>Untagged links show up as "direct" visits. 65 of the 104 form submissions since August 1 are direct, so we cannot tell which channel sent them.</td></tr>
+      <tr><td>Accept the cookie limit</td><td>Visitors who decline cookies leave no page history (24 of the 104 had none). Asking "How did you hear about us?" on the form and in sales calls fills part of that gap.</td></tr>
+    </table>
+  </section>
+
+  <footer>A NetSuite match shows a lead belongs to a real account. It does not by itself show revenue. Opportunity values are the amounts NetSuite records on won deals, not invoiced totals. Figures exclude job applications.</footer>
+</main>
+</body>
+</html>
