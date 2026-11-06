@@ -15,13 +15,11 @@ STUDIES = [
     ("JAALAS", "2022", "Using Filter Media and Soiled Bedding in Disposable Individually Ventilated Cages as a Refinement to SPF Mouse Health Monitoring Programs",
      "In disposable IVC with cage-level filters, testing filter media detected infections more reliably than testing sentinel mice directly.",
      "https://doi.org/10.30802/aalas-jaalas-22-000013"),
-    ("JAALAS", "2013", "Reproductive Performance of Mice in Disposable and Standard Individually Ventilated Cages",
-     "Breeding pairs in disposable ventilated cages did as well as pairs in standard reusable cages: litter size, pup survival and pup weights did not differ across 776 pups.",
-     "https://pmc.ncbi.nlm.nih.gov/articles/PMC3690442/"),
-    ("JAALAS", "2011", "Effects of a 28-day Cage-change Interval on Intracage Ammonia Levels, Nasal Histology, and Perceived Welfare of CD1 Mice",
-     "In disposable ventilated cages, singly housed mice did well with 28 days between cage changes; groups of three did well with changes every two weeks.",
-     "https://pmc.ncbi.nlm.nih.gov/articles/PMC3228923/"),
+    ("JAALAS", "2025", "Extended Sanitization Frequency for Bottles: Using Volume as an Alternative to Time-Scheduled Replacements for Mice in Disposable Individually Ventilated Caging Systems",
+     "Prefilled Aquavive bottles left on cages until 100 mL remained (13 to 47 days) caused no change in mouse weight, body condition or water intake, and no bacterial growth.",
+     "https://doi.org/10.30802/aalas-jaalas-25-116"),
 ]
+STUDIES.sort(key=lambda x: -int(x[1]))
 cards = "\n".join(f"""      <article class="study">
         <div class="meta">{j} · {y}</div>
         <h3>{t}</h3>
@@ -176,8 +174,8 @@ footer img{{height:30px;width:auto}}
   <div class="center">
     <span class="tag">New section: two studies show at a time; use the arrows or swipe for more</span>
     <h2>Published Research</h2>
-    <p class="sub">Selected peer-reviewed studies on disposable IVC housing with Innorack and Innocage systems.</p>
-    <div class="stat"><b>600+</b> published studies name Innovive caging in their methods</div>
+    <p class="sub">Selected peer-reviewed studies from the last 10 years on the Innorack system and its components.</p>
+    <div class="stat"><b>500+</b> studies published in the last 10 years name Innovive caging in their methods</div>
   </div>
   <div class="rail-wrap">
     <div class="rail" id="rail">
