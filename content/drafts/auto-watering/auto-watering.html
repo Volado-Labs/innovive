@@ -1,0 +1,321 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Automatic Watering Page (mockup)</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --navy:#00223d; --blue:#005287; --light:#daebf8; --accent:#75c6c1; --text:#00223d;
+  --muted:#666666; --line:#daebf8; --tint:#f6f9ff; --white:#fff; --note:#fff4d6; --note-text:#6b4b00;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;font-family:Inter,system-ui,sans-serif;color:var(--text);background:var(--white);line-height:1.6;font-size:16px}
+img{max-width:100%;display:block}
+a{color:var(--blue);text-decoration:none}
+.wrap{max-width:1200px;margin:0 auto;padding:0 24px}
+h1,h2,h3{color:var(--navy);line-height:1.2;margin:0 0 12px}
+h1{font-size:clamp(32px,4.4vw,50px);font-weight:800;letter-spacing:-.02em;color:var(--blue)}
+h2{font-size:clamp(26px,3vw,36px);font-weight:700;letter-spacing:-.01em}
+h3{font-size:19px;font-weight:700}
+p{margin:0 0 16px}
+.eyebrow{font-size:13px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--blue);margin-bottom:10px}
+.lead{font-size:18px;color:var(--muted);max-width:720px}
+.btn{display:inline-block;padding:13px 22px;border-radius:8px;font-weight:600;font-size:15px}
+.btn-primary{background:var(--blue);color:#fff;border:1.5px solid var(--blue)}
+.btn-outline{border:1.5px solid var(--blue);color:var(--blue)}
+section{padding:72px 0}
+.tint{background:var(--tint)}
+
+.review{background:var(--note);color:var(--note-text);font-size:14px;padding:14px 0;border-bottom:1px solid #f0dca0}
+.review .wrap{display:flex;flex-wrap:wrap;gap:6px 28px;align-items:baseline}
+.review b{color:#4a3300}
+.review code{background:rgba(0,0,0,.06);padding:1px 6px;border-radius:4px;font-size:13px}
+.confirm{display:inline-block;background:var(--note);color:var(--note-text);font-size:12px;font-weight:600;padding:2px 8px;border-radius:999px;margin-left:6px;vertical-align:middle;white-space:nowrap}
+body.clean .review,body.clean .confirm{display:none}
+.toggle{position:fixed;right:16px;bottom:16px;z-index:50;background:var(--navy);color:#fff;border:0;border-radius:999px;padding:10px 16px;font:600 13px Inter,sans-serif;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,.2)}
+
+header.site{background:#fff;border-bottom:1px solid var(--line);position:sticky;top:0;z-index:40}
+header.site .wrap{display:flex;align-items:center;justify-content:space-between;height:72px;gap:20px}
+header.site img{height:34px;width:auto}
+nav.main{display:flex;gap:26px;font-size:15px;font-weight:500}
+nav.main a{color:var(--text)}
+nav.main a.on{color:var(--blue)}
+@media(max-width:860px){nav.main{display:none}}
+
+.hero{background:var(--tint);padding:0}
+.hero .wrap{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;padding-top:56px;padding-bottom:56px}
+.crumbs{font-size:13px;color:var(--muted);margin-bottom:16px}
+.badges{display:flex;gap:8px;flex-wrap:wrap;margin:18px 0 26px}
+.badges span{background:#fff;border:1px solid var(--line);color:var(--navy);font-weight:600;font-size:13px;padding:6px 12px;border-radius:999px}
+.ctas{display:flex;gap:12px;flex-wrap:wrap}
+.hero-img{background:#fff;border-radius:16px;display:flex;align-items:center;justify-content:center;padding:32px;aspect-ratio:1/1}
+.hero-img img{max-height:100%;width:auto;object-fit:contain}
+@media(max-width:860px){.hero .wrap{grid-template-columns:1fr;gap:28px;padding-top:40px;padding-bottom:40px}.hero-img{aspect-ratio:4/3}}
+
+.flow{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;margin-top:32px}
+@media(max-width:1020px){.flow{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.flow{grid-template-columns:1fr}}
+.flow .item{background:#fff;border:1px solid var(--line);border-radius:14px;padding:24px}
+.flow .n{width:38px;height:38px;border-radius:50%;background:var(--blue);color:#fff;font-weight:700;display:flex;align-items:center;justify-content:center;margin-bottom:14px}
+.flow p{font-size:15px;color:var(--muted);margin:0}
+
+.two{display:grid;grid-template-columns:1.1fr .9fr;gap:40px;align-items:start}
+@media(max-width:900px){.two{grid-template-columns:1fr}}
+.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:#fff}
+table{border-collapse:collapse;width:100%;font-size:14.5px}
+th,td{padding:13px 16px;text-align:left;border-bottom:1px solid var(--line);vertical-align:top}
+thead th{background:var(--navy);color:#fff;font-weight:600}
+tbody th{font-weight:600;color:var(--muted);width:42%;background:#fafbfe}
+tbody tr:last-child th,tbody tr:last-child td{border-bottom:0}
+.side{background:var(--navy);color:#dfe4fb;border-radius:16px;padding:28px}
+.side h3{color:#fff}
+.side ul{padding-left:20px;margin:0 0 18px}
+.side li{margin-bottom:8px}
+.side a.btn{background:#fff;color:var(--blue)}
+
+.kits{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+@media(max-width:900px){.kits{grid-template-columns:1fr}}
+.kit{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden}
+.kit header{padding:18px 20px;background:var(--tint)}
+.kit header b{display:block;color:var(--navy);font-size:17px}
+.kit header span{font-size:13.5px;color:var(--muted)}
+.kit table{font-size:14px}
+.kit td:last-child,.kit th:last-child{text-align:right;white-space:nowrap}
+.kit thead th{background:#fff;color:var(--muted);font-size:12.5px;text-transform:uppercase;letter-spacing:.05em}
+.code{font-family:ui-monospace,Menlo,monospace;font-size:13px;color:var(--navy)}
+
+.why{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+@media(max-width:900px){.why{grid-template-columns:1fr}}
+.why div{background:#fff;border-radius:14px;padding:24px}
+.why p{color:var(--muted);font-size:15px;margin:0}
+
+.pubs{margin-top:28px;display:grid;gap:12px}
+.pub{background:#fff;border:1px dashed #d8c48a;border-radius:12px;padding:18px 20px;color:var(--muted);font-size:15px}
+.pub b{color:var(--navy)}
+body.clean .pubs-wrap{display:none}
+
+.video{margin-top:28px;aspect-ratio:16/9;max-width:860px;background:var(--navy);border-radius:16px;display:flex;align-items:center;justify-content:center;color:#cdd5f7;font-weight:600}
+.video span{display:flex;align-items:center;gap:12px}
+.video i{width:56px;height:56px;border-radius:50%;background:var(--blue);display:inline-flex;align-items:center;justify-content:center;font-style:normal;color:#fff;font-size:20px;border:2px solid #fff}
+
+.faq{max-width:860px;margin-top:28px}
+details{background:#fff;border:1px solid var(--line);border-radius:12px;padding:0 20px;margin-bottom:12px}
+summary{cursor:pointer;font-weight:600;color:var(--navy);padding:18px 0;list-style:none;display:flex;justify-content:space-between;gap:16px}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:22px;line-height:1;color:var(--blue)}
+details[open] summary::after{content:"\2212"}
+details p{color:var(--muted);font-size:15.5px}
+
+.cta{background:var(--navy);color:#fff;text-align:center}
+.cta .btn-primary{border-color:#fff}
+.cta h2{color:#fff}
+.cta p{color:#daebf8;max-width:620px;margin:0 auto 24px}
+footer{background:var(--navy);color:#c8cff0;font-size:14px;padding:36px 0}
+footer .wrap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:16px}
+
+.ph{background:repeating-linear-gradient(45deg,#f6f9ff,#f6f9ff 12px,#eef4fc 12px,#eef4fc 24px);border:2px dashed #b9cfe6;color:var(--muted);text-align:center;font-size:14.5px;display:flex;align-items:center;justify-content:center;padding:24px}
+.ph b{color:var(--navy)}
+.parts{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+@media(max-width:900px){.parts{grid-template-columns:1fr}}
+.part{background:#fff;border:1px solid var(--line);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.part-img{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:#fff;padding:20px}
+.part-img img{max-height:100%;width:auto;object-fit:contain}
+.part-img.ph{border-width:0 0 2px 0;border-radius:0}
+.part-body{padding:22px 22px 24px;flex:1;display:flex;flex-direction:column}
+.part-body p{color:var(--muted);font-size:15px}
+.part-body .small{font-size:13.5px}
+.part-body a{margin-top:auto;font-weight:600}
+.part .code{margin-bottom:6px;font-weight:600}
+.video-row{display:grid;grid-template-columns:1.3fr 1fr;gap:32px;align-items:center;margin-top:40px}
+.video-row .video{margin-top:0}
+@media(max-width:860px){.video-row{grid-template-columns:1fr}}
+.compat td,.compat th{width:auto}
+.compat thead th:first-child{width:22%}
+.notes{margin:20px 0 0;padding-left:20px;color:var(--muted);font-size:15px}
+.notes li{margin-bottom:8px}
+</style>
+</head>
+<body>
+<div class="review"><div class="wrap">
+  <span><b>MOCKUP for review. Draft only, not on the live site.</b> New page, proposed URL <code>/auto-watering/</code>.</span>
+  <span><b>Title tag:</b> Automatic Watering for Disposable IVC Cages | Innovive</span>
+  <span><b>Meta description:</b> Run Innocage® disposable mouse cages on your facility's automatic watering system. Grommet-ready cage bottom, the MVX5 autowatering lid and an Innorack with built-in water lines.</span>
+  <span><b>Yellow tags</b> mark facts Innovive must confirm before this goes live. Nothing tagged has been verified.</span>
+</div></div>
+
+<header class="site"><div class="wrap">
+  <img src="https://innovive.com/wp-content/uploads/2026/05/Innovive-Color-Logo-Dark-1.png" alt="Innovive">
+  <nav class="main">
+    <a href="#">Company</a><a href="#">The Innovive System</a><a class="on" href="#">Products</a><a href="#">Vivarium Solutions</a><a href="#">Resources</a><a href="#">Contact</a>
+  </nav>
+</div></header>
+
+<section class="hero"><div class="wrap">
+  <div>
+    <div class="crumbs">Home / Products / <a href="../ivc-hub/ivc-caging-hub.html">IVC Caging</a> / Automatic Watering</div>
+    <h1>Automatic Watering for Disposable IVC Cages</h1>
+    <p class="lead">Keep the single-use Innocage® and drop the water bottle. An autowatering-ready cage bottom, the MVX5 lid and an Innorack with water lines built in let your mice drink from the facility's automatic watering system.</p>
+    <div class="badges"><span>No water bottles to fill or change</span><span>Single-use, recyclable cages</span><span>Delivered irradiated</span><span>Mouse and rat <span class="confirm">CONFIRM rat</span></span></div>
+    <div class="ctas">
+      <a class="btn btn-primary" href="https://innovive.com/contact-us/">Talk to an Expert</a>
+      <a class="btn btn-outline" href="#components">See the components</a>
+    </div>
+  </div>
+  <div class="hero-img ph"><div><b>[PLACEHOLDER] Hero photo</b><br>Innorack IVC Mouse fitted for autowatering, with cages docked. No professional photo yet.</div></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">What it is</div>
+  <h2>The Innovive system, fed by your water lines</h2>
+  <div class="two">
+    <div>
+      <p>Most Innovive customers give each cage its own Aquavive® water bottle. Some facilities already run automatic watering, where treated water is piped to every cage position on the rack. This setup lets those facilities use Innocage disposable cages without moving back to bottles.</p>
+      <p>It is three matched parts. A cage bottom with a grommet hole, a lid made for autowatering, and a rack with the water tubing built in. The cage itself stays single-use: it arrives irradiated and ready, and it is recycled after use instead of going through cage wash.</p>
+      <p>It suits facilities that are already plumbed for automatic watering, studies where a bottle change is a disturbance you want to avoid, and teams that want to cut bottle handling. <span class="confirm">CONFIRM positioning</span></p>
+    </div>
+    <aside class="side">
+      <h3>Bottles or autowatering?</h3>
+      <ul>
+        <li><b>Aquavive bottles:</b> no plumbing needed, pre-filled or empty, works on every Innorack.</li>
+        <li><b>Autowatering:</b> no bottles to fill, change or recycle, uses your facility's own treated water.</li>
+      </ul>
+      <p style="font-size:14.5px;color:#c9d6e6">Not sure which fits your facility? We can walk through both.</p>
+      <a class="btn" href="https://innovive.com/contact-us/">Talk to an Expert</a>
+    </aside>
+  </div>
+</div></section>
+
+<section class="tint" id="components"><div class="wrap">
+  <div class="eyebrow">Components</div>
+  <h2>What you need for a mouse autowatering setup</h2>
+  <p class="lead">All three parts are required. A standard M-BTM bottom or a bottle lid will not work on an autowatering rack.</p>
+  <div class="parts">
+    <div class="part">
+      <div class="part-img ph"><div><b>[PLACEHOLDER]</b><br>M-BTM-A bottom showing the grommet hole</div></div>
+      <div class="part-body">
+        <div class="code">M-BTM-A</div>
+        <h3>Autowatering-ready cage bottom</h3>
+        <p>The universal Innocage mouse bottom with a grommet hole that lets the rack's drinking valve reach into the cage. The grommet can be inserted and removed by hand.</p>
+        <p class="small">Same footprint as the M-BTM <span class="confirm">CONFIRM</span>. Empty or pre-bedded <span class="confirm">CONFIRM</span></p>
+        <a href="https://innovive.com/mouse-caging-btm/">Mouse cage bottoms &rarr;</a>
+      </div>
+    </div>
+    <div class="part">
+      <div class="part-img"><img src="https://innovive.com/wp-content/uploads/2026/06/ec8d267964ded6caf34500d9866e81a770297d95.png" alt="Innovive MVX5 autowatering mouse lid"></div>
+      <div class="part-body">
+        <div class="code">MVX5</div>
+        <h3>Autowatering mouse lid</h3>
+        <p>IVC mouse lid for the Innorack, with two Reemay® filters covering the exhaust and supply ports. It has no water bottle cavity and is used with autowatering systems only.</p>
+        <p class="small">Image is the current MVX5 photo from the Mouse Lid page.</p>
+        <a href="https://innovive.com/mouse-lids/">Mouse lids &rarr;</a>
+      </div>
+    </div>
+    <div class="part">
+      <div class="part-img ph"><div><b>[PLACEHOLDER]</b><br>Close-up of the rack's water line and drinking valve at a cage position</div></div>
+      <div class="part-body">
+        <div class="code">Innorack IVC Mouse <span class="confirm">CONFIRM model / part no.</span></div>
+        <h3>Rack with built-in water lines</h3>
+        <p>An Innorack IVC Mouse with water tubing run to each cage position, so every docked cage connects to the facility supply. Airflow works the same as on a standard Innorack.</p>
+        <p class="small">Factory-built or a retrofit to an existing rack <span class="confirm">CONFIRM</span></p>
+        <a href="https://innovive.com/innorack-mouse/">Innorack IVC Mouse &rarr;</a>
+      </div>
+    </div>
+  </div>
+  <p style="margin-top:20px;font-size:15px;color:var(--muted)">Plus your usual feeder: M-FEED, M-FEED-P or M-FEED-SS <span class="confirm">CONFIRM all three fit with MVX5</span></p>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">How it works</div>
+  <h2>From facility water line to the cage</h2>
+  <div class="flow">
+    <div class="item"><div class="n">1</div><h3>Connect the rack</h3><p>The Innorack's water manifold connects to your facility's automatic watering supply. <span class="confirm">CONFIRM connection type</span></p></div>
+    <div class="item"><div class="n">2</div><h3>Prepare the cage</h3><p>Insert the grommet into the M-BTM-A bottom and fit the MVX5 lid and feeder.</p></div>
+    <div class="item"><div class="n">3</div><h3>Dock the cage</h3><p>Slide the cage into its rack position. The drinking valve passes through the grommet into the cage. <span class="confirm">CONFIRM valve position</span></p></div>
+    <div class="item"><div class="n">4</div><h3>Change and recycle</h3><p>At cage change, pull the cage, remove the grommet and recycle the bottom and lid as usual. <span class="confirm">CONFIRM grommet is reused</span></p></div>
+  </div>
+  <div class="video-row">
+    <a class="video" href="https://www.youtube.com/watch?v=K_Q9iXQwlPw" target="_blank" rel="noopener" style="position:relative;overflow:hidden;padding:0"><img src="https://innovive.com/wp-content/uploads/2026/06/Innocage-Autowatering-Grommet-Insertion.png" alt="Innocage autowatering grommet insertion video" style="width:100%;height:100%;object-fit:cover"><span style="position:absolute;inset:0;justify-content:center"><i>&#9654;</i></span></a>
+    <div>
+      <h3>Video: grommet insertion</h3>
+      <p style="color:var(--muted)">How to insert and remove the grommet from an Innovive autowatering-ready cage. This video is already on the <a href="https://innovive.com/video-training/">Video Training</a> page.</p>
+    </div>
+  </div>
+</div></section>
+
+<section class="tint"><div class="wrap">
+  <div class="eyebrow">Specifications</div>
+  <h2>Mouse autowatering specifications</h2>
+  <div class="table-wrap" style="margin-top:24px"><table><tbody>
+    <tr><th>Species</th><td>Mouse, up to 5 per cage <span class="confirm">CONFIRM same as M-BTM</span></td></tr>
+    <tr><th>Cage bottom</th><td>M-BTM-A, universal Euro Type II Long <span class="confirm">CONFIRM</span></td></tr>
+    <tr><th>Floor space and headroom</th><td>81 in² (522.6 cm²), 5" (12.7 cm) headroom, if the same as M-BTM <span class="confirm">CONFIRM</span></td></tr>
+    <tr><th>Outside dimensions</th><td>14.7"L x 9.2"W x 5.5"H max, if the same as M-BTM <span class="confirm">CONFIRM</span></td></tr>
+    <tr><th>Lid</th><td>MVX5: two Reemay® filters, no water bottle cavity, 5" interior height</td></tr>
+    <tr><th>Feeder</th><td>M-FEED, M-FEED-P, M-FEED-SS <span class="confirm">CONFIRM</span></td></tr>
+    <tr><th>Rack</th><td>Innorack IVC Mouse with built-in water lines</td></tr>
+    <tr><th>Cage positions</th><td>[PLACEHOLDER] Standard Innorack IVC Mouse holds up to 192 cages <span class="confirm">CONFIRM for autowatering version</span></td></tr>
+    <tr><th>Drinking valve</th><td>[PLACEHOLDER] type and supplier <span class="confirm">Innovive to supply</span></td></tr>
+    <tr><th>Grommet material</th><td>[PLACEHOLDER] <span class="confirm">Innovive to supply</span></td></tr>
+    <tr><th>Water connection</th><td>[PLACEHOLDER] fitting type and size <span class="confirm">Innovive to supply</span></td></tr>
+    <tr><th>Operating water pressure</th><td>[PLACEHOLDER] range, and whether a regulator is needed <span class="confirm">Innovive to supply</span></td></tr>
+    <tr><th>Water types</th><td>[PLACEHOLDER] acidified, chlorinated, RO/ultrapure <span class="confirm">Innovive to supply</span></td></tr>
+    <tr><th>Flushing</th><td>[PLACEHOLDER] manual or automatic flush, and how often <span class="confirm">Innovive to supply</span></td></tr>
+    <tr><th>Delivered</th><td>Bottom and lid irradiated, double-bagged (Research-Ready) <span class="confirm">CONFIRM for M-BTM-A</span></td></tr>
+    <tr><th>Material and recycling</th><td>100% PET, BPA-free, recyclable</td></tr>
+  </tbody></table></div>
+</div></section>
+
+<section><div class="wrap">
+  <div class="eyebrow">Compatibility</div>
+  <h2>What works together</h2>
+  <div class="table-wrap" style="margin-top:24px"><table class="compat">
+    <thead><tr><th></th><th>Mouse autowatering</th><th>Rat autowatering <span class="confirm" style="color:#6b4b00">CONFIRM</span></th></tr></thead>
+    <tbody>
+      <tr><th>Rack</th><td><a href="https://innovive.com/innorack-mouse/">Innorack IVC Mouse</a>, autowatering version</td><td><a href="https://innovive.com/innorack-rat/">Innorack IVC Rat</a> (standard, not Tall)</td></tr>
+      <tr><th>Cage bottom</th><td>M-BTM-A</td><td>R-BTM-H-A <span class="confirm">CONFIRM SKU</span></td></tr>
+      <tr><th>Lid</th><td><a href="https://innovive.com/mouse-lids/">MVX5</a></td><td><a href="https://innovive.com/rat-lid/">RVX5</a></td></tr>
+      <tr><th>Feeder</th><td>M-FEED, M-FEED-P, M-FEED-SS</td><td>R-FEED-U</td></tr>
+      <tr><th>Water bottle</th><td>None</td><td>None</td></tr>
+    </tbody>
+  </table></div>
+  <ul class="notes">
+    <li>Standard M-BTM bottoms and bottle lids (MVX1, MVX2, MVX3, MVX6, MSX2, MSX4) are for water bottles, not autowatering.</li>
+    <li>Mouse XL (M-BTM-XL), Tall Rat and Tall Rat XL: no autowatering version listed today. <span class="confirm">CONFIRM</span></li>
+    <li>Third-party autowatering racks (Allentown, Tecniplast, Avidity and others): [PLACEHOLDER] <span class="confirm">CONFIRM whether Innocage A-bottoms fit any</span></li>
+  </ul>
+</div></section>
+
+<section class="tint"><div class="wrap">
+  <div class="eyebrow">FAQ</div>
+  <h2>Automatic watering questions</h2>
+  <div class="faq">
+    <details open><summary>Can disposable IVC cages be used with automatic watering?</summary><p>Yes. Innovive makes an autowatering-ready version of the Innocage mouse bottom (M-BTM-A) with a grommet hole, used with the MVX5 lid on an Innorack fitted with water lines. The cage is still single-use and recyclable.</p></details>
+    <details><summary>Can I convert my existing Innorack to autowatering?</summary><p>[PLACEHOLDER] <span class="confirm">CONFIRM: retrofit kit, factory build only, or both</span></p></details>
+    <details><summary>Will it connect to my facility's existing watering system?</summary><p>[PLACEHOLDER] Fitting type, supply pressure and any regulator or flushing station needed. <span class="confirm">Innovive to supply</span></p></details>
+    <details><summary>What kind of water can I use?</summary><p>[PLACEHOLDER] Acidified, chlorinated or RO/ultrapure. <span class="confirm">Innovive to supply</span></p></details>
+    <details><summary>How do you prevent leaks or a flooded cage?</summary><p>[PLACEHOLDER] Valve design, grommet seal and any leak detection. <span class="confirm">Innovive to supply</span></p></details>
+    <details><summary>Is the grommet reused or thrown away?</summary><p>The grommet is inserted into the bottom by hand and can be removed again, as shown in the training video. [PLACEHOLDER] Whether it is reused across cages, and how it is cleaned. <span class="confirm">CONFIRM</span></p></details>
+    <details><summary>Can I mix bottle and autowatering cages on one rack?</summary><p>[PLACEHOLDER] <span class="confirm">CONFIRM</span></p></details>
+    <details><summary>How are the water lines cleaned and sanitized?</summary><p>[PLACEHOLDER] Flushing schedule and whether lines can be autoclaved, VHP-treated or chemically sanitized. <span class="confirm">Innovive to supply</span></p></details>
+    <details><summary>Is there a rat version?</summary><p>The Rat Caging page lists an autowatering option for the standard Innorack IVC Rat with the R-BTM-H-A bottom, RVX5 lid and R-FEED-U feeder. <span class="confirm">CONFIRM still offered</span></p></details>
+  </div>
+</div></section>
+
+<section class="cta"><div class="wrap">
+  <h2>Running automatic watering in your vivarium?</h2>
+  <p>Tell us about your watering system and rack layout, and we will help you work out whether Innovive autowatering fits.</p>
+  <a class="btn btn-primary" href="https://innovive.com/contact-us/">Talk to an Expert</a>
+</div></section>
+
+<footer><div class="wrap">
+  <span>Consumable, recyclable vivarium solutions for preclinical research. Designed in California, trusted in 43 countries.</span>
+  <span>&copy; Innovive</span>
+</div></footer>
+
+<button class="toggle" onclick="document.body.classList.toggle('clean');this.textContent=document.body.classList.contains('clean')?'Show review notes':'Hide review notes'">Hide review notes</button>
+</body>
+</html>
