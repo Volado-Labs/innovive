@@ -1,0 +1,202 @@
+<title>Innovive HubSpot Review</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap">
+<style>
+/* Layout: one reading column; verdict band up top, then comparison, the marketing-contact list, and next steps. Innovive brand palette, Inter only. */
+:root {
+  --bg: #ffffff;
+  --surface: #f6f9ff;
+  --line: #daebf8;
+  --ink: #00223d;
+  --text: #4f5b66;
+  --blue: #005287;
+  --teal: #2f8f89;
+  --yes: #1d6b45;
+  --yes-bg: #e5f3ec;
+  --no: #8a3b2b;
+  --no-bg: #f8ebe7;
+  --font: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #0b1824; --surface: #11222f; --line: #1f3a4f; --ink: #e8f1f8; --text: #a9b8c4;
+    --blue: #7cc0ee; --teal: #75c6c1; --yes: #8fd6b0; --yes-bg: #13301f; --no: #f0a998; --no-bg: #3a1d17;
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #0b1824; --surface: #11222f; --line: #1f3a4f; --ink: #e8f1f8; --text: #a9b8c4;
+  --blue: #7cc0ee; --teal: #75c6c1; --yes: #8fd6b0; --yes-bg: #13301f; --no: #f0a998; --no-bg: #3a1d17;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--text); font-family: var(--font);
+  font-size: 16px; line-height: 1.65;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 40px 64px;
+}
+.wrap { max-width: 760px; margin: 0 auto; display: flex; flex-direction: column; gap: 44px; }
+h1, h2, h3 { color: var(--ink); text-wrap: balance; margin: 0; line-height: 1.25; }
+h1 { font-size: clamp(28px, 5vw, 38px); font-weight: 700; letter-spacing: -0.01em; }
+h2 { font-size: 22px; font-weight: 700; }
+h3 { font-size: 16px; font-weight: 600; }
+p { margin: 0; }
+section { display: flex; flex-direction: column; gap: 16px; }
+.eyebrow { font-size: 12px; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; color: var(--blue); }
+.meta { font-size: 14px; }
+header { display: flex; flex-direction: column; gap: 12px; }
+.verdict { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; gap: 12px; }
+.verdict strong { color: var(--ink); }
+.verdict .big { font-size: 20px; font-weight: 600; color: var(--ink); line-height: 1.4; }
+.options { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; }
+@media (max-width: 680px) { .options { grid-template-columns: 1fr; } }
+.opt { border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.opt.pick { background: var(--surface); border-color: var(--blue); }
+.pill { align-self: flex-start; font-size: 12px; font-weight: 600; padding: 2px 10px; border-radius: 999px; }
+.pill.yes { background: var(--yes-bg); color: var(--yes); }
+.pill.no { background: var(--no-bg); color: var(--no); }
+.cost { font-size: 22px; font-weight: 700; color: var(--ink); font-variant-numeric: tabular-nums; }
+.cost small { font-size: 13px; font-weight: 500; color: var(--text); }
+ul { margin: 0; padding-left: 20px; display: flex; flex-direction: column; gap: 6px; }
+.opt ul { font-size: 14px; }
+.table-scroll { overflow-x: auto; border: 1px solid var(--line); border-radius: 8px; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-size: 15px; }
+th, td { text-align: left; padding: 12px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+th { color: var(--ink); font-weight: 600; background: var(--surface); font-size: 13px; letter-spacing: 0.02em; }
+tr:last-child td { border-bottom: 0; }
+td:first-child { color: var(--ink); font-weight: 500; }
+.split { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+@media (max-width: 600px) { .split { grid-template-columns: 1fr; } }
+.box { border: 1px solid var(--line); border-radius: 8px; padding: 18px; display: flex; flex-direction: column; gap: 10px; min-width: 0; }
+.box.need { background: var(--surface); }
+.note { font-size: 14px; }
+ol.steps { margin: 0; padding-left: 22px; display: flex; flex-direction: column; gap: 10px; }
+ol.steps li strong { color: var(--ink); }
+a { color: var(--blue); }
+a:focus-visible { outline: 2px solid var(--blue); outline-offset: 2px; }
+footer { font-size: 13px; border-top: 1px solid var(--line); padding-top: 16px; display: flex; flex-direction: column; gap: 6px; }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="eyebrow">Year-end systems review</span>
+    <h1>Should Innovive keep HubSpot?</h1>
+    <p class="meta">Prepared by Volado Labs for Robin Gaffney and Victoria Zimmerman, November 19, 2026</p>
+  </header>
+
+  <div class="verdict">
+    <p class="big">Keep HubSpot on the Starter plan for 2027. Don't upgrade, and don't replace it.</p>
+    <p>For about <strong>$45 a month</strong>, HubSpot captures every website inquiry, records where each one came from, and receives NetSuite's customers, opportunities and sales orders. That connection is what lets us tie a marketing inquiry to a real purchase. Replacing HubSpot would save about $540 a year and undo that work. Upgrading would cost about $10,000 a year for features Innovive doesn't plan to use.</p>
+  </div>
+
+  <section>
+    <h2>What HubSpot does for Innovive today</h2>
+    <div class="table-scroll">
+      <table>
+        <thead><tr><th>Job</th><th>How it works now</th></tr></thead>
+        <tbody>
+          <tr><td>Website inquiries</td><td>The Contact Us, Inno+ and job application forms all run on HubSpot, and each submission is counted as a conversion in Google Analytics.</td></tr>
+          <tr><td>Where leads come from</td><td>HubSpot records each visitor's source, and the "How did you hear about us?" question adds what the person tells us.</td></tr>
+          <tr><td>NetSuite connection</td><td>NetSuite sends customer status, opportunities, invoices and sales orders into HubSpot. Data only flows one way, so NetSuite is never changed.</td></tr>
+          <tr><td>Recognizing customers</td><td>New inquiries are checked against NetSuite customer records, so existing customers aren't counted as new leads.</td></tr>
+          <tr><td>Sorting inquiries</td><td>Sales inquiries are separated from support requests, job applicants and vendors. The Marketing Leads list shows only verified prospects.</td></tr>
+          <tr><td>Trade-show contacts</td><td>Lists that sales has reviewed are imported and tagged with the event name.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="note">HubSpot is not used for email (Klaviyo handles customer email), for the sales process (sales stays in NetSuite), or for board reporting (the Volado dashboard reads from HubSpot instead).</p>
+  </section>
+
+  <section>
+    <h2>The three options</h2>
+    <div class="options">
+      <div class="opt pick">
+        <span class="pill yes">Recommended</span>
+        <h3>Stay on Starter</h3>
+        <p class="cost">$45<small> / month</small></p>
+        <ul>
+          <li>Three seats: Robin, Victoria, Rasan</li>
+          <li>Sales keeps its current routine</li>
+          <li>About 395 contacts, with room for 1,000 marketing contacts</li>
+          <li>Reporting gaps are covered by the dashboard</li>
+        </ul>
+      </div>
+      <div class="opt">
+        <span class="pill no">Not now</span>
+        <h3>Upgrade to Professional</h3>
+        <p class="cost">$800+<small> / month</small></p>
+        <ul>
+          <li>Adds automated follow-up, lead scoring, custom reports and social posting</li>
+          <li>Its main value is automated email, which Innovive sends from Klaviyo</li>
+          <li>Revenue attribution still needs Enterprise at $3,600 a month</li>
+          <li>Plus a one-time onboarding fee</li>
+        </ul>
+      </div>
+      <div class="opt">
+        <span class="pill no">Not recommended</span>
+        <h3>Replace HubSpot</h3>
+        <p class="cost">Saves $540<small> / year</small></p>
+        <ul>
+          <li>Every form and its tracking would need rebuilding</li>
+          <li>The NetSuite connection would start over</li>
+          <li>The obvious substitute, NetSuite's own forms, puts marketing inside a system sales and IT run</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <h2>Which tools need marketing contacts</h2>
+    <p>Starter includes 1,000 <strong>marketing contacts</strong>. HubSpot charges by the number of contacts set to marketing, not by the total. Going past the limit can trigger an automatic upgrade to the next contact tier. Every other contact is a free <strong>non-marketing contact</strong>: it stays in the CRM with its full history, but HubSpot won't send it marketing email or use it for ads.</p>
+    <div class="split">
+      <div class="box need">
+        <h3>Requires a marketing contact</h3>
+        <ul>
+          <li>Marketing emails sent from HubSpot, including automatic follow-up emails after a form submission</li>
+          <li>Ad audiences built from HubSpot contact lists (for example, LinkedIn or Google retargeting lists)</li>
+          <li>Marketing steps in automation, such as sending a marketing email or adding someone to an ad audience</li>
+        </ul>
+      </div>
+      <div class="box">
+        <h3>Works with non-marketing contacts</h3>
+        <ul>
+          <li>Storing the contact, its form submissions and its NetSuite link</li>
+          <li>Lists, views, filters and reports</li>
+          <li>One-to-one sales emails</li>
+          <li>Event registration and transactional emails</li>
+          <li>Customer feedback surveys</li>
+        </ul>
+      </div>
+    </div>
+    <p class="note"><strong>What this means for Innovive:</strong> HubSpot doesn't send any marketing email or build any ad audiences for Innovive today, so almost no contacts need to be set to marketing. But HubSpot forms can mark every person who submits one as a marketing contact by default. Job applicants, support requests and records synced from NetSuite should be set to non-marketing so they don't use up the limit. If Innovive later wants HubSpot-built retargeting audiences for LinkedIn ads, only the prospects in those audiences need to be marketing contacts. Source: HubSpot's <a href="https://knowledge.hubspot.com/records/marketing-contacts" target="_blank" rel="noopener">guide to marketing contacts</a>.</p>
+  </section>
+
+  <section>
+    <h2>Next steps</h2>
+    <ol class="steps">
+      <li><strong>Agree on HubSpot's job.</strong> Capturing inquiries, recognizing customers and holding NetSuite data. Email stays in Klaviyo, sales stays in NetSuite, and board reporting stays in the dashboard.</li>
+      <li><strong>Clean up marketing contact status.</strong> With Victoria's OK, Volado will review who is set to marketing and switch job applicants, support requests and NetSuite records to non-marketing. We won't make changes without your approval.</li>
+      <li><strong>Check the HubSpot invoice.</strong> Confirm the monthly charge, and confirm there are no add-ons beyond Starter.</li>
+      <li><strong>Keep the NetSuite connection owned inside Innovive.</strong> Rasan holds a seat and should stay its owner, so it doesn't depend on Volado.</li>
+    </ol>
+  </section>
+
+  <section>
+    <h2>When to look at Professional again</h2>
+    <ul>
+      <li>Innovive decides to send regular prospect email (Inno+, trade-show follow-up) from HubSpot instead of Klaviyo.</li>
+      <li>Website inquiries grow well past about 150 a month.</li>
+      <li>Marketing contacts approach 1,000 after the cleanup.</li>
+      <li>Sales leadership asks to work leads in HubSpot.</li>
+    </ul>
+  </section>
+
+  <footer>
+    <p>Prices are from HubSpot's published pricing, checked November 19, 2026. Professional is listed at $800 a month billed annually or $890 billed monthly, with three seats included.</p>
+    <p>Volado Labs</p>
+  </footer>
+</div>

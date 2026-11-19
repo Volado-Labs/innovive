@@ -1,0 +1,14 @@
+contact_id,created,company,form,proposed_inquiry_type,confidence,why
+587295413963,2026-11-06,University of Texas at Arlington,Contact Innovive,Sales inquiry,high,"""Disposable caging""; the AALAS-sourced inquiry from the 11/6 call"
+587594856122,2026-11-06,USDA,Contact Innovive,Sales inquiry,high,Pricing on disposable caging and rack; met sales at National AALAS
+589601795794,2026-11-09,Southern Illinois University Carbondale,Contact Innovive,Sales inquiry,high,Quote for disposable caging for an upcoming project
+592612363999,2026-11-12,Phase Labs,Inno+ form,Sales inquiry,high,Wants Inno+ vivarium management services to set up an internal program
+591288162033,2026-11-10,"University of California, Los Angeles",Contact Innovive,Sales inquiry (or Existing customer order),medium,Quote for 20 MVX2 lids and 20 M-WB-300 bottles; consumables suggest an existing Innovive user
+584020522745,2026-11-03,Samarasinghe Lab (UW Madison),Contact Innovive,Existing customer order (or Sales inquiry),medium,Already uses Innovive cages; wants a recurring quote for M-WB-300P ultra pure water
+592673846009,2026-11-12,Pfizer,Rat IVC Rack page form,Sales inquiry,low,No message; rack data sheet request from a large pharma company (Pfizer may already be a customer)
+582876372679,2026-11-02,Khalifa University,Mouse IVC Rack page form,Sales inquiry,low,No message; rack data sheet request from a university
+581519038165,2026-11-04,Able Scientific (Australia),Mouse IVC Rack page form,General inquiry,low,No message; Able Scientific looks like a lab supplier or distributor; confirm before counting
+586167139060,2026-11-05,(Universitas Esa Unggul),Contamination control content form,General inquiry,low,No message; content download from an Indonesian university; no buying signal
+584886708943,2026-11-04,Kind Biotechnology,Contact Innovive,Service request,high,Existing Innovive rack has airflow trouble
+582825456364,2026-11-02,Nexus Conference,Contact Innovive,Vendor pitch,high,Selling sponsorship of a 2027 conference
+592296318699,2026-11-12,Nbtrfvkxo LLC,Old Wix contact form,Bot submission,high,Random-string company on the retired Wix form

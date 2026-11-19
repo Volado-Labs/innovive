@@ -1,0 +1,39 @@
+<iframe
+  id="innovive-chat"
+  src="https://innovive-website-chat-j6eptifb4q-uc.a.run.app/chat"
+  title="Innovive website assistant"
+  allowtransparency="true"
+  style="position:fixed; bottom:88px; right:0;
+         width:320px; height:96px; border:0;
+         z-index:999999; background:transparent;
+         transition:width .15s, height .15s;"></iframe>
+
+<script>
+(function () {
+  var frame = document.getElementById('innovive-chat');
+  var ORIGIN = 'https://innovive-website-chat-j6eptifb4q-uc.a.run.app';
+  var OFFSET = 88; /* sits above the OneTap button and TranslatePress switcher */
+  var last = null; /* last size the app asked for */
+
+  function apply() {
+    if (!last) return;
+    if (last.dismissed) { /* visitor hid the assistant: collapse fully */
+      frame.style.width = frame.style.height = '0px';
+      return;
+    }
+    /* clamp to the window, but never to a window that has no size yet */
+    var w = window.innerWidth, h = window.innerHeight - OFFSET;
+    frame.style.width = (w > 0 ? Math.min(last.width, w) : last.width) + 'px';
+    frame.style.height = (h > 0 ? Math.min(last.height, h) : last.height) + 'px';
+  }
+
+  window.addEventListener('message', function (e) {
+    if (e.origin !== ORIGIN) return;
+    if (!e.data || e.data.type !== 'innovive-chat-size') return;
+    if (!e.data.dismissed && !(e.data.width > 0 && e.data.height > 0)) return; /* ignore stray 0x0 sizes */
+    last = e.data;
+    apply();
+  });
+  window.addEventListener('resize', apply);
+})();
+</script>
